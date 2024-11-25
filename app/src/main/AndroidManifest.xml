@@ -34,7 +34,7 @@
 
         <!-- Aktivitas HalamanHome -->
         <activity
-            android:name=".halamanhome"
+            android:name=".DashboardActivity"
             android:exported="true">
         </activity>
 

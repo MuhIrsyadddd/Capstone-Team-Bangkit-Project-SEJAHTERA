@@ -52,8 +52,8 @@ class MainActivity : AppCompatActivity() {
 
                         // Cocokkan password
                         if (storedPassword == password) {
-                            // Navigasi ke halaman home
-                            val intent = Intent(this, halamanhome::class.java)
+                            // Navigasi ke dashboard activity
+                            val intent = Intent(this, DashboardActivity::class.java)
                             startActivity(intent)
                             finish()
                         } else {
@@ -114,8 +114,8 @@ class MainActivity : AppCompatActivity() {
             mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        // Sign-in success, navigate to home
-                        val intent = Intent(this, halamanhome::class.java)
+                        // Sign-in success, navigasi dashboard activity
+                        val intent = Intent(this, DashboardActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else {
