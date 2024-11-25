@@ -6,19 +6,19 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.capstonesejahtera.databinding.RegistrasiakunBinding
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.auth.FirebaseAuth
 
 class Registrasi : AppCompatActivity() {
     private lateinit var binding: RegistrasiakunBinding
-    private lateinit var firestore: FirebaseFirestore
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = RegistrasiakunBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Inisialisasi Firebase Firestore
-        firestore = FirebaseFirestore.getInstance()
+        // Inisialisasi Firebase Authentication
+        auth = FirebaseAuth.getInstance()
 
         binding.buttonSignUp.setOnClickListener {
             val email = binding.editTextEmail.text.toString().trim()
@@ -56,28 +56,22 @@ class Registrasi : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Menyimpan data ke Firestore
+            // Menyimpan data ke Firebase Authentication
             binding.progressBar.visibility = View.VISIBLE
 
-            val user = hashMapOf(
-                "email" to email,
-                "password" to password // Jangan simpan password secara plain text di produksi
-            )
-
-            firestore.collection("users")
-                .add(user)
-                .addOnSuccessListener {
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
                     binding.progressBar.visibility = View.GONE
-                    Toast.makeText(this, "Registrasi berhasil", Toast.LENGTH_SHORT).show()
-                    finish() // Menutup aktivitas ini
-                }
-                .addOnFailureListener { exception ->
-                    binding.progressBar.visibility = View.GONE
-                    Toast.makeText(
-                        this,
-                        "Registrasi gagal: ${exception.message}",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "Registrasi berhasil", Toast.LENGTH_SHORT).show()
+                        finish() // Menutup aktivitas ini
+                    } else {
+                        Toast.makeText(
+                            this,
+                            "Registrasi gagal: ${task.exception?.message}",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
                 }
         }
     }
