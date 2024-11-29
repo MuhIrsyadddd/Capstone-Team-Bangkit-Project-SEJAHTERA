@@ -1,13 +1,657 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="917dp"
+    android:background="@drawable/drawable_shape">
+
+    <ImageView
+        android:layout_width="412dp"
+        android:layout_height="83dp"
+        android:layout_marginTop="950.5dp"
+        android:layout_gravity="top|center_horizontal"
+        android:scaleType="centerInside"
+        android:src="@drawable/drawable_image" />
 
     <TextView
-        android:id="@+id/tv_home"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Selamat datang di Home!"
-        android:textSize="18sp"
-        android:layout_centerInParent="true" />
-</RelativeLayout>
+        android:layout_height="25dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="69.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Naufal"
+        android:textColor="#FF000000"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="146dp"
+        android:layout_height="21dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="49dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Good Morning"
+        android:textColor="#FF000000"
+        android:textSize="15dp" />
+
+
+
+    <ImageView
+        android:layout_width="23dp"
+        android:layout_height="24dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="58dp"
+        android:layout_gravity="top|right"
+        android:scaleType="centerInside"
+        android:src="@drawable/drawable_image_9" />
+
+
+
+    <ImageView
+        android:layout_width="42dp"
+        android:layout_height="17dp"
+        android:layout_marginLeft="189.5dp"
+        android:layout_marginTop="-41.5dp"
+        android:layout_gravity="top|left"
+        android:scaleType="centerInside"
+        android:src="@drawable/drawable_image_11" />
+
+    <FrameLayout
+        android:layout_width="352dp"
+        android:layout_height="173dp"
+        android:layout_marginTop="173dp"
+        android:layout_gravity="top|center_horizontal">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="26dp"
+            android:layout_marginBottom="12dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/gambarberita" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="154dp"
+            android:layout_marginRight="154dp"
+            android:layout_marginTop="169dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/drawable_shape_1">
+
+                <ImageView
+                    android:layout_width="38dp"
+                    android:layout_height="4dp"
+                    android:background="@drawable/drawable_shape_2"
+                    android:scaleType="centerInside" />
+            </FrameLayout>
+
+            <ImageView
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/drawable_shape_3"
+                android:scaleType="centerInside" />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="169dp"
+            android:layout_height="98dp"
+            android:layout_gravity="top|left"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="46dp"
+            android:gravity="left|top"
+            android:includeFontPadding="false"
+            android:lineHeight="20dp"
+            android:text="Penasaran dengan investasi saham! Pelajari lebih lanjut di sini!"
+            android:textColor="#ffffff"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="296dp"
+            android:layout_height="21dp"
+            android:layout_marginTop="-1dp"
+            android:layout_marginBottom="-1dp"
+            android:layout_gravity="top|left"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Artikel"
+            android:textColor="#FF000000"
+            android:textSize="16dp" />
+    </FrameLayout>
+
+    <ImageView
+        android:layout_width="352dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="115dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/drawable_shape_4"
+        android:scaleType="centerInside" />
+
+    <ImageView
+        android:layout_width="418dp"
+        android:layout_height="189dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="381dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/drawable_shape_5"
+        android:scaleType="centerInside" />
+
+    <ImageView
+        android:layout_width="21dp"
+        android:layout_height="21dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="343dp"
+        android:layout_marginTop="125dp"
+        android:layout_marginBottom="771dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/drawable_image_13" />
+
+    <TextView
+        android:layout_width="146dp"
+        android:layout_height="21dp"
+        android:layout_marginLeft="74dp"
+        android:layout_marginTop="126dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Search"
+        android:textColor="#FF000000"
+        android:textSize="12dp" />
+
+    <TextView
+        android:layout_width="296dp"
+        android:layout_height="21dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="356dp"
+        android:layout_marginBottom="-1dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Your Plane"
+        android:textColor="#FF000000"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="296dp"
+        android:layout_height="21dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="580dp"
+        android:layout_marginBottom="-1dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Top Reksa Dana (Pasar Uang)"
+        android:textColor="#FF000000"
+        android:textSize="16dp" />
+
+    <ImageView
+        android:layout_width="206dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="59dp"
+        android:layout_marginTop="512dp"
+        android:layout_gravity="top|left"
+        android:scaleType="centerInside"
+        android:src="@drawable/drawable_image_empatbelas" />
+
+    <FrameLayout
+        android:layout_width="266dp"
+        android:layout_height="165dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="393dp"
+        android:layout_gravity="top|left">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/drawable_shape_6"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="117dp"
+            android:layout_marginBottom="48dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/drawable_image_limabelas" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="23dp"
+            android:layout_marginTop="122dp"
+            android:layout_marginBottom="13dp"
+            android:background="@drawable/drawable_shape_7"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:layout_width="214dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="129.5dp"
+            android:layout_marginRight=".5dp"
+            android:layout_marginBottom="19.5dp"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Lihat Detail"
+            android:textColor="#FFFFFFFF"
+            android:textSize="12dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_marginLeft="172dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="95dp"
+            android:layout_marginBottom="55dp"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="-Rp275.000"
+            android:textColor="#FF000000"
+            android:textSize="11dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="11dp"
+            android:layout_marginLeft="188dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="81.5dp"
+            android:layout_marginBottom="72.5dp"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Pengeluaran"
+            android:textColor="#FF858585"
+            android:textSize="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:layout_marginLeft="45.5dp"
+            android:layout_marginTop="33.5dp"
+            android:layout_marginBottom="-0.5dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Catatan bulanan naufal"
+            android:textColor="#FF000000"
+            android:textSize="12dp" />
+
+        <ImageView
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="22dp"
+            android:layout_gravity="top|left"
+            android:scaleType="centerInside"
+            android:src="@drawable/drawable_image_16" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="266dp"
+        android:layout_height="165dp"
+        android:layout_marginRight="-164dp"
+        android:layout_marginTop="393dp"
+        android:layout_gravity="top|right">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/drawable_shape_8"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="117dp"
+            android:layout_marginBottom="48dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/drawable_image_tujuhbelas" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="23dp"
+            android:layout_marginTop="122dp"
+            android:layout_marginBottom="13dp"
+            android:background="@drawable/drawable_shape_9"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:layout_marginRight="99.5dp"
+            android:layout_marginTop="129.5dp"
+            android:layout_marginBottom="19.5dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Lihat Detail"
+            android:textColor="#FFFFFFFF"
+            android:textSize="12dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_marginLeft="167dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="95dp"
+            android:layout_marginBottom="55dp"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Rp3.275.000"
+            android:textColor="#FF000000"
+            android:textSize="11dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="11dp"
+            android:layout_marginLeft="217dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="81.5dp"
+            android:layout_marginBottom="72.5dp"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Total"
+            android:textColor="#FF858585"
+            android:textSize="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:layout_marginLeft="18.5dp"
+            android:layout_marginTop="33.5dp"
+            android:layout_marginBottom="-0.5dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Tabungan naufal"
+            android:textColor="#FF000000"
+            android:textSize="12dp" />
+
+        <ImageView
+            android:layout_width="39dp"
+            android:layout_height="39dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="22dp"
+            android:layout_gravity="top|left"
+            android:background="@drawable/drawable_shape_10"
+            android:scaleType="centerInside" />
+    </FrameLayout>
+
+    <ImageView
+        android:layout_width="352dp"
+        android:layout_height="174dp"
+        android:layout_marginTop="618dp"
+        android:layout_gravity="top|center_horizontal"
+        android:scaleType="centerInside"
+        android:src="@drawable/drawable_image_18" />
+
+    <ImageView
+        android:layout_width="352dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="800dp"
+        android:layout_gravity="top|center_horizontal"
+        android:scaleType="centerInside"
+        android:src="@drawable/drawable_image_19" />
+
+    <ImageView
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginRight="144dp"
+        android:layout_marginTop="632dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/drawable_shape_11"
+        android:scaleType="centerInside" />
+
+    <TextView
+        android:layout_width="15dp"
+        android:layout_height="44dp"
+        android:layout_marginRight="140.5dp"
+        android:layout_marginTop="635dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left|top"
+        android:includeFontPadding="false"
+        android:lineHeight="18.15dp"
+        android:text="1"
+        android:textColor="#FFFFFFFF"
+        android:textSize="15dp" />
+
+    <ImageView
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginRight="144dp"
+        android:layout_marginTop="694dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/drawable_shape_12"
+        android:scaleType="centerInside" />
+
+    <TextView
+        android:layout_width="15dp"
+        android:layout_height="44dp"
+        android:layout_marginRight="141.5dp"
+        android:layout_marginTop="696dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left|top"
+        android:includeFontPadding="false"
+        android:lineHeight="18.15dp"
+        android:text="2"
+        android:textColor="#FFFFFFFF"
+        android:textSize="15dp" />
+
+    <ImageView
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginRight="144dp"
+        android:layout_marginTop="755dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/drawable_shape_13"
+        android:scaleType="centerInside" />
+
+    <TextView
+        android:layout_width="15dp"
+        android:layout_height="44dp"
+        android:layout_marginRight="141.5dp"
+        android:layout_marginTop="757dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left|top"
+        android:includeFontPadding="false"
+        android:lineHeight="18.15dp"
+        android:text="3"
+        android:textColor="#FFFFFFFF"
+        android:textSize="15dp" />
+
+    <ImageView
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginRight="144dp"
+        android:layout_marginTop="816dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/drawable_shape_14"
+        android:scaleType="centerInside" />
+
+    <TextView
+        android:layout_width="15dp"
+        android:layout_height="44dp"
+        android:layout_marginRight="142.5dp"
+        android:layout_marginTop="818dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left|top"
+        android:includeFontPadding="false"
+        android:lineHeight="18.15dp"
+        android:text="4"
+        android:textColor="#FFFFFFFF"
+        android:textSize="15dp" />
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="341dp"
+        android:layout_marginRight="47dp"
+        android:layout_marginTop="422dp"
+        android:layout_marginBottom="471dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/drawable_image_20" />
+
+    <TextView
+        android:layout_width="211dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="82dp"
+        android:layout_marginTop="634.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="BRI Seruni Pasar Uang  III"
+        android:textColor="#FF000000"
+        android:textSize="14dp" />
+
+    <TextView
+        android:layout_width="211dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="82dp"
+        android:layout_marginTop="693.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Bahana Likuid Syariah Kelas G"
+        android:textColor="#FF000000"
+        android:textSize="14dp" />
+
+    <TextView
+        android:layout_width="211dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="82dp"
+        android:layout_marginTop="757.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="TRIM Kas 2 Kelas A"
+        android:textColor="#FF000000"
+        android:textSize="14dp" />
+
+    <TextView
+        android:layout_width="211dp"
+        android:layout_height="34dp"
+        android:layout_marginLeft="82dp"
+        android:layout_marginTop="810dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|top"
+        android:includeFontPadding="false"
+        android:lineHeight="16.94dp"
+        android:text="Majoris Pasar Uang Syariah Indonesia"
+        android:textColor="#FF000000"
+        android:textSize="14dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_marginLeft="325dp"
+        android:layout_marginTop="694dp"
+        android:layout_marginBottom="-1dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="5.26%"
+        android:textColor="#FF00AB6B"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="48dp"
+        android:layout_height="21dp"
+        android:layout_marginLeft="324dp"
+        android:layout_marginTop="756dp"
+        android:layout_marginBottom="-1dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="5.15%"
+        android:textColor="#FF00AB6B"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="48dp"
+        android:layout_height="21dp"
+        android:layout_marginLeft="324dp"
+        android:layout_marginTop="814dp"
+        android:layout_marginBottom="-1dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="5.14%"
+        android:textColor="#FF00AB6B"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_marginLeft="324dp"
+        android:layout_marginTop="633dp"
+        android:layout_marginBottom="-1dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="5.30%"
+        android:textColor="#FF00AB6B"
+        android:textSize="16dp" />
+</FrameLayout>

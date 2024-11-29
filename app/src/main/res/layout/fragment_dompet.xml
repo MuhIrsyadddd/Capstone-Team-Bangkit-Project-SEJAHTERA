@@ -421,6 +421,6 @@
             android:layout_marginTop="17dp"
             android:layout_marginBottom="20dp"
             android:scaleType="centerInside"
-            android:src="@drawable/drawable_image_17" />
+            android:src="@drawable/drawable_image_177" />
     </FrameLayout>
 </FrameLayout>
