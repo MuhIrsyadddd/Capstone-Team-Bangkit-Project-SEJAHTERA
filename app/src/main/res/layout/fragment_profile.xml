@@ -1,42 +1,309 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_android_compact"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+    android:layout_height="917dp"
+    android:background="@drawable/container_android_compact">
+
+    <ImageView
+        android:id="@+id/img_group"
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:layout_marginLeft="250dp"
+        android:layout_marginRight="132dp"
+        android:layout_marginTop="872dp"
+        android:layout_marginBottom="18dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/img_group" />
+
+    <ImageView
+        android:id="@+id/img_group1"
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:layout_marginLeft="141dp"
+        android:layout_marginRight="241dp"
+        android:layout_marginTop="872dp"
+        android:layout_marginBottom="18dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/img_group1" />
+
+    <ImageView
+        android:id="@+id/img_vector"
+        android:layout_width="20.24dp"
+        android:layout_height="26.57dp"
+        android:layout_marginLeft="358dp"
+        android:layout_marginRight="33.76dp"
+        android:layout_marginTop="872dp"
+        android:layout_marginBottom="18.43dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/img_vector" />
+
+    <ImageView
+        android:id="@+id/img_vector1"
+        android:layout_width="30dp"
+        android:layout_height="27dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginRight="349dp"
+        android:layout_marginTop="872dp"
+        android:layout_marginBottom="18dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/img_vector1" />
 
     <TextView
-        android:id="@+id/tv_profile"
+        android:id="@+id/text_profil"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Profil Pengguna"
-        android:textSize="18sp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp" />
+        android:layout_height="25dp"
+        android:layout_marginTop="45.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Profil"
+        android:textColor="#FF000000"
+        android:textSize="20dp" />
+
+    <ImageView
+        android:id="@+id/container_line"
+        android:layout_width="412dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="853dp"
+        android:layout_gravity="top|left"
+        android:scaleType="centerInside"
+        android:src="@drawable/container_line" />
+
+    <ImageView
+        android:id="@+id/container_line1"
+        android:layout_width="352.01dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="162.02dp"
+        android:layout_gravity="top|left"
+        android:scaleType="centerInside"
+        android:src="@drawable/container_line1" />
+
+    <ImageView
+        android:id="@+id/container_line2"
+        android:layout_width="352dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="30.03dp"
+        android:layout_marginTop="213dp"
+        android:layout_gravity="top|left"
+        android:scaleType="centerInside"
+        android:src="@drawable/container_line2" />
+
+
+    <ImageView
+        android:id="@+id/container_line4"
+        android:layout_width="352.05dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="270dp"
+        android:layout_gravity="top|left"
+        android:scaleType="centerInside"
+        android:src="@drawable/container_line4" />
+
+    <ImageView
+        android:id="@+id/container_line5"
+        android:layout_width="352.02dp"
+        android:layout_height="1dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="330dp"
+        android:layout_gravity="top|left"
+        android:scaleType="centerInside"
+        android:src="@drawable/container_line5" />
+
+    <ImageView
+        android:id="@+id/img_rectangle"
+        android:layout_width="412dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="76dp"
+        android:layout_gravity="top|left"
+        android:background="@drawable/img_rectangle"
+        android:scaleType="centerInside" />
+
+    <ImageView
+        android:id="@+id/img_ellipse"
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="92dp"
+        android:layout_gravity="top|left"
+        android:background="@drawable/img_ellipse"
+        android:scaleType="centerInside" />
 
     <TextView
-        android:id="@+id/tv_name"
+        android:id="@+id/text_naufal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nama: "
-        android:textSize="16sp"
-        android:layout_below="@id/tv_profile"
-        android:layout_marginTop="10dp" />
+        android:layout_height="25dp"
+        android:layout_marginLeft="102dp"
+        android:layout_marginTop="108.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Naufal"
+        android:textColor="#FF000000"
+        android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/tv_birth_date"
+        android:id="@+id/text_log_out"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tanggal Lahir: "
-        android:textSize="16sp"
-        android:layout_below="@id/tv_name"
-        android:layout_marginTop="10dp" />
+        android:layout_height="18dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="0.5dp"
+        android:layout_marginTop="372.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Log Out"
+        android:textColor="#FFFF0000"
+        android:textSize="14dp" />
 
     <TextView
-        android:id="@+id/tv_gender"
+        android:id="@+id/text_email"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gender: "
-        android:textSize="16sp"
-        android:layout_below="@id/tv_birth_date"
-        android:layout_marginTop="10dp" />
+        android:layout_height="17dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="180.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Email"
+        android:textColor="#FF000000"
+        android:textSize="13dp" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/text_email_naufal"
+        android:layout_width="wrap_content"
+        android:layout_height="14dp"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="183dp"
+        android:layout_marginBottom="-1dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Naufal234@gmail.com"
+        android:textColor="#FF000000"
+        android:textSize="15dp" />
+
+
+
+    <TextView
+        android:id="@+id/text_birthdate"
+        android:layout_width="wrap_content"
+        android:layout_height="14dp"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginBottom="-1dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="23/07/2000"
+        android:textColor="#FF000000"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/text_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="14dp"
+        android:layout_marginLeft="337.99dp"
+        android:layout_marginTop="290dp"
+        android:layout_marginBottom="-1dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Laki-Laki"
+        android:textColor="#FF000000"
+        android:textSize="15dp" />
+
+
+
+    <TextView
+        android:id="@+id/text_ttl"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="230.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="TTL"
+        android:textColor="#FF000000"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/text_gender1"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="290.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Gender"
+        android:textColor="#FF000000"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/text_nf"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="108.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Nf"
+        android:textColor="#FFFFFFFF"
+        android:textSize="20dp" />
+
+    <ImageView
+        android:id="@+id/img_vector2"
+        android:layout_width="6dp"
+        android:layout_height="9dp"
+        android:layout_marginLeft="260dp"
+        android:layout_marginRight="16888dp"
+        android:layout_marginTop="378dp"
+        android:layout_marginBottom="530dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/img_vector2" />
+
+    <ImageView
+        android:id="@+id/img_vector3"
+        android:layout_width="15dp"
+        android:layout_height="17dp"
+        android:layout_marginLeft="367dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginBottom="784dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/img_vector3" />
+</FrameLayout>
