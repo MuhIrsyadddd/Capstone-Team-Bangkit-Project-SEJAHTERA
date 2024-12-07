@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.gms.google-services")
+    id("kotlin-kapt") // Tambahkan ini
 }
 
 android {
@@ -28,7 +29,6 @@ android {
         }
     }
 
-    // Perbarui ke konfigurasi buildFeatures untuk View Binding
     buildFeatures {
         viewBinding = true
     }
@@ -43,8 +43,6 @@ android {
     }
 }
 
-
-
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -58,5 +56,13 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation("com.google.firebase:firebase-firestore:25.1.0")
-    implementation("com.google.android.gms:play-services-auth:20.7.0") // Tambahkan ini
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+
+    // Tambahkan dependensi Glide
+    implementation("com.github.bumptech.glide:glide:4.14.2")
+    kapt("com.github.bumptech.glide:compiler:4.14.2")
 }

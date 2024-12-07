@@ -73,13 +73,13 @@
         android:layout_marginTop="173dp"
         android:layout_gravity="top|center_horizontal">
 
-        <ImageView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="26dp"
             android:layout_marginBottom="12dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/gambarberita" />
+            android:orientation="horizontal" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -109,18 +109,7 @@
                 android:scaleType="centerInside" />
         </FrameLayout>
 
-        <TextView
-            android:layout_width="169dp"
-            android:layout_height="98dp"
-            android:layout_gravity="top|left"
-            android:layout_marginLeft="14dp"
-            android:layout_marginTop="46dp"
-            android:gravity="left|top"
-            android:includeFontPadding="false"
-            android:lineHeight="20dp"
-            android:text="Penasaran dengan investasi saham! Pelajari lebih lanjut di sini!"
-            android:textColor="#ffffff"
-            android:textSize="16dp" />
+
 
         <TextView
             android:layout_width="296dp"
