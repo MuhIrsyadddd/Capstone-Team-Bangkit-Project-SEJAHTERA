@@ -16,6 +16,7 @@ class DompetFragment : Fragment() {
     private lateinit var firestore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
     private lateinit var pengeluaranTextView: TextView
+    private lateinit var catatanLayout: ViewGroup // Tambahkan ini untuk layout catatan
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,10 +31,14 @@ class DompetFragment : Fragment() {
         // Hubungkan TextView
         pengeluaranTextView = view.findViewById(R.id.pengeluaran1)
 
+        // Hubungkan dengan layout untuk catatan
+        catatanLayout = view.findViewById(R.id.catatanLayout) // Pastikan ID ini adalah ViewGroup yang tepat
+
         // Ambil UID pengguna saat ini
         val currentUser = auth.currentUser
         currentUser?.uid?.let { uid ->
-            fetchNominalPengeluaran(uid)
+            fetchNominalPengeluaran(uid) // Ambil nominal pengeluaran
+            fetchCatatan(uid) // Panggil metode fetchCatatan
         } ?: run {
             Log.e("DompetFragment", "User tidak ditemukan")
         }
@@ -47,23 +52,46 @@ class DompetFragment : Fragment() {
         return view
     }
 
-    private fun fetchNominalPengeluaran(userId: String) {
+    private fun fetchCatatan(userId: String) {
         // Referensi ke koleksi Firestore
         val userCatatanRef = firestore.collection("Catatan").document(userId)
             .collection("user_catatan")
 
         userCatatanRef.get()
             .addOnSuccessListener { documents ->
-                var totalPengeluaran = 0
+                var totalPengeluaran = 0L // Menyimpan total nominal pengeluaran
                 for (document in documents) {
-                    val pengeluaran = document.getLong("nominal_pengeluaran") ?: 0
-                    totalPengeluaran += pengeluaran.toInt()
+                    val namaCatatan = document.getString("nama_catatan") ?: "Tanpa Nama"
+                    val nominalPengeluaran = document.getLong("nominal_pengeluaran") ?: 0
+
+                    // Inflasi tampilan item catatan dari layout yang baru dibuat
+                    val catatanView = LayoutInflater.from(requireContext()).inflate(R.layout.item_catatan, catatanLayout, false)
+
+                    // Hubungkan TextView di dalam item catatan
+                    val namaCatatanTextView: TextView = catatanView.findViewById(R.id.nama_catatan)
+                    val nominalPengeluaranTextView: TextView = catatanView.findViewById(R.id.nominal_pengeluaran)
+
+                    // Atur teks untuk nama catatan dan nominal pengeluaran
+                    namaCatatanTextView.text = namaCatatan
+                    nominalPengeluaranTextView.text = "Rp$nominalPengeluaran"
+
+                    // Tambahkan tampilan item catatan ke catatanLayout
+                    catatanLayout.addView(catatanView)
+
+                    // Tambahkan ke total nominal pengeluaran
+                    totalPengeluaran += nominalPengeluaran
                 }
-                pengeluaranTextView.text = "Rp$totalPengeluaran"
+                // Setelah semua catatan diambil, atur total ke TextView
+                pengeluaranTextView.text = "Rp$totalPengeluaran" // Menampilkan total nominal pengeluaran
             }
             .addOnFailureListener { exception ->
-                Log.e("DompetFragment", "Error mendapatkan data", exception)
+                Log.e("DompetFragment", "Error mendapatkan data catatan", exception)
             }
+    }
+
+    private fun fetchNominalPengeluaran(userId: String) {
+        // Fungsi ini tidak lagi diperlukan jika nominal pengeluaran dihitung di fetchCatatan
+        // Anda bisa menghapusnya jika tidak ada kebutuhan lain untuk fungsi ini
     }
 
     private fun openPopCatatanTabungan() {
@@ -72,3 +100,4 @@ class DompetFragment : Fragment() {
         popTabunganFragment.show(requireFragmentManager(), "PopCatatanTabungan")
     }
 }
+
