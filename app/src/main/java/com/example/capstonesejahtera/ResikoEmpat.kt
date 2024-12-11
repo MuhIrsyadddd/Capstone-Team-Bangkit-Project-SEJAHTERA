@@ -65,11 +65,11 @@ class ResikoEmpat : AppCompatActivity() {
         selectedCircle.setBackgroundResource(R.drawable.image_rectangle_selected)
     }
 
-    private fun saveChoice(tujuanutama: String) {
+    private fun saveChoice(tujuaninvestasi: String) {
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null) {
             val uid = user.uid
-            val data = mapOf("tujuanutama" to tujuanutama) // Menggunakan mapOf
+            val data = mapOf("tujuaninvestasi" to tujuaninvestasi) // Menggunakan mapOf
 
             // Update dokumen berdasarkan UID
             firestore.collection("resikoinvest").document(uid)

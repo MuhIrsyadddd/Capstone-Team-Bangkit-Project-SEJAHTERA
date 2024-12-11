@@ -68,6 +68,7 @@
         android:textSize="16dp" />
 
     <TextView
+        android:id="@+id/pengeluaran1"
         android:layout_width="93dp"
         android:layout_height="17dp"
         android:layout_marginLeft="274dp"
@@ -78,7 +79,7 @@
         android:includeFontPadding="false"
         android:maxLines="1"
         android:singleLine="true"
-        android:text="-Rp275.000"
+        android:text=""
         android:textColor="#FF000000"
         android:textSize="13dp" />
 
@@ -183,7 +184,7 @@
         android:includeFontPadding="false"
         android:maxLines="1"
         android:singleLine="true"
-        android:text="Catatan Name (bulanan naufal)"
+        android:text="Catatan "
         android:textColor="#FF000000"
         android:textSize="16dp" />
 
@@ -199,147 +200,6 @@
             android:layout_gravity="top"
             android:scaleType="centerCrop"
             android:src="@drawable/drawable_image_6" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_marginTop="61dp"
-            android:layout_gravity="top"
-            android:scaleType="centerCrop"
-            android:src="@drawable/drawable_image_7" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="122dp"
-            android:layout_marginBottom="61dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/drawable_image_8" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="21dp"
-            android:layout_marginLeft="259dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="-1dp"
-            android:layout_gravity="top"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="-Rp35,000"
-            android:textColor="#FF000000"
-            android:textSize="16dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="21dp"
-            android:layout_marginLeft="259dp"
-            android:layout_marginTop="77dp"
-            android:layout_marginBottom="-1dp"
-            android:layout_gravity="top"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="-Rp90,000"
-            android:textColor="#FF000000"
-            android:textSize="16dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="21dp"
-            android:layout_marginLeft="259dp"
-            android:layout_marginTop="138dp"
-            android:layout_marginBottom="76dp"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="-Rp50,000"
-            android:textColor="#FF000000"
-            android:textSize="16dp" />
-
-        <TextView
-            android:layout_width="52dp"
-            android:layout_height="21dp"
-            android:layout_marginLeft="57dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="-1dp"
-            android:layout_gravity="top|left"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="Food"
-            android:textColor="#FF000000"
-            android:textSize="16dp" />
-
-        <TextView
-            android:layout_width="91dp"
-            android:layout_height="21dp"
-            android:layout_marginLeft="57dp"
-            android:layout_marginTop="77dp"
-            android:layout_marginBottom="-1dp"
-            android:layout_gravity="top|left"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="Cosmetic"
-            android:textColor="#FF000000"
-            android:textSize="16dp" />
-
-        <TextView
-            android:layout_width="91dp"
-            android:layout_height="21dp"
-            android:layout_marginLeft="57dp"
-            android:layout_marginTop="137dp"
-            android:layout_marginBottom="77dp"
-            android:layout_gravity="left"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="Bensin"
-            android:textColor="#FF000000"
-            android:textSize="16dp" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="183dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/drawable_image_9" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="21dp"
-            android:layout_marginLeft="250dp"
-            android:layout_marginTop="198dp"
-            android:layout_marginBottom="16dp"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="-Rp100,000"
-            android:textColor="#FF000000"
-            android:textSize="16dp" />
-
-        <TextView
-            android:layout_width="91dp"
-            android:layout_height="21dp"
-            android:layout_marginLeft="57dp"
-            android:layout_marginTop="198dp"
-            android:layout_marginBottom="16dp"
-            android:layout_gravity="left"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="Invest"
-            android:textColor="#FF000000"
-            android:textSize="16dp" />
     </FrameLayout>
 
     <ImageView
@@ -352,6 +212,7 @@
         android:scaleType="centerInside" />
 
     <ImageView
+        android:id="@+id/uploadcattab"
         android:layout_width="26dp"
         android:layout_height="26dp"
         android:layout_marginLeft="355dp"
@@ -382,7 +243,7 @@
         android:includeFontPadding="false"
         android:maxLines="1"
         android:singleLine="true"
-        android:text="Tabungan Naufal"
+        android:text="Tabungan"
         android:textColor="#FF000000"
         android:textSize="16dp" />
 
@@ -398,20 +259,6 @@
             android:scaleType="centerCrop"
             android:src="@drawable/drawable_image_16" />
 
-        <TextView
-            android:layout_width="124dp"
-            android:layout_height="21dp"
-            android:layout_marginLeft="21dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="-1dp"
-            android:layout_gravity="top|left"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="IPHONE 17 pro"
-            android:textColor="#FF000000"
-            android:textSize="16dp" />
 
         <ImageView
             android:layout_width="10dp"

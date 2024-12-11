@@ -65,11 +65,11 @@ class ResikoTiga : AppCompatActivity() {
         selectedCircle.setBackgroundResource(R.drawable.image_rectangle_selected)
     }
 
-    private fun saveChoice(persenpenghasilan: String) {
+    private fun saveChoice(persentaseinvestasi: String) {
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null) {
             val uid = user.uid
-            val data = mapOf("persenpenghasilan" to persenpenghasilan) // Menggunakan mapOf
+            val data = mapOf("persentaseinvestasi" to persentaseinvestasi) // Menggunakan mapOf
 
             // Update dokumen berdasarkan UID
             firestore.collection("resikoinvest").document(uid)
@@ -78,7 +78,11 @@ class ResikoTiga : AppCompatActivity() {
                     Toast.makeText(this, "Pilihan berhasil disimpan", Toast.LENGTH_SHORT).show()
                 }
                 .addOnFailureListener { e ->
-                    Toast.makeText(this, "Gagal menyimpan pilihan: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        this,
+                        "Gagal menyimpan pilihan: ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
         } else {
             Toast.makeText(this, "User belum login.", Toast.LENGTH_SHORT).show()

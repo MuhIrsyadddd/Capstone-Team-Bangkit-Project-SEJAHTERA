@@ -65,4 +65,7 @@ dependencies {
     // Tambahkan dependensi Glide
     implementation("com.github.bumptech.glide:glide:4.14.2")
     kapt("com.github.bumptech.glide:compiler:4.14.2")
+
+    implementation ("com.google.firebase:firebase-database:20.2.2")
+
 }
