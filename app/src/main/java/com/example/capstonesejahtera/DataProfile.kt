@@ -92,7 +92,7 @@ class DataProfile : AppCompatActivity() {
                     .addOnSuccessListener {
                         Toast.makeText(this, "Data berhasil disimpan!", Toast.LENGTH_SHORT).show()
                         // Intent ke DashboardActivity
-                        startActivity(Intent(this, DashboardActivity::class.java))
+                        startActivity(Intent(this, ResikoSatu::class.java))
                         finish()
                     }
                     .addOnFailureListener { e ->

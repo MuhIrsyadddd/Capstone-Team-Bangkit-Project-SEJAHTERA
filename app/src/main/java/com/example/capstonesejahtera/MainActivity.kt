@@ -124,7 +124,7 @@ class MainActivity : AppCompatActivity() {
                     userRef.set(userData)
                 } else {
                     // Sudah login sebelumnya, arahkan ke DashboardActivity
-                    val intent = Intent(this, DashboardActivity::class.java)
+                    val intent = Intent(this, ResikoSatu::class.java)
                     startActivity(intent)
                 }
                 finish()
