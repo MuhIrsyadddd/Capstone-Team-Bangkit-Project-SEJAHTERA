@@ -7,5 +7,7 @@ interface ApiService {
     @GET("api/news/business")
     fun getBusinessNews(): Call<NewsResponse>
 
+    @GET("predict/stock/ACES")
+    fun getAcesStockData(): Call<SahamAcesResponse>
 
 }

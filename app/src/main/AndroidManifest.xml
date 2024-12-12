@@ -66,6 +66,10 @@
         <activity
             android:name=".ResikoSembilan"
             android:exported="true" />
+
+        <activity
+            android:name=".AcesSaham"
+            android:exported="true" />
     </application>
 
 </manifest>

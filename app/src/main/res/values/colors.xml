@@ -4,6 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="utama">#00AB6B</color>
     <color name="button_green">#00FF00</color>
+    <color name="teal_700">#008080</color> <!-- Atau warna lain yang Anda inginkan -->
+
 
 
 </resources>
