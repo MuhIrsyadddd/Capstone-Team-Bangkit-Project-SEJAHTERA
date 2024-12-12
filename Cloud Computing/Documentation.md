@@ -101,7 +101,7 @@ This repository contains the documentation and implementation for the Emas and S
 **Example Response:**
 ```json
 {
-  "message": "Emas and Saham Price Prediction API is running"
+  "message": "Gold and Stock Price Prediction API is running"
 }
 ```
 
@@ -124,7 +124,7 @@ For all endpoints, the API responds with standard error messages in case of issu
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/emas-saham-prediction-api.git
+   git clone [https://github.com/yourusername/emas-saham-prediction-api.git](https://github.com/MuhIrsyadddd/Capstone-Team-Bangkit-Project-SEJAHTERA/tree/main/Cloud%20Computing/API%20Emas%20dan%20Saham)
    ```
 
 2. Install dependencies:
@@ -138,20 +138,8 @@ For all endpoints, the API responds with standard error messages in case of issu
    ```
 
 4. Access the API documentation at:
-   - OpenAPI: `http://localhost:8080/docs`
-   - ReDoc: `http://localhost:8080/redoc`
-
----
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
----
-
-## Contributing
-
-Contributions are welcome! Feel free to open an issue or submit a pull request for bug fixes or new features.
+   - OpenAPI: `http://localhost:8080/predict`
+   - ReDoc: `http://localhost:8080/predict`
 
 ---
 
