@@ -84,6 +84,7 @@
         android:textSize="13dp" />
 
     <TextView
+        android:id="@+id/tabungan1"
         android:layout_width="118dp"
         android:layout_height="17dp"
         android:layout_marginLeft="158dp"
@@ -94,7 +95,7 @@
         android:includeFontPadding="false"
         android:maxLines="1"
         android:singleLine="true"
-        android:text="Rp2.000.000"
+        android:text=""
         android:textColor="#FF000000"
         android:textSize="13dp" />
 
@@ -196,11 +197,6 @@
 
         <LinearLayout
             android:id="@+id/itemcatatan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-        <LinearLayout
-            android:id="@+id/catatanLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" />
