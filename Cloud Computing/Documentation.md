@@ -124,7 +124,7 @@ For all endpoints, the API responds with standard error messages in case of issu
 
 1. Clone this repository:
    ```bash
-   git clone [https://github.com/yourusername/emas-saham-prediction-api.git](https://github.com/MuhIrsyadddd/Capstone-Team-Bangkit-Project-SEJAHTERA/tree/main/Cloud%20Computing/API%20Emas%20dan%20Saham)
+   git clone https://github.com/MuhIrsyadddd/Capstone-Team-Bangkit-Project-SEJAHTERA/tree/main/Cloud%20Computing/API%20Emas%20dan%20Saham
    ```
 
 2. Install dependencies:
