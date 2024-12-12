@@ -16,12 +16,20 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.util.concurrent.TimeUnit
 
 class EmasActivity : AppCompatActivity() {
 
     private lateinit var firestore: FirebaseFirestore
     private lateinit var totalTextView: TextView
-    private lateinit var totalCatatanTextView: TextView // Tambahan untuk total catatan
+    private lateinit var totalCatatanTextView: TextView
+    private lateinit var predictedPricesTextView: TextView
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,18 +37,13 @@ class EmasActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_emas)
 
-        // Inisialisasi Firestore
         firestore = Firebase.firestore
-
-        // Inisialisasi TextView untuk menampilkan total
         totalTextView = findViewById(R.id.tabungantotalemas)
-        totalCatatanTextView = findViewById(R.id.totalcatetanemas) // Inisialisasi TextView untuk total catatan
+        totalCatatanTextView = findViewById(R.id.totalcatetanemas)
+        predictedPricesTextView = findViewById(R.id.predictedPricesTextView)
 
-        // Ambil data dan total
         fetchTabunganData()
-        fetchCatatanData() // Panggil fungsi untuk mengambil data catatan
 
-        // Atur padding untuk window insets
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.emas)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -53,24 +56,22 @@ class EmasActivity : AppCompatActivity() {
         if (userId != null) {
             CoroutineScope(Dispatchers.IO).launch {
                 try {
-                    // Ambil data dari Firestore
                     val userTabungan = firestore.collection("Tabungan").document(userId).collection("user_data")
                     val documents = userTabungan.get().await()
 
                     var totalNominal = 0.0
-
                     for (document in documents) {
                         val nominal = document.getDouble("nominal") ?: 0.0
                         totalNominal += nominal
                     }
 
-                    // Tampilkan total di UI
                     launch(Dispatchers.Main) {
                         displayTotalNominal(totalNominal)
+                        fetchCatatanData(totalNominal)
                     }
                 } catch (e: Exception) {
                     Log.e("EmasActivity", "Error fetching tabungan data: ", e)
-                    // Tangani kesalahan jika diperlukan
+                    showErrorMessage("Gagal memuat data tabungan.")
                 }
             }
         } else {
@@ -78,34 +79,68 @@ class EmasActivity : AppCompatActivity() {
         }
     }
 
-    private fun fetchCatatanData() {
+    private fun fetchCatatanData(totalNominal: Double) {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         if (userId != null) {
             CoroutineScope(Dispatchers.IO).launch {
                 try {
-                    // Ambil data dari Firestore
                     val userCatatan = firestore.collection("Catatan").document(userId).collection("user_data")
                     val documents = userCatatan.get().await()
 
                     var totalCatatanNominal = 0.0
-
                     for (document in documents) {
                         val nominal = document.getDouble("nominal") ?: 0.0
                         totalCatatanNominal += nominal
                     }
 
-                    // Tampilkan total di UI
                     launch(Dispatchers.Main) {
                         displayTotalCatatanNominal(totalCatatanNominal)
+                        callApiForPrediction(totalNominal, totalCatatanNominal)
                     }
                 } catch (e: Exception) {
                     Log.e("EmasActivity", "Error fetching catatan data: ", e)
-                    // Tangani kesalahan jika diperlukan
+                    showErrorMessage("Gagal memuat data catatan.")
                 }
             }
         } else {
             Log.w("EmasActivity", "User is not authenticated.")
         }
+    }
+
+    private fun callApiForPrediction(totalNominal: Double, totalCatatanNominal: Double) {
+        val client = OkHttpClient.Builder()
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .build()
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://emasdansaham-810319962197.asia-southeast2.run.app/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+
+        val apiService = retrofit.create(ApiService::class.java)
+        val request = PredictionRequest(
+            income = totalNominal,
+            expenses = totalCatatanNominal
+        )
+
+        apiService.predictGold(request).enqueue(object : Callback<EmasResponse> {
+            override fun onResponse(call: Call<EmasResponse>, response: Response<EmasResponse>) {
+                if (response.isSuccessful) {
+                    val predictedPrices = response.body()?.predictedPrices
+                    displayPredictedPrices(predictedPrices)
+                } else {
+                    Log.e("EmasActivity", "Error response from API: ${response.errorBody()}")
+                    showErrorMessage("Gagal mendapatkan prediksi harga emas.")
+                }
+            }
+
+            override fun onFailure(call: Call<EmasResponse>, t: Throwable) {
+                Log.e("EmasActivity", "API call failed: ", t)
+                showErrorMessage("Koneksi ke server gagal.")
+            }
+        })
     }
 
     private fun displayTotalNominal(total: Double) {
@@ -113,7 +148,15 @@ class EmasActivity : AppCompatActivity() {
     }
 
     private fun displayTotalCatatanNominal(total: Double) {
-        totalCatatanTextView.text = "Total Catatan: $total" // Tampilkan total catatan
+        totalCatatanTextView.text = "Total Catatan: $total"
+    }
+
+    private fun displayPredictedPrices(predictedPrices: List<Any?>?) {
+        predictedPricesTextView.text = predictedPrices?.joinToString(", ") ?: "Tidak ada data"
+    }
+
+    private fun showErrorMessage(message: String) {
+        // Tampilkan pesan error di UI (misalnya Toast atau Snackbar)
+        Log.e("EmasActivity", message)
     }
 }
-
