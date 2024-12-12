@@ -12,10 +12,10 @@
 
 
     <TextView
-        android:id="@+id/text_rekomendasi_investasi"
+        android:id="@+id/text_investasi"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
-        android:layout_marginLeft="0.5dp"
+        android:layout_marginLeft="10.5dp"
         android:layout_marginTop="46.5dp"
         android:layout_marginBottom="-0.5dp"
         android:layout_gravity="center_horizontal"
@@ -23,302 +23,147 @@
         android:includeFontPadding="false"
         android:maxLines="1"
         android:singleLine="true"
-        android:text="Rekomendasi Investasi"
+        android:text="Investasi"
         android:textColor="#FF000000"
         android:textSize="20dp" />
 
+
+
     <ImageView
-        android:id="@+id/img_rectangle"
         android:layout_width="412dp"
         android:layout_height="5dp"
         android:layout_marginTop="76dp"
         android:layout_gravity="top|left"
-        android:background="@drawable/img_rectangle"
+        android:background="@drawable/drawable_shape_1"
         android:scaleType="centerInside" />
 
     <ImageView
-        android:id="@+id/img_group2"
-        android:layout_width="104.22dp"
-        android:layout_height="104.22dp"
-        android:layout_marginLeft="33dp"
-        android:layout_marginTop="280dp"
-        android:layout_gravity="top|left"
+        android:id="@+id/image_vector2"
+        android:layout_width="15dp"
+        android:layout_height="10dp"
+        android:layout_marginLeft="357dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="171dp"
+        android:layout_marginBottom="736dp"
         android:scaleType="centerInside"
-        android:src="@drawable/img_group2" />
+        android:src="@drawable/image_vector2i" />
 
     <ImageView
-        android:id="@+id/img_rectangle1"
-        android:layout_width="6dp"
-        android:layout_height="14dp"
-        android:layout_marginLeft="170dp"
-        android:layout_marginTop="301dp"
-        android:layout_gravity="top|left"
-        android:background="@drawable/img_rectangle1"
-        android:scaleType="centerInside" />
-
-    <ImageView
-        android:id="@+id/img_rectangle2"
-        android:layout_width="6dp"
-        android:layout_height="14dp"
-        android:layout_marginLeft="170dp"
-        android:layout_marginTop="326dp"
-        android:layout_gravity="top|left"
-        android:background="@drawable/img_rectangle2"
-        android:scaleType="centerInside" />
-
-    <ImageView
-        android:id="@+id/img_rectangle3"
-        android:layout_width="6dp"
-        android:layout_height="14dp"
-        android:layout_marginLeft="170dp"
-        android:layout_marginTop="351dp"
-        android:layout_gravity="top|left"
-        android:background="@drawable/img_rectangle3"
-        android:scaleType="centerInside" />
-
-    <TextView
-        android:id="@+id/text_nominal_investasi"
-        android:layout_width="296dp"
-        android:layout_height="21dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="99dp"
-        android:layout_marginBottom="-1dp"
-        android:layout_gravity="top|left"
-        android:gravity="left|center_vertical"
-        android:includeFontPadding="false"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:text="Masukkan Nominal Investasi"
-        android:textColor="#FF000000"
-        android:textSize="16dp" />
-
-    <TextView
-        android:id="@+id/text_rekomendasi"
-        android:layout_width="296dp"
-        android:layout_height="21dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="248dp"
-        android:layout_marginBottom="-1dp"
-        android:layout_gravity="top|left"
-        android:gravity="left|center_vertical"
-        android:includeFontPadding="false"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:text="Rekomendasi"
-        android:textColor="#FF000000"
-        android:textSize="16dp" />
-
-    <FrameLayout
-        android:id="@+id/container_group"
+        android:id="@+id/image_rectangle1"
         android:layout_width="352dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="131dp"
-        android:layout_gravity="top|center_horizontal">
-
-        <ImageView
-            android:id="@+id/img_rectangle4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/img_rectangle4"
-            android:scaleType="centerCrop" />
-
-        <ImageView
-            android:id="@+id/img_vector2"
-            android:layout_width="15dp"
-            android:layout_height="10dp"
-            android:layout_marginLeft="327dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="50dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/img_vector2" />
-
-        <TextView
-            android:id="@+id/text_rp_amount"
-            android:layout_width="208dp"
-            android:layout_height="42dp"
-            android:layout_marginLeft="13dp"
-            android:layout_marginTop="23.5dp"
-            android:layout_marginBottom="-0.5dp"
-            android:layout_gravity="top|left"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="Rp100.000"
-            android:textColor="#FFFFFFFF"
-            android:textSize="34dp" />
-
-        <TextView
-            android:id="@+id/text_profil_resiko"
-            android:layout_width="129dp"
-            android:layout_height="15dp"
-            android:layout_marginLeft="13dp"
-            android:layout_marginTop="75dp"
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="left"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="Profil Resiko: 5"
-            android:textColor="#FFFFFFFF"
-            android:textSize="11dp" />
-    </FrameLayout>
-
-    <TextView
-        android:id="@+id/text_percentage_saham"
-        android:layout_width="102dp"
-        android:layout_height="18dp"
-        android:layout_marginLeft="181dp"
-        android:layout_marginTop="298.5dp"
-        android:layout_marginBottom="-0.5dp"
-        android:layout_gravity="top|left"
-        android:gravity="left|center_vertical"
-        android:includeFontPadding="false"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:text="54%: Saham"
-        android:textColor="#FF000000"
-        android:textSize="14dp" />
-
-    <TextView
-        android:id="@+id/text_percentage_emas"
-        android:layout_width="102dp"
-        android:layout_height="18dp"
-        android:layout_marginLeft="181dp"
-        android:layout_marginTop="323.5dp"
-        android:layout_marginBottom="-0.5dp"
-        android:layout_gravity="top|left"
-        android:gravity="left|center_vertical"
-        android:includeFontPadding="false"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:text="31%: Emas"
-        android:textColor="#FF000000"
-        android:textSize="14dp" />
-
-    <TextView
-        android:id="@+id/text_percentage_reksadana"
-        android:layout_width="120dp"
-        android:layout_height="18dp"
-        android:layout_marginLeft="181dp"
-        android:layout_marginTop="348.5dp"
-        android:layout_marginBottom="-0.5dp"
-        android:layout_gravity="top|left"
-        android:gravity="left|center_vertical"
-        android:includeFontPadding="false"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:text="15%: Reksadana"
-        android:textColor="#FF000000"
-        android:textSize="14dp" />
-
-    <ImageView
-        android:id="@+id/img_group3"
-        android:layout_width="352dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="416dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="103dp"
         android:layout_gravity="top|center_horizontal"
-        android:scaleType="centerInside"
-        android:src="@drawable/img_group3" />
+        android:background="@drawable/image_rectangle1"
+        android:scaleType="centerInside" />
 
     <ImageView
-        android:id="@+id/img_vector3"
+        android:id="@+id/logo_emas"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="107dp"
+        android:src="@drawable/logoemas"
+        android:scaleType="centerInside" />
+
+    <TextView
+        android:id="@+id/text_emas_untukmu"
+        android:layout_width="188dp"
+        android:layout_height="21dp"
+        android:layout_marginLeft="129dp"
+        android:layout_marginTop="117dp"
+        android:layout_marginBottom="-1dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Emas Untukmu"
+        android:textColor="#FF000000"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/text_investasi_emas"
+        android:layout_width="185dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="129dp"
+        android:layout_marginTop="136dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|top"
+        android:includeFontPadding="false"
+        android:lineHeight="12.1dp"
+        android:text="Investasi emas untuk kamu, cara cerdas lindungi nilai dan wujudkan impian masa depan."
+        android:textColor="#FF6A9C89"
+        android:textSize="10dp" />
+
+    <ImageView
+        android:id="@+id/masuksaham"
         android:layout_width="10dp"
         android:layout_height="15dp"
-        android:layout_marginLeft="354dp"
-        android:layout_marginRight="48dp"
-        android:layout_marginTop="435dp"
-        android:layout_marginBottom="467dp"
+        android:layout_marginLeft="347dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginTop="138dp"
+        android:layout_marginBottom="764dp"
         android:scaleType="centerInside"
-        android:src="@drawable/img_vector3" />
-
-    <TextView
-        android:id="@+id/text_saham"
-        android:layout_width="67dp"
-        android:layout_height="21dp"
-        android:layout_marginLeft="51dp"
-        android:layout_marginTop="432dp"
-        android:layout_marginBottom="-1dp"
-        android:layout_gravity="top|left"
-        android:gravity="left|center_vertical"
-        android:includeFontPadding="false"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:text="Saham"
-        android:textColor="#FF000000"
-        android:textSize="16dp" />
+        android:src="@drawable/image_vector3i" />
 
     <ImageView
-        android:id="@+id/img_group4"
+        android:id="@+id/image_rectangle2"
         android:layout_width="352dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="477dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="195dp"
         android:layout_gravity="top|center_horizontal"
-        android:scaleType="centerInside"
-        android:src="@drawable/img_group4" />
+        android:background="@drawable/image_rectangle2"
+        android:scaleType="centerInside" />
+
+    <ImageView
+        android:id="@+id/image_logosaham"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="199dp"
+        android:src="@drawable/logosaham"
+        android:scaleType="centerInside" />
+
 
     <TextView
-        android:id="@+id/text_emas"
-        android:layout_width="91dp"
+        android:id="@+id/text_saham_terbaik"
+        android:layout_width="188dp"
         android:layout_height="21dp"
-        android:layout_marginLeft="51dp"
-        android:layout_marginTop="493dp"
+        android:layout_marginLeft="129dp"
+        android:layout_marginTop="209dp"
         android:layout_marginBottom="-1dp"
         android:layout_gravity="top|left"
         android:gravity="left|center_vertical"
         android:includeFontPadding="false"
         android:maxLines="1"
         android:singleLine="true"
-        android:text="Emas"
+        android:text="Saham Terbaik"
         android:textColor="#FF000000"
         android:textSize="16dp" />
 
+    <TextView
+        android:id="@+id/text_investasi_saham"
+        android:layout_width="185dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="129dp"
+        android:layout_marginTop="228dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|top"
+        android:includeFontPadding="false"
+        android:lineHeight="12.1dp"
+        android:text="Investasi saham untuk kamu, peluang tumbuh bersama perusahaan dan capai tujuan finansial."
+        android:textColor="#FF6A9C89"
+        android:textSize="10dp" />
+
     <ImageView
-        android:id="@+id/img_vector4"
+        android:id="@+id/image_vector4"
         android:layout_width="10dp"
         android:layout_height="15dp"
-        android:layout_marginLeft="351dp"
-        android:layout_marginRight="51dp"
-        android:layout_marginTop="494dp"
-        android:layout_marginBottom="408dp"
+        android:layout_marginLeft="347dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginBottom="672dp"
         android:scaleType="centerInside"
-        android:src="@drawable/img_vector4" />
-
-    <ImageView
-        android:id="@+id/img_group5"
-        android:layout_width="352dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="538dp"
-        android:layout_gravity="top|center_horizontal"
-        android:scaleType="centerInside"
-        android:src="@drawable/img_group5" />
-
-    <TextView
-        android:id="@+id/text_reksadana"
-        android:layout_width="91dp"
-        android:layout_height="21dp"
-        android:layout_marginLeft="51dp"
-        android:layout_marginTop="553dp"
-        android:layout_marginBottom="-1dp"
-        android:layout_gravity="top|left"
-        android:gravity="left|center_vertical"
-        android:includeFontPadding="false"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:text="Reksadana"
-        android:textColor="#FF000000"
-        android:textSize="16dp" />
-
-    <ImageView
-        android:id="@+id/img_vector5"
-        android:layout_width="10dp"
-        android:layout_height="15dp"
-        android:layout_marginLeft="351dp"
-        android:layout_marginRight="51dp"
-        android:layout_marginTop="555dp"
-        android:layout_marginBottom="347dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/img_vector5" />
+        android:src="@drawable/image_vector4i" />
 </FrameLayout>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sahamhal"
+    android:layout_width="match_parent"
+    android:layout_height="917dp"
+    android:background="@drawable/container_android_compact">
+
+    <TextView
+        android:id="@+id/text_saham"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginTop="46.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Saham"
+        android:textColor="#FF000000"
+        android:textSize="20dp" />
+
+
+
+    <ImageView
+        android:id="@+id/image_rectangle1"
+        android:layout_width="412dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="76dp"
+        android:layout_gravity="top|left"
+        android:background="@drawable/image_rectangle1"
+        android:scaleType="centerInside" />
+
+
+
+    <TextView
+        android:id="@+id/text_trending_saham"
+        android:layout_width="143dp"
+        android:layout_height="21dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="-1dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Trending Saham"
+        android:textColor="#FF000000"
+        android:textSize="16dp" />
+
+
+    <ImageView
+        android:id="@+id/container_line2"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="103dp"
+        android:layout_gravity="top|left"
+        android:scaleType="centerInside"
+        android:src="@drawable/container_line2" />
+
+    <ImageView
+        android:id="@+id/image_group3"
+        android:layout_width="352dp"
+        android:layout_height="174dp"
+        android:layout_marginTop="150dp"
+        android:layout_gravity="top|center_horizontal"
+        android:scaleType="centerInside"
+        android:src="@drawable/image_group3s" />
+
+    <ImageView
+        android:id="@+id/image_ellipse1"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginRight="144dp"
+        android:layout_marginTop="160dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/image_ellipse3"
+        android:scaleType="centerInside" />
+
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="15dp"
+        android:layout_height="44dp"
+        android:layout_marginRight="140.5dp"
+        android:layout_marginTop="160dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left|top"
+        android:includeFontPadding="false"
+        android:lineHeight="18.15dp"
+        android:text="1"
+        android:textColor="#FFFFFFFF"
+        android:textSize="15dp" />
+
+    <ImageView
+        android:id="@+id/image_ellipse2"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginRight="144dp"
+        android:layout_marginTop="230dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/image_ellipse3"
+        android:scaleType="centerInside" />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="15dp"
+        android:layout_height="44dp"
+        android:layout_marginRight="141.5dp"
+        android:layout_marginTop="230dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left|top"
+        android:includeFontPadding="false"
+        android:lineHeight="18.15dp"
+        android:text="2"
+        android:textColor="#FFFFFFFF"
+        android:textSize="15dp" />
+
+    <ImageView
+        android:id="@+id/image_ellipse3"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginRight="144dp"
+        android:layout_marginTop="290dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/image_ellipse3"
+        android:scaleType="centerInside" />
+
+    <TextView
+        android:id="@+id/text3"
+        android:layout_width="15dp"
+        android:layout_height="44dp"
+        android:layout_marginRight="141.5dp"
+        android:layout_marginTop="290dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left|top"
+        android:includeFontPadding="false"
+        android:lineHeight="18.15dp"
+        android:text="3"
+        android:textColor="#FFFFFFFF"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/text_aces"
+        android:layout_width="211dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="160.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="ACES"
+        android:textColor="#FF000000"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/text_adro"
+        android:layout_width="211dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="82dp"
+        android:layout_marginTop="230.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="ADRO"
+        android:textColor="#FF000000"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/text_akra"
+        android:layout_width="211dp"
+        android:layout_height="18dp"
+        android:layout_marginLeft="82dp"
+        android:layout_marginTop="290.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="AKRA"
+        android:textColor="#FF000000"
+        android:textSize="14dp" />
+
+
+
+
+
+
+
+
+    <TextView
+        android:id="@+id/text_percentage1"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_marginLeft="325dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginBottom="-1dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="5.26%"
+        android:textColor="#FF00AB6B"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/text_percentage2"
+        android:layout_width="48dp"
+        android:layout_height="21dp"
+        android:layout_marginLeft="324dp"
+        android:layout_marginTop="290dp"
+        android:layout_marginBottom="-1dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="5.15%"
+        android:textColor="#FF00AB6B"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/text_percentage4"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_marginLeft="324dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginBottom="-1dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="5.30%"
+        android:textColor="#FF00AB6B"
+        android:textSize="16dp" />
+
+
+</FrameLayout>
