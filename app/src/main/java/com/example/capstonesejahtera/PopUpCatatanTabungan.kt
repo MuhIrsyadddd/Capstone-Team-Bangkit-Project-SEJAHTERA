@@ -73,37 +73,40 @@ class PopUpCatatanTabungan : DialogFragment() {
 
             if (namaCatatan.isNotEmpty() && nominalPengeluaranString.isNotEmpty()) {
                 // Konversi nominalPengeluaran menjadi Int
-                val nominalPengeluaran = nominalPengeluaranString.toIntOrNull() // Menggunakan toIntOrNull untuk menghindari NumberFormatException
+                val nominalPengeluaran = nominalPengeluaranString.toIntOrNull()
 
                 if (nominalPengeluaran != null) {
                     val userId = auth.currentUser?.uid
                     if (userId != null) {
-                        val catatanData = hashMapOf(
-                            "nama_catatan" to namaCatatan,
-                            "nominal_pengeluaran" to nominalPengeluaran // Simpan sebagai Int
+                        val data = hashMapOf(
+                            "nama" to namaCatatan,
+                            "nominal" to nominalPengeluaran
                         )
 
-                        firestore.collection("Catatan").document(userId)
-                            .collection("user_catatan").add(catatanData)
+                        // Tentukan koleksi berdasarkan hint
+                        val selectedHint = editNamaCatatan.hint.toString()
+                        val collectionName = if (selectedHint == "Nama Tabungan") "Tabungan" else "Catatan"
+
+                        firestore.collection(collectionName).document(userId)
+                            .collection("user_data").add(data)
                             .addOnSuccessListener {
-                                // Data berhasil disimpan
-                                Toast.makeText(context, "Catatan berhasil dibuat", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "$collectionName berhasil dibuat", Toast.LENGTH_SHORT).show()
                                 dismiss() // Tutup dialog setelah berhasil
                             }
                             .addOnFailureListener { e ->
-                                // Gagal menyimpan data
-                                Toast.makeText(context, "Gagal menyimpan catatan: ${e.message}", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(context, "Gagal menyimpan ke $collectionName: ${e.message}", Toast.LENGTH_SHORT).show()
                             }
                     } else {
                         Toast.makeText(context, "User tidak terautentikasi", Toast.LENGTH_SHORT).show()
                     }
                 } else {
-                    Toast.makeText(context, "Nominal Pengeluaran harus berupa angka", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Nominal harus berupa angka", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(context, "Nama Catatan dan Nominal Pengeluaran tidak boleh kosong", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Nama dan Nominal tidak boleh kosong", Toast.LENGTH_SHORT).show()
             }
         }
+
 
 
         return view
