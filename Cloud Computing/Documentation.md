@@ -157,4 +157,4 @@ Contributions are welcome! Feel free to open an issue or submit a pull request f
 
 ## Contact
 
-For any inquiries, please contact [your_m.haidaermuzaki21@gmail.com](m.haidaermuzaki21@gmail.com).
+For any inquiries, please contact [m.haidaermuzaki21@gmail.com](m.haidaermuzaki21@gmail.com).
