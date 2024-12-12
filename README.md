@@ -6,7 +6,7 @@ This app was developed by Team C242-PS307 Bangkit Capstone Project
 
 ## Description
 
-(Description Appliaction
+(Description Appliaction)
 
 ## Our Team
 
