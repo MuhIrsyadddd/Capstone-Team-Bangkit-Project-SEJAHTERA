@@ -18,6 +18,7 @@ class DompetFragment : Fragment() {
     private lateinit var pengeluaranTextView: TextView
     private lateinit var tabunganTextView: TextView
     private lateinit var catatanLayout: ViewGroup
+    private lateinit var totalPenghasilanPengeluaranTextView: TextView  // Tambahkan variabel untuk totalPenghasilanPengeluaran
 
     @SuppressLint("MissingInflatedId")
     override fun onCreateView(
@@ -34,6 +35,7 @@ class DompetFragment : Fragment() {
         pengeluaranTextView = view.findViewById(R.id.pengeluaran1)
         tabunganTextView = view.findViewById(R.id.tabungan1)
         catatanLayout = view.findViewById(R.id.catatanLayout)
+        totalPenghasilanPengeluaranTextView = view.findViewById(R.id.totalpenghasilanpengeluaran)  // Hubungkan TextView
 
         // Ambil UID pengguna saat ini
         val currentUser = auth.currentUser
@@ -41,6 +43,7 @@ class DompetFragment : Fragment() {
             fetchNominal(uid)  // Ambil nominal pengeluaran
             fetchTabungan(uid) // Ambil nominal tabungan
             fetchCatatan(uid)  // Ambil data catatan
+            calculateTotalPenghasilanPengeluaran(uid) // Hitung total penghasilan dan pengeluaran
         } ?: run {
             Log.e("DompetFragment", "User tidak ditemukan")
         }
@@ -144,6 +147,51 @@ class DompetFragment : Fragment() {
                 Log.e("DompetFragment", "Error mendapatkan data catatan", exception)
             }
     }
+
+    private fun calculateTotalPenghasilanPengeluaran(userId: String) {
+        val tabunganRef = firestore.collection("Tabungan").document(userId)
+            .collection("user_data")
+
+        val catatanRef = firestore.collection("Catatan").document(userId)
+            .collection("user_data")
+
+        // Ambil nominal dari Tabungan
+        tabunganRef.get()
+            .addOnSuccessListener { tabunganDocuments ->
+                var totalTabungan = 0L
+                for (document in tabunganDocuments) {
+                    val nominal = document.getLong("nominal") ?: 0L
+                    totalTabungan += nominal
+                }
+
+                // Setelah mendapatkan total tabungan, ambil nominal dari Catatan
+                catatanRef.get()
+                    .addOnSuccessListener { catatanDocuments ->
+                        var totalPengeluaran = 0L
+                        for (document in catatanDocuments) {
+                            val nominal = document.getLong("nominal") ?: 0L
+                            totalPengeluaran += nominal
+                        }
+
+                        // Hitung total penghasilan dan pengeluaran
+                        val totalPenghasilanPengeluaran = totalTabungan - totalPengeluaran
+
+                        // Tampilkan hasil dengan tanda minus jika negatif
+                        totalPenghasilanPengeluaranTextView.text = if (totalPenghasilanPengeluaran < 0) {
+                            "Rp-${Math.abs(totalPenghasilanPengeluaran)}"
+                        } else {
+                            "Rp$totalPenghasilanPengeluaran"
+                        }
+                    }
+                    .addOnFailureListener { exception ->
+                        Log.e("DompetFragment", "Error mendapatkan data catatan", exception)
+                    }
+            }
+            .addOnFailureListener { exception ->
+                Log.e("DompetFragment", "Error mendapatkan data tabungan", exception)
+            }
+    }
+
 
     private fun openPopCatatanTabungan() {
         val popTabunganFragment = PopUpCatatanTabungan()
