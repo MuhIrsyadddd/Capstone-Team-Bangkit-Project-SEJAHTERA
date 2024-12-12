@@ -1,5 +1,6 @@
 package com.example.capstonesejahtera
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
@@ -20,7 +21,9 @@ class EmasActivity : AppCompatActivity() {
 
     private lateinit var firestore: FirebaseFirestore
     private lateinit var totalTextView: TextView
+    private lateinit var totalCatatanTextView: TextView // Tambahan untuk total catatan
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,13 +33,15 @@ class EmasActivity : AppCompatActivity() {
         firestore = Firebase.firestore
 
         // Inisialisasi TextView untuk menampilkan total
-        totalTextView = findViewById(R.id.totalTextView)
+        totalTextView = findViewById(R.id.tabungantotalemas)
+        totalCatatanTextView = findViewById(R.id.totalcatetanemas) // Inisialisasi TextView untuk total catatan
 
         // Ambil data dan total
         fetchTabunganData()
+        fetchCatatanData() // Panggil fungsi untuk mengambil data catatan
 
         // Atur padding untuk window insets
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.emas)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -73,7 +78,42 @@ class EmasActivity : AppCompatActivity() {
         }
     }
 
+    private fun fetchCatatanData() {
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+        if (userId != null) {
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    // Ambil data dari Firestore
+                    val userCatatan = firestore.collection("Catatan").document(userId).collection("user_data")
+                    val documents = userCatatan.get().await()
+
+                    var totalCatatanNominal = 0.0
+
+                    for (document in documents) {
+                        val nominal = document.getDouble("nominal") ?: 0.0
+                        totalCatatanNominal += nominal
+                    }
+
+                    // Tampilkan total di UI
+                    launch(Dispatchers.Main) {
+                        displayTotalCatatanNominal(totalCatatanNominal)
+                    }
+                } catch (e: Exception) {
+                    Log.e("EmasActivity", "Error fetching catatan data: ", e)
+                    // Tangani kesalahan jika diperlukan
+                }
+            }
+        } else {
+            Log.w("EmasActivity", "User is not authenticated.")
+        }
+    }
+
     private fun displayTotalNominal(total: Double) {
         totalTextView.text = "Total Tabungan: $total"
     }
+
+    private fun displayTotalCatatanNominal(total: Double) {
+        totalCatatanTextView.text = "Total Catatan: $total" // Tampilkan total catatan
+    }
 }
+
