@@ -81,41 +81,50 @@ class DompetFragment : Fragment() {
 
         tabunganRef.get()
             .addOnSuccessListener { documents ->
-                var totalTabungan = 0L // Variable untuk menghitung total nominal tabungan
+                val textViewTabungan = view?.findViewById<TextView>(R.id.textViewTabungan)
 
-                // Hapus data sebelumnya di layout untuk menghindari duplikasi
-                val tabunganLayout = view?.findViewById<ViewGroup>(R.id.tabunganlayout11)
-                tabunganLayout?.removeAllViews()
+                if (documents.isEmpty) {
+                    // Sembunyikan textViewTabungan jika tidak ada data
+                    textViewTabungan?.visibility = View.GONE
+                } else {
+                    // Tampilkan textViewTabungan jika ada data
+                    textViewTabungan?.visibility = View.VISIBLE
 
-                for (document in documents) {
-                    val nama = document.getString("nama") ?: "Tidak ada nama"
-                    val nominal = document.getLong("nominal") ?: 0L
+                    var totalTabungan = 0L // Variable untuk menghitung total nominal tabungan
+                    val tabunganLayout = view?.findViewById<ViewGroup>(R.id.tabunganlayout11)
+                    tabunganLayout?.removeAllViews()
 
-                    // Tambahkan ke total nominal tabungan
-                    totalTabungan += nominal
+                    for (document in documents) {
+                        val nama = document.getString("nama") ?: "Tidak ada nama"
+                        val nominal = document.getLong("nominal") ?: 0L
 
-                    // Inflasi layout untuk setiap item tabungan
-                    val itemView = LayoutInflater.from(requireContext())
-                        .inflate(R.layout.item_tabungan, tabunganLayout, false)
+                        // Tambahkan ke total nominal tabungan
+                        totalTabungan += nominal
 
-                    // Atur nilai pada view
-                    val namaTextView = itemView.findViewById<TextView>(R.id.nama_tabungan)
-                    val nominalTextView = itemView.findViewById<TextView>(R.id.nominal_tabungan)
+                        // Inflasi layout untuk setiap item tabungan
+                        val itemView = LayoutInflater.from(requireContext())
+                            .inflate(R.layout.item_tabungan, tabunganLayout, false)
 
-                    namaTextView.text = nama
-                    nominalTextView.text = "Rp$nominal"
+                        // Atur nilai pada view
+                        val namaTextView = itemView.findViewById<TextView>(R.id.nama_tabungan)
+                        val nominalTextView = itemView.findViewById<TextView>(R.id.nominal_tabungan)
 
-                    // Tambahkan item ke dalam layout
-                    tabunganLayout?.addView(itemView)
+                        namaTextView.text = nama
+                        nominalTextView.text = "Rp$nominal"
+
+                        // Tambahkan item ke dalam layout
+                        tabunganLayout?.addView(itemView)
+                    }
+
+                    // Tampilkan total nominal tabungan di tabunganTextView
+                    tabunganTextView.text = "Rp$totalTabungan"
                 }
-
-                // Tampilkan total nominal tabungan di tabunganTextView
-                tabunganTextView.text = "Rp$totalTabungan"
             }
             .addOnFailureListener { exception ->
                 Log.e("DompetFragment", "Error mendapatkan data tabungan", exception)
             }
     }
+
 
     private fun fetchCatatan(userId: String) {
         val catatanRef = firestore.collection("Catatan").document(userId)
@@ -123,30 +132,40 @@ class DompetFragment : Fragment() {
 
         catatanRef.get()
             .addOnSuccessListener { documents ->
-                catatanLayout.removeAllViews() // Hapus item sebelumnya untuk menghindari duplikasi
-                for (document in documents) {
-                    val nama = document.getString("nama") ?: "Tidak ada nama"
-                    val nominal = document.getLong("nominal") ?: 0L
+                if (documents.isEmpty) {
+                    // Sembunyikan TextView jika tidak ada data
+                    view?.findViewById<TextView>(R.id.textViewCatatan)?.visibility = View.GONE
+                } else {
+                    // Tampilkan TextView jika ada data
+                    view?.findViewById<TextView>(R.id.textViewCatatan)?.visibility = View.VISIBLE
 
-                    // Inflasi layout item_catatan.xml
-                    val itemView = LayoutInflater.from(requireContext())
-                        .inflate(R.layout.item_catatan, catatanLayout, false)
+                    // Kosongkan layout untuk mencegah duplikasi
+                    catatanLayout.removeAllViews()
+                    for (document in documents) {
+                        val nama = document.getString("nama") ?: "Tidak ada nama"
+                        val nominal = document.getLong("nominal") ?: 0L
 
-                    // Atur nilai pada view
-                    val namaCatatanTextView = itemView.findViewById<TextView>(R.id.nama_catatan)
-                    val nominalPengeluaranTextView = itemView.findViewById<TextView>(R.id.nominal_pengeluaran)
+                        // Inflasi layout item_catatan.xml
+                        val itemView = LayoutInflater.from(requireContext())
+                            .inflate(R.layout.item_catatan, catatanLayout, false)
 
-                    namaCatatanTextView.text = nama
-                    nominalPengeluaranTextView.text = "Rp$nominal"
+                        // Atur nilai pada view
+                        val namaCatatanTextView = itemView.findViewById<TextView>(R.id.nama_catatan)
+                        val nominalPengeluaranTextView = itemView.findViewById<TextView>(R.id.nominal_pengeluaran)
 
-                    // Tambahkan item ke layout
-                    catatanLayout.addView(itemView)
+                        namaCatatanTextView.text = nama
+                        nominalPengeluaranTextView.text = "Rp$nominal"
+
+                        // Tambahkan item ke layout
+                        catatanLayout.addView(itemView)
+                    }
                 }
             }
             .addOnFailureListener { exception ->
                 Log.e("DompetFragment", "Error mendapatkan data catatan", exception)
             }
     }
+
 
     private fun calculateTotalPenghasilanPengeluaran(userId: String) {
         val tabunganRef = firestore.collection("Tabungan").document(userId)

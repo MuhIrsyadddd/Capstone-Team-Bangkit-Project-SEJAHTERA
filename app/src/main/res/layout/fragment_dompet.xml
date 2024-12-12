@@ -176,6 +176,7 @@
         android:textSize="10dp" />
 
     <TextView
+        android:id="@+id/textViewCatatan"
         android:layout_width="296dp"
         android:layout_height="21dp"
         android:layout_marginLeft="30dp"
@@ -223,17 +224,8 @@
         android:scaleType="centerInside"
         android:src="@drawable/drawable_image_10" />
 
-    <ImageView
-        android:layout_width="9dp"
-        android:layout_height="6dp"
-        android:layout_marginLeft="245dp"
-        android:layout_marginRight="158dp"
-        android:layout_marginTop="174dp"
-        android:layout_marginBottom="737dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/drawable_image_11" />
-
     <TextView
+        android:id="@+id/textViewTabungan"
         android:layout_width="296dp"
         android:layout_height="21dp"
         android:layout_marginLeft="30dp"
