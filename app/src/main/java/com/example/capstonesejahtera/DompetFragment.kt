@@ -78,11 +78,35 @@ class DompetFragment : Fragment() {
 
         tabunganRef.get()
             .addOnSuccessListener { documents ->
-                var totalTabungan = 0L
+                var totalTabungan = 0L // Variable untuk menghitung total nominal tabungan
+
+                // Hapus data sebelumnya di layout untuk menghindari duplikasi
+                val tabunganLayout = view?.findViewById<ViewGroup>(R.id.tabunganlayout11)
+                tabunganLayout?.removeAllViews()
+
                 for (document in documents) {
-                    val nominal = document.getLong("nominal") ?: 0
+                    val nama = document.getString("nama") ?: "Tidak ada nama"
+                    val nominal = document.getLong("nominal") ?: 0L
+
+                    // Tambahkan ke total nominal tabungan
                     totalTabungan += nominal
+
+                    // Inflasi layout untuk setiap item tabungan
+                    val itemView = LayoutInflater.from(requireContext())
+                        .inflate(R.layout.item_tabungan, tabunganLayout, false)
+
+                    // Atur nilai pada view
+                    val namaTextView = itemView.findViewById<TextView>(R.id.nama_tabungan)
+                    val nominalTextView = itemView.findViewById<TextView>(R.id.nominal_tabungan)
+
+                    namaTextView.text = nama
+                    nominalTextView.text = "Rp$nominal"
+
+                    // Tambahkan item ke dalam layout
+                    tabunganLayout?.addView(itemView)
                 }
+
+                // Tampilkan total nominal tabungan di tabunganTextView
                 tabunganTextView.text = "Rp$totalTabungan"
             }
             .addOnFailureListener { exception ->

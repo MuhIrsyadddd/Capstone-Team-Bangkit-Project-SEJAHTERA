@@ -100,6 +100,7 @@
         android:textSize="13dp" />
 
     <TextView
+        android:id="@+id/totalpenghasilanpengeluaran"
         android:layout_width="118dp"
         android:layout_height="17dp"
         android:layout_marginLeft="43dp"
@@ -110,7 +111,7 @@
         android:includeFontPadding="false"
         android:maxLines="1"
         android:singleLine="true"
-        android:text="+Rp1.725.000"
+        android:text=""
         android:textColor="#FF000000"
         android:textSize="13dp" />
 
@@ -249,25 +250,14 @@
 
     <FrameLayout
         android:layout_width="352dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="307dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="250dp"
         android:layout_gravity="bottom|center_horizontal">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/drawable_image_16" />
-
-
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="15dp"
-            android:layout_marginLeft="321dp"
-            android:layout_marginRight="21dp"
-            android:layout_marginTop="17dp"
-            android:layout_marginBottom="20dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/drawable_image_177" />
+        <LinearLayout
+        android:id="@+id/tabunganlayout11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
     </FrameLayout>
 </FrameLayout>
