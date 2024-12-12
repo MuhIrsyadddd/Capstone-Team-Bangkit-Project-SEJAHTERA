@@ -14,27 +14,21 @@ class InvestasiFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_investasi, container, false)
-
-        // Set up click listeners
-        view.findViewById<View>(R.id.logo_emas).setOnClickListener {
-            navigateToSahamActivity()
-        }
-        view.findViewById<View>(R.id.text_emas_untukmu).setOnClickListener {
-            navigateToSahamActivity()
-        }
-        view.findViewById<View>(R.id.masuksaham).setOnClickListener {
-            navigateToSahamActivity()
-        }
-        view.findViewById<View>(R.id.text_investasi_emas).setOnClickListener {
-            navigateToSahamActivity()
-        }
-
-        return view
+        return inflater.inflate(R.layout.fragment_investasi, container, false)
     }
 
-    private fun navigateToSahamActivity() {
-        val intent = Intent(requireContext(), SahamActivity::class.java)
-        startActivity(intent)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Navigasi ke SahamActivity
+        val clickListener = View.OnClickListener {
+            val intent = Intent(requireContext(), SahamActivity::class.java)
+            startActivity(intent)
+        }
+
+        view.findViewById<View>(R.id.image_logosaham).setOnClickListener(clickListener)
+        view.findViewById<View>(R.id.text_saham_terbaik).setOnClickListener(clickListener)
+        view.findViewById<View>(R.id.text_investasi_saham).setOnClickListener(clickListener)
+        view.findViewById<View>(R.id.masuksaham).setOnClickListener(clickListener)
     }
 }

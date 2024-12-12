@@ -97,7 +97,7 @@
         android:textSize="10dp" />
 
     <ImageView
-        android:id="@+id/masuksaham"
+        android:id="@+id/masukemas"
         android:layout_width="10dp"
         android:layout_height="15dp"
         android:layout_marginLeft="347dp"
@@ -157,7 +157,7 @@
         android:textSize="10dp" />
 
     <ImageView
-        android:id="@+id/image_vector4"
+        android:id="@+id/masuksaham"
         android:layout_width="10dp"
         android:layout_height="15dp"
         android:layout_marginLeft="347dp"
