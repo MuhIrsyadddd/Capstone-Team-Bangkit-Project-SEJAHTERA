@@ -27,3 +27,10 @@ This app was developed by Team C242-PS307 Bangkit Capstone Project
 1. [Cloud Computing](https://github.com/MuhIrsyadddd/Capstone-Team-Bangkit-Project-SEJAHTERA/tree/main/Cloud%20Computing)
 2. [Machine Learning](https://github.com/MuhIrsyadddd/Capstone-Team-Bangkit-Project-SEJAHTERA/tree/main/Machine%20Learning)
 3. [Mobile Development](link github)
+
+##Support By
+Kampus Merdeka
+Bangkit Academy 2023
+Google
+GoTo
+Traveloka
