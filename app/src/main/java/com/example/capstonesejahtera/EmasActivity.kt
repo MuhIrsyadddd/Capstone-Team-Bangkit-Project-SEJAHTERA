@@ -8,6 +8,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -22,6 +26,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.NumberFormat
+import java.util.Locale
 import java.util.concurrent.TimeUnit
 
 class EmasActivity : AppCompatActivity() {
@@ -29,7 +35,7 @@ class EmasActivity : AppCompatActivity() {
     private lateinit var firestore: FirebaseFirestore
     private lateinit var totalTextView: TextView
     private lateinit var totalCatatanTextView: TextView
-    private lateinit var predictedPricesTextView: TextView
+    private lateinit var lineChart: LineChart
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +46,7 @@ class EmasActivity : AppCompatActivity() {
         firestore = Firebase.firestore
         totalTextView = findViewById(R.id.tabungantotalemas)
         totalCatatanTextView = findViewById(R.id.totalcatetanemas)
-        predictedPricesTextView = findViewById(R.id.predictedPricesTextView)
+        lineChart = findViewById(R.id.lineChart)
 
         fetchTabunganData()
 
@@ -144,19 +150,42 @@ class EmasActivity : AppCompatActivity() {
     }
 
     private fun displayTotalNominal(total: Double) {
-        totalTextView.text = "Total Tabungan: $total"
+        val formattedTotal = formatCurrency(total)
+        totalTextView.text = "Total Tabungan: $formattedTotal"
     }
 
     private fun displayTotalCatatanNominal(total: Double) {
-        totalCatatanTextView.text = "Total Catatan: $total"
+        val formattedTotal = formatCurrency(total)
+        totalCatatanTextView.text = "Total Catatan: $formattedTotal"
+    }
+
+    private fun formatCurrency(value: Double): String {
+        val format = NumberFormat.getNumberInstance(Locale("id", "ID"))
+        format.minimumFractionDigits = 0
+        format.maximumFractionDigits = 2
+        return format.format(value)
     }
 
     private fun displayPredictedPrices(predictedPrices: List<Any?>?) {
-        predictedPricesTextView.text = predictedPrices?.joinToString(", ") ?: "Tidak ada data"
+        if (predictedPrices.isNullOrEmpty()) {
+            showErrorMessage("Tidak ada data untuk ditampilkan.")
+            return
+        }
+
+        val entries = predictedPrices.mapIndexed { index, price ->
+            Entry(index.toFloat(), (price as? Number)?.toFloat() ?: 0f)
+        }
+
+        val lineDataSet = LineDataSet(entries, "Harga Prediksi")
+        lineDataSet.color = resources.getColor(R.color.purple_200, null)
+        lineDataSet.valueTextColor = resources.getColor(R.color.black, null)
+
+        val lineData = LineData(lineDataSet)
+        lineChart.data = lineData
+        lineChart.invalidate() // Refresh grafik
     }
 
     private fun showErrorMessage(message: String) {
-        // Tampilkan pesan error di UI (misalnya Toast atau Snackbar)
         Log.e("EmasActivity", message)
     }
 }
