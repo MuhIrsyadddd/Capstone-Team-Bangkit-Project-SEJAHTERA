@@ -20,7 +20,6 @@ This app was developed by Team C242-PS307 Bangkit Capstone Project
 
 ## Documentation
 ## API Reference
-API documentation for developers who are interested with our application. Visit OUR
 [API documentation for the Prediction of the SEJAHTERA app, click here.](https://github.com/MuhIrsyadddd/Capstone-Team-Bangkit-Project-SEJAHTERA/blob/main/Cloud%20Computing/Documentation.md)
 
 ## Repository
