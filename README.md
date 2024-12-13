@@ -29,8 +29,8 @@ This app was developed by Team C242-PS307 Bangkit Capstone Project
 3. [Mobile Development](link github)
 
 ## Support By
-Kampus Merdeka
-Bangkit Academy 2023
-Google
-GoTo
-Traveloka
+- Kampus Merdeka
+- Bangkit Academy 2023
+- Google
+- GoTo
+- Traveloka
