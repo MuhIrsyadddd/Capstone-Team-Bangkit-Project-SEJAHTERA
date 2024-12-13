@@ -19,8 +19,7 @@ This app was developed by Team C242-PS307 Bangkit Capstone Project
 7. (MD) A009B4KY2643 – Muhamad Irsyad Nurdin – Universitas Gunadarma
 
 ## Documentation
-## API Reference
-API documentation for the Prediction of the SEJAHTERA app, [click here.](https://github.com/MuhIrsyadddd/Capstone-Team-Bangkit-Project-SEJAHTERA/blob/main/Cloud%20Computing/Documentation.md)
+
 
 ## Repository
 
@@ -34,3 +33,6 @@ API documentation for the Prediction of the SEJAHTERA app, [click here.](https:/
 - Google
 - GoTo
 - Traveloka
+
+## API Reference
+API documentation for the Prediction of the SEJAHTERA app, [here.](https://github.com/MuhIrsyadddd/Capstone-Team-Bangkit-Project-SEJAHTERA/blob/main/Cloud%20Computing/Documentation.md)
