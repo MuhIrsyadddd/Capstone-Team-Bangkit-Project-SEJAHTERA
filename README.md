@@ -35,4 +35,4 @@ This app was developed by Team C242-PS307 Bangkit Capstone Project
 - Traveloka
 
 ## API Reference
-API documentation for the Prediction of the SEJAHTERA app, [here.](https://github.com/MuhIrsyadddd/Capstone-Team-Bangkit-Project-SEJAHTERA/blob/main/Cloud%20Computing/Documentation.md)
+API documentation for the Prediction of the SEJAHTERA app, [API Documentation](https://github.com/MuhIrsyadddd/Capstone-Team-Bangkit-Project-SEJAHTERA/blob/main/Cloud%20Computing/Documentation.md).
