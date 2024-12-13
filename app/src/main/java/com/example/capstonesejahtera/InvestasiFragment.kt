@@ -30,5 +30,16 @@ class InvestasiFragment : Fragment() {
         view.findViewById<View>(R.id.text_saham_terbaik).setOnClickListener(clickListener)
         view.findViewById<View>(R.id.text_investasi_saham).setOnClickListener(clickListener)
         view.findViewById<View>(R.id.masuksaham).setOnClickListener(clickListener)
+
+        // Navigasi ke EmasActivity
+        val emasClickListener = View.OnClickListener {
+            val intent = Intent(requireContext(), EmasActivity::class.java)
+            startActivity(intent)
+        }
+
+        view.findViewById<View>(R.id.logo_emas).setOnClickListener(emasClickListener)
+        view.findViewById<View>(R.id.text_emas_untukmu).setOnClickListener(emasClickListener)
+        view.findViewById<View>(R.id.text_investasi_emas).setOnClickListener(emasClickListener)
+        view.findViewById<View>(R.id.masukemas).setOnClickListener(emasClickListener)
     }
 }
