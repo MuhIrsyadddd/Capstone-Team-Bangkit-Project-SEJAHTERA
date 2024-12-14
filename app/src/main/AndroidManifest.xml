@@ -23,24 +23,21 @@
             android:exported="false" />
         <activity
             android:name=".DataProfile"
-            android:exported="false" /> <!-- Aktivitas ResikoSatu -->
+            android:exported="false" />
         <activity
             android:name=".ResikoSatu"
-            android:exported="true" /> <!-- Aktivitas MainActivity -->
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" />
+        <activity android:name=".SplashActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Aktivitas Registrasi -->
-        <activity
-            android:name=".Registrasi"
-            android:exported="true" /> <!-- Aktivitas HalamanHome -->
-        <activity
-            android:name=".DashboardActivity"
+        </activity>
+        <activity android:name=".MainActivity"
+            android:exported="true" />
+        <activity android:name=".DashboardActivity"
+            android:exported="true" />
+        <activity android:name=".Registrasi"
             android:exported="true" />
         <activity
             android:name=".ResikoDua"

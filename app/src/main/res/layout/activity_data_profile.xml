@@ -58,4 +58,12 @@
         android:textColor="#FFFFFF"
         android:textSize="14sp" />
 
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="178dp"
+        android:layout_height="113dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/logo" />
+
 </FrameLayout>

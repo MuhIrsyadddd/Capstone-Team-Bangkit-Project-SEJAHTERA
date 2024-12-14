@@ -1,6 +1,7 @@
 package com.example.capstonesejahtera
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.TextView
@@ -19,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
+    private lateinit var sharedPreferences: SharedPreferences
     private val RC_SIGN_IN = 9001
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
+        sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
 
         val emailEditText: EditText = findViewById(R.id.edit_email)
         val passwordEditText: EditText = findViewById(R.id.edit_password)
@@ -45,6 +48,7 @@ class MainActivity : AppCompatActivity() {
             mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
+                        saveLoginStatus()
                         checkUserStatus()
                     } else {
                         Toast.makeText(this, "Email atau password salah", Toast.LENGTH_SHORT).show()
@@ -52,23 +56,27 @@ class MainActivity : AppCompatActivity() {
                 }
         }
 
-        // Listener untuk klik "Sign Up"
         val signUpTextView: TextView = findViewById(R.id.text_sign_up_prompt)
         signUpTextView.setOnClickListener {
             val intent = Intent(this, Registrasi::class.java)
             startActivity(intent)
         }
 
-        // Setup Google Sign-In
         val googleSignInButton: TextView = findViewById(R.id.text_google_login)
         googleSignInButton.setOnClickListener {
             signInWithGoogle()
         }
     }
 
+    private fun saveLoginStatus() {
+        sharedPreferences.edit()
+            .putBoolean("isLoggedIn", true)
+            .apply()
+    }
+
     private fun signInWithGoogle() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id)) // Masukkan ID klien Anda
+            .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
 
@@ -97,6 +105,7 @@ class MainActivity : AppCompatActivity() {
             mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
+                        saveLoginStatus()
                         checkUserStatus()
                     } else {
                         Toast.makeText(this, "Autentikasi Google gagal.", Toast.LENGTH_SHORT).show()
@@ -111,11 +120,9 @@ class MainActivity : AppCompatActivity() {
             val userRef = db.collection("users").document(user.uid)
             userRef.get().addOnSuccessListener { document ->
                 if (!document.exists()) {
-                    // Pertama kali login, arahkan ke DataProfileActivity
                     val intent = Intent(this, DataProfile::class.java)
                     startActivity(intent)
 
-                    // Simpan status pengguna ke Firestore
                     val userData = hashMapOf(
                         "isFirstLogin" to false,
                         "email" to user.email,
@@ -123,7 +130,6 @@ class MainActivity : AppCompatActivity() {
                     )
                     userRef.set(userData)
                 } else {
-                    // Sudah login sebelumnya, arahkan ke DashboardActivity
                     val intent = Intent(this, DashboardActivity::class.java)
                     startActivity(intent)
                 }
