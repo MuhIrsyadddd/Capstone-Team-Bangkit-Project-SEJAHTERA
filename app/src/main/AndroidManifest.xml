@@ -16,6 +16,9 @@
         android:theme="@style/Theme.CapstoneSejahtera"
         tools:targetApi="31">
         <activity
+            android:name=".AndroSaham"
+            android:exported="false" />
+        <activity
             android:name=".SahamActivity"
             android:exported="false" />
         <activity
@@ -27,17 +30,23 @@
         <activity
             android:name=".ResikoSatu"
             android:exported="true" />
-        <activity android:name=".SplashActivity" android:exported="true">
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:exported="true" />
-        <activity android:name=".DashboardActivity"
+        <activity
+            android:name=".DashboardActivity"
             android:exported="true" />
-        <activity android:name=".Registrasi"
+        <activity
+            android:name=".Registrasi"
             android:exported="true" />
         <activity
             android:name=".ResikoDua"
@@ -63,11 +72,9 @@
         <activity
             android:name=".ResikoSembilan"
             android:exported="true" />
-
         <activity
             android:name=".AcesSaham"
             android:exported="true" />
-
         <activity
             android:name=".EmasActivity"
             android:exported="true" />
