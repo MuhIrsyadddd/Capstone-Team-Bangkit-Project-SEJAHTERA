@@ -16,6 +16,9 @@
         android:theme="@style/Theme.CapstoneSejahtera"
         tools:targetApi="31">
         <activity
+            android:name=".HalamanBukaBerita"
+            android:exported="false" />
+        <activity
             android:name=".namasaham.IncoSaham"
             android:exported="false" />
         <activity
