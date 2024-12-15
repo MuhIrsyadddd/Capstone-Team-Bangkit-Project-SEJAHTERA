@@ -52,7 +52,7 @@
 
     <EditText
         android:id="@+id/edit_nama_catatan"
-        android:layout_width="230dp"
+        android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_gravity="top|left"
         android:layout_marginLeft="40dp"
@@ -69,7 +69,7 @@
 
     <EditText
         android:id="@+id/edit_nominal_pengeluaran"
-        android:layout_width="230dp"
+        android:layout_width="250dp"
         android:layout_height="50dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="180dp"
