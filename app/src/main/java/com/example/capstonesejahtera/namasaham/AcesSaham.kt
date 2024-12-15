@@ -18,6 +18,8 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.components.LegendEntry
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
@@ -117,13 +119,53 @@ class AcesSaham : AppCompatActivity() {
         }
 
         // Buat dataset untuk grafik
-        val lineDataSet = LineDataSet(entries, "Predicted Prices")
-        lineDataSet.color = resources.getColor(R.color.teal_700, theme)
+        val lineDataSet = LineDataSet(entries, "Harga Prediksi")
+        lineDataSet.setDrawValues(true)
         lineDataSet.valueTextSize = 12f
+
+        // Tambahkan warna berbeda untuk setiap titik
+        lineDataSet.colors = listOf(
+            resources.getColor(R.color.teal_700, theme),  // Warna untuk 1 hari
+            resources.getColor(R.color.utama, theme),    // Warna untuk 1 bulan
+            resources.getColor(R.color.purple_200, theme) // Warna untuk 1 tahun
+        )
+
+        // Tambahkan keterangan titik
+        lineDataSet.setDrawIcons(false)
+        lineDataSet.setDrawCircles(true)
+        lineDataSet.circleColors = lineDataSet.colors // Gunakan warna yang sama untuk lingkaran
 
         // Buat LineData dan set ke chart
         val lineData = LineData(lineDataSet)
         lineChart.data = lineData
-        lineChart.invalidate() // Refresh grafik
+
+        // Tambahkan legenda untuk menjelaskan 3 titik
+        val legend = lineChart.legend
+        legend.isEnabled = true
+        legend.textSize = 12f
+
+// Menempatkan legenda di bawah grafik secara horizontal
+        legend.orientation = Legend.LegendOrientation.HORIZONTAL
+        legend.verticalAlignment = Legend.LegendVerticalAlignment.BOTTOM
+        legend.horizontalAlignment = Legend.LegendHorizontalAlignment.CENTER
+        legend.direction = Legend.LegendDirection.LEFT_TO_RIGHT
+
+// Menambahkan jarak antar item legenda
+        legend.formToTextSpace = 12f   // Jarak antara bentuk simbol dan teks
+        legend.xEntrySpace = 40f       // Jarak horizontal antar item legenda
+
+// Menambahkan warna dan label custom untuk legenda
+        legend.setCustom(
+            listOf(
+                LegendEntry("1 Hari", Legend.LegendForm.CIRCLE, 10f, 2f, null, resources.getColor(R.color.teal_700, theme)),
+                LegendEntry("1 Bulan", Legend.LegendForm.CIRCLE, 10f, 2f, null, resources.getColor(R.color.utama, theme)),
+                LegendEntry("1 Tahun", Legend.LegendForm.CIRCLE, 10f, 2f, null, resources.getColor(R.color.purple_200, theme))
+            )
+        )
+
+
+        // Refresh grafik
+        lineChart.invalidate()
     }
+
 }
