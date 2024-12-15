@@ -144,14 +144,14 @@ interface ApiService {
     @GET("predict/stock/TOWR")
     fun getTowrStockData(): Call<SahamResponse>
 
-    @GET("predict/stock/TPIA)
-        fun getTpiaStockData(): Call<SahamResponse>
+    @GET("predict/stock/TPIA")
+    fun getTpiaStockData(): Call<SahamResponse>
 
-        @GET("predict/stock/UNTR")
-        fun getUntrStockData(): Call<SahamResponse>
+    @GET("predict/stock/UNTR")
+    fun getUntrStockData(): Call<SahamResponse>
 
-        @GET("predict/stock/UNVR")
-        fun getUnvrStockData(): Call<SahamResponse>
+    @GET("predict/stock/UNVR")
+    fun getUnvrStockData(): Call<SahamResponse>
 
 }
 
