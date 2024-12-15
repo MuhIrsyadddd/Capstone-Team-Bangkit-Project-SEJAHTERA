@@ -16,7 +16,61 @@
         android:theme="@style/Theme.CapstoneSejahtera"
         tools:targetApi="31">
         <activity
-            android:name=".NamaSaham.AndroSaham"
+            android:name=".namasaham.IncoSaham"
+            android:exported="false" />
+        <activity
+            android:name=".namasaham.IcbpSaham"
+            android:exported="false" />
+        <activity
+            android:name=".namasaham.HrumSaham"
+            android:exported="false" />
+        <activity
+            android:name=".namasaham.GgrmSaham"
+            android:exported="false" />
+        <activity
+            android:name=".namasaham.ExclSaham"
+            android:exported="false" />
+        <activity
+            android:name=".namasaham.EssaSaham"
+            android:exported="false" />
+        <activity
+            android:name=".namasaham.EmtkSaham"
+            android:exported="false" />
+        <activity
+            android:name=".namasaham.CpinSaham"
+            android:exported="false" />
+        <activity
+            android:name=".namasaham.BukaSaham"
+            android:exported="false" />
+        <activity
+            android:name=".namasaham.BrptSaham"
+            android:exported="false" />
+        <activity
+            android:name=".namasaham.BrisSaham"
+            android:exported="false" />
+        <activity
+            android:name=".namasaham.BmriSaham"
+            android:exported="false" />
+        <activity
+            android:name=".namasaham.BbtnSaham"
+            android:exported="false" />
+        <activity
+            android:name=".namasaham.BbniSaham"
+            android:exported="false" />
+        <activity
+            android:name=".namasaham.ArtoSaham"
+            android:exported="false" />
+        <activity
+            android:name=".namasaham.AmrtSaham"
+            android:exported="false" />
+        <activity
+            android:name=".namasaham.AmmnSaham"
+            android:exported="false" />
+        <activity
+            android:name=".namasaham.AkraSaham"
+            android:exported="false" />
+        <activity
+            android:name=".namasaham.AndroSaham"
             android:exported="false" />
         <activity
             android:name=".SahamActivity"
@@ -73,7 +127,7 @@
             android:name=".ResikoSembilan"
             android:exported="true" />
         <activity
-            android:name=".NamaSaham.AcesSaham"
+            android:name=".namasaham.AcesSaham"
             android:exported="true" />
         <activity
             android:name=".EmasActivity"

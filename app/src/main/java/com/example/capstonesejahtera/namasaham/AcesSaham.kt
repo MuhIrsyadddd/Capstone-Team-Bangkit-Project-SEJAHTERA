@@ -1,4 +1,4 @@
-package com.example.capstonesejahtera.NamaSaham
+package com.example.capstonesejahtera.namasaham
 
 import android.os.Bundle
 import android.widget.TextView
@@ -8,6 +8,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.capstonesejahtera.ApiService
 import com.example.capstonesejahtera.JsonMember1DayPredictionDate
+import com.example.capstonesejahtera.JsonMember1MonthPredictionDate
+import com.example.capstonesejahtera.JsonMember1YearPredictionDate
 import com.example.capstonesejahtera.R
 import com.example.capstonesejahtera.SahamAcesResponse
 import retrofit2.Call
@@ -55,13 +57,28 @@ class AcesSaham : AppCompatActivity() {
         call.enqueue(object : Callback<SahamAcesResponse> {
             override fun onResponse(call: Call<SahamAcesResponse>, response: Response<SahamAcesResponse>) {
                 if (response.isSuccessful) {
-                    val data = response.body()?.jsonMember1DayPredictionDate
+                    val data = response.body()
                     if (data != null) {
-                        predictionDateTextView.text = data.date ?: "Tanggal tidak tersedia"
-                        predictedPriceTextView.text = data.predictedPrice?.toString() ?: "Harga tidak tersedia"
+                        // Ambil data dari setiap prediksi
+                        val dayData = data.jsonMember1DayPredictionDate
+                        val monthData = data.jsonMember1MonthPredictionDate
+                        val yearData = data.jsonMember1YearPredictionDate
+
+                        // Update tampilan tanggal
+                        predictionDateTextView.text = dayData?.date ?: "Tanggal tidak tersedia"
+
+                        // Ambil harga prediksi untuk 1 hari, 1 bulan, dan 1 tahun
+                        val dayPrice = dayData?.predictedPrice?.toString() ?: "Harga tidak tersedia"
+                        val monthPrice = monthData?.predictedPrice?.toString() ?: "Harga tidak tersedia"
+                        val yearPrice = yearData?.predictedPrice?.toString() ?: "Harga tidak tersedia"
+
+                        // Tampilkan semua harga prediksi dalam satu TextView
+                        predictedPriceTextView.text = "Harga Prediksi (Harian): $dayPrice\n" +
+                                "Harga Prediksi (Bulanan): $monthPrice\n" +
+                                "Harga Prediksi (Tahunan): $yearPrice"
 
                         // Tampilkan data dalam grafik
-                        displayGraph(data)
+                        displayGraph(dayData, monthData, yearData)
                     } else {
                         predictionDateTextView.text = "Data tidak tersedia"
                         predictedPriceTextView.text = ""
@@ -71,42 +88,42 @@ class AcesSaham : AppCompatActivity() {
                 }
             }
 
+
             override fun onFailure(call: Call<SahamAcesResponse>, t: Throwable) {
                 predictionDateTextView.text = "Terjadi kesalahan: ${t.message}"
             }
         })
     }
 
-    private fun displayGraph(data: JsonMember1DayPredictionDate) {
-        // Safely convert predictedPrice to Float
-        val predictedPrice = when (val price = data.predictedPrice) {
-            is Number -> price.toFloat() // Convert if it's a Number
-            is String -> price.toFloatOrNull() ?: 0f // Convert if it's a String, fallback to 0f
-            else -> 0f // Fallback if it's neither
-        }
-
-        // Use a list with explicit Float values
-        val predictedPrices = listOf(
-            100f,  // Dummy data
-            110f,  // Dummy data
-            105f,  // Dummy data
-            120f,  // Dummy data
-            predictedPrice // Use the safely converted predicted price
-        )
+    private fun displayGraph(dayData: JsonMember1DayPredictionDate?, monthData: JsonMember1MonthPredictionDate?, yearData: JsonMember1YearPredictionDate?) {
         val entries = mutableListOf<Entry>()
 
-        predictedPrices.forEachIndexed { index, price ->
-            entries.add(Entry(index.toFloat(), price))
+        // Tambahkan data untuk 1 hari
+        dayData?.let {
+            val price = it.predictedPrice.toString().toFloatOrNull() ?: 0f
+            entries.add(Entry(0f, price)) // Menggunakan index 0 untuk data harian
         }
 
+        // Tambahkan data untuk 1 bulan
+        monthData?.let {
+            val price = it.predictedPrice.toString().toFloatOrNull() ?: 0f
+            entries.add(Entry(1f, price)) // Menggunakan index 1 untuk data bulanan
+        }
+
+        // Tambahkan data untuk 1 tahun
+        yearData?.let {
+            val price = it.predictedPrice.toString().toFloatOrNull() ?: 0f
+            entries.add(Entry(2f, price)) // Menggunakan index 2 untuk data tahunan
+        }
+
+        // Buat dataset untuk grafik
         val lineDataSet = LineDataSet(entries, "Predicted Prices")
         lineDataSet.color = resources.getColor(R.color.teal_700, theme)
         lineDataSet.valueTextSize = 12f
 
+        // Buat LineData dan set ke chart
         val lineData = LineData(lineDataSet)
         lineChart.data = lineData
         lineChart.invalidate() // Refresh grafik
     }
-
-
 }
