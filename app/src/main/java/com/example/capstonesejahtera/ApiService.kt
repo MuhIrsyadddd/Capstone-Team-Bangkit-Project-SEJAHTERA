@@ -9,11 +9,11 @@ interface ApiService {
     @GET("api/news/business")
     fun getBusinessNews(): Call<NewsResponse>
 
-    @GET("predict/stock/ACES")
-    fun getAcesStockData(): Call<SahamResponse>
-
     @POST("predict/gold")
     fun predictGold(@Body request: PredictionRequest): Call<EmasResponse>
+
+    @GET("predict/stock/ACES")
+    fun getAcesStockData(): Call<SahamResponse>
 
     @GET("predict/stock/ADRO")
     fun getAdroStockData(): Call<SahamResponse>
@@ -27,11 +27,23 @@ interface ApiService {
     @GET("predict/stock/AMRT")
     fun getAmrtStockData(): Call<SahamResponse>
 
+    @GET("predict/stock/ANTM")
+    fun getAntmStockData(): Call<SahamResponse>
+
     @GET("predict/stock/ARTO")
     fun getArtoStockData(): Call<SahamResponse>
 
+    @GET("predict/stock/ASII")
+    fun getAsiiStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/BBCA")
+    fun getBbcaStockData(): Call<SahamResponse>
+
     @GET("predict/stock/BBNI")
     fun getBbniStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/BBRI")
+    fun getBbriStockData(): Call<SahamResponse>
 
     @GET("predict/stock/BBTN")
     fun getBbtnStockData(): Call<SahamResponse>
@@ -63,6 +75,9 @@ interface ApiService {
     @GET("predict/stock/GGRM")
     fun getGgrmStockData(): Call<SahamResponse>
 
+    @GET("predict/stock/GOTO")
+    fun getGotoStockData(): Call<SahamResponse>
+
     @GET("predict/stock/HRUM")
     fun getHrumStockData(): Call<SahamResponse>
 
@@ -75,6 +90,9 @@ interface ApiService {
     @GET("predict/stock/INDF")
     fun getIndfStockData(): Call<SahamResponse>
 
+    @GET("predict/stock/INDY")
+    fun getIndyStockData(): Call<SahamResponse>
+
     @GET("predict/stock/INKP")
     fun getInkpStockData(): Call<SahamResponse>
 
@@ -83,75 +101,6 @@ interface ApiService {
 
     @GET("predict/stock/ISAT")
     fun getIsatStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/ITMG")
-    fun getItmgStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/JPFA")
-    fun getJpfaStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/JSMR")
-    fun getJsmrStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/KLBF")
-    fun getKlbfStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/MAPI")
-    fun getMapiStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/MBMA")
-    fun getMbmaStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/MDKA")
-    fun getMdkaStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/MEDC")
-    fun getMedcStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/MTEL")
-    fun getMtelStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/PGAS")
-    fun getPgasStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/PGEO")
-    fun getPgeoStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/PTBA")
-    fun getPtbaStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/PTMP")
-    fun getPtmpStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/SCMA")
-    fun getScmaStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/SIDO")
-    fun getSidoStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/SMGR")
-    fun getSmgrStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/SRTG")
-    fun getSrtgStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/TBIG")
-    fun getTbigStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/TINS")
-    fun getTinsStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/TOWR")
-    fun getTowrStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/TPIA")
-    fun getTpiaStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/UNTR")
-    fun getUntrStockData(): Call<SahamResponse>
-
-    @GET("predict/stock/UNVR")
-    fun getUnvrStockData(): Call<SahamResponse>
 
 }
 
