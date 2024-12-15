@@ -72,6 +72,87 @@ interface ApiService {
     @GET("predict/stock/INCO")
     fun getIncoStockData(): Call<SahamResponse>
 
+    @GET("predict/stock/INDF")
+    fun getIndfStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/INKP")
+    fun getInkpStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/INTP")
+    fun getIntpStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/ISAT")
+    fun getIsatStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/ITMG")
+    fun getItmgStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/JPFA")
+    fun getJpfaStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/JSMR")
+    fun getJsmrStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/KLBF")
+    fun getKlbfStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/MAPI")
+    fun getMapiStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/MBMA")
+    fun getMbmaStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/MDKA")
+    fun getMdkaStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/MEDC")
+    fun getMedcStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/MTEL")
+    fun getMtelStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/PGAS")
+    fun getPgasStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/PGEO")
+    fun getPgeoStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/PTBA")
+    fun getPtbaStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/PTMP")
+    fun getPtmpStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/SCMA")
+    fun getScmaStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/SIDO")
+    fun getSidoStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/SMGR")
+    fun getSmgrStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/SRTG")
+    fun getSrtgStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/TBIG")
+    fun getTbigStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/TINS")
+    fun getTinsStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/TOWR")
+    fun getTowrStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/TPIA)
+        fun getTpiaStockData(): Call<SahamResponse>
+
+        @GET("predict/stock/UNTR")
+        fun getUntrStockData(): Call<SahamResponse>
+
+        @GET("predict/stock/UNVR")
+        fun getUnvrStockData(): Call<SahamResponse>
+
 }
 
 data class PredictionRequest(
