@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NamaSaham.AcesSaham">
+    tools:context=".namasaham.UnvrSaham">
 
     <TextView
         android:id="@+id/prediction_date"
@@ -38,6 +38,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingClass" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
