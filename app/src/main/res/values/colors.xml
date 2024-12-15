@@ -6,7 +6,6 @@
     <color name="button_green">#00FF00</color>
     <color name="teal_700">#008080</color> <!-- Atau warna lain yang Anda inginkan -->
     <color name="purple_200">#BB86FC</color>
-
-
-
+    <color name="red">#FF0000</color>
+    <color name="blue">#0000FF</color>
 </resources>
