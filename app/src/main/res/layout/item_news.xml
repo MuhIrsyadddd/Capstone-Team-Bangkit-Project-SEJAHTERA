@@ -8,16 +8,16 @@
     <ImageView
         android:id="@+id/news_image"
         android:layout_width="380dp"
-        android:layout_height="50dp"
+        android:layout_height="134dp"
         android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/news_title"
-        android:layout_width="150dp"
+        android:layout_width="374dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="8dp" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/news_description"
