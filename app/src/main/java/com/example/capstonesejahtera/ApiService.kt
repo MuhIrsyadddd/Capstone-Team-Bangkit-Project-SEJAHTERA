@@ -48,6 +48,29 @@ interface ApiService {
     @GET("predict/stock/BUKA")
     fun getBukaStockData(): Call<SahamResponse>
 
+    @GET("predict/stock/CPIN")
+    fun getCpinStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/EMTK")
+    fun getEmtkStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/ESSA")
+    fun getEssaStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/EXCL")
+    fun getExclStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/GGRM")
+    fun getGgrmStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/HRUM")
+    fun getHrumStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/ICBP")
+    fun getIcbpStockData(): Call<SahamResponse>
+
+    @GET("predict/stock/INCO")
+    fun getIncoStockData(): Call<SahamResponse>
 
 }
 
