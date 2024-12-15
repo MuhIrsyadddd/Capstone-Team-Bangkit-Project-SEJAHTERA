@@ -2,7 +2,7 @@ package com.example.capstonesejahtera
 
 import com.google.gson.annotations.SerializedName
 
-data class SahamAcesResponse(
+data class SahamResponse(
 
 	@field:SerializedName("1_year_prediction_date")
 	val jsonMember1YearPredictionDate: JsonMember1YearPredictionDate? = null,

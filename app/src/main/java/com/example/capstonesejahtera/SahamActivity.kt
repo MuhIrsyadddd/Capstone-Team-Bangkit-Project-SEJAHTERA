@@ -9,6 +9,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.capstonesejahtera.namasaham.AcesSaham
+import com.example.capstonesejahtera.namasaham.AdroSaham
+import com.example.capstonesejahtera.namasaham.AkraSaham
+import com.example.capstonesejahtera.namasaham.AmmnSaham
+import com.example.capstonesejahtera.namasaham.AmrtSaham
+import com.example.capstonesejahtera.namasaham.ArtoSaham
+import com.example.capstonesejahtera.namasaham.BbniSaham
+import com.example.capstonesejahtera.namasaham.BbtnSaham
+import com.example.capstonesejahtera.namasaham.BmriSaham
+import com.example.capstonesejahtera.namasaham.BrisSaham
+import com.example.capstonesejahtera.namasaham.BrptSaham
+import com.example.capstonesejahtera.namasaham.BukaSaham
+import com.example.capstonesejahtera.namasaham.CpinSaham
 
 class SahamActivity : AppCompatActivity() {
     @SuppressLint("MissingInflatedId")
@@ -33,74 +45,74 @@ class SahamActivity : AppCompatActivity() {
 
         val textAdro = findViewById<TextView>(R.id.text_adro)
         textAdro.setOnClickListener {
-            val intent = Intent(this, AcesSaham::class.java)
+            val intent = Intent(this, AdroSaham::class.java)
             startActivity(intent)
         }
 
 
         val textAkra = findViewById<TextView>(R.id.text_akra)
         textAkra.setOnClickListener {
-            val intent = Intent(this, AcesSaham::class.java)
+            val intent = Intent(this, AkraSaham::class.java)
             startActivity(intent)
         }
 
         val textAmmn = findViewById<TextView>(R.id.text_ammn)
         textAmmn.setOnClickListener {
-            val intent = Intent(this, AcesSaham::class.java)
+            val intent = Intent(this, AmmnSaham::class.java)
             startActivity(intent)
         }
 
         val textAmrt = findViewById<TextView>(R.id.text_amrt)
         textAmrt.setOnClickListener {
-            val intent = Intent(this, AcesSaham::class.java)
+            val intent = Intent(this, AmrtSaham::class.java)
             startActivity(intent)
         }
 
         val textArto = findViewById<TextView>(R.id.text_arto)
         textArto.setOnClickListener {
-            val intent = Intent(this, AcesSaham::class.java)
+            val intent = Intent(this, ArtoSaham::class.java)
             startActivity(intent)
         }
 
         val textBbni = findViewById<TextView>(R.id.text_bbni)
         textBbni.setOnClickListener {
-            val intent = Intent(this, AcesSaham::class.java)
+            val intent = Intent(this, BbniSaham::class.java)
             startActivity(intent)
         }
 
-        val textBbtk = findViewById<TextView>(R.id.text_bbtn)
-        textBbtk.setOnClickListener {
-            val intent = Intent(this, AcesSaham::class.java)
+        val textBbtn = findViewById<TextView>(R.id.text_bbtn)
+        textBbtn.setOnClickListener {
+            val intent = Intent(this, BbtnSaham::class.java)
             startActivity(intent)
         }
 
         val textBmri = findViewById<TextView>(R.id.text_bmri)
         textBmri.setOnClickListener {
-            val intent = Intent(this, AcesSaham::class.java)
+            val intent = Intent(this, BmriSaham::class.java)
             startActivity(intent)
         }
 
         val textBris = findViewById<TextView>(R.id.text_bris)
         textBris.setOnClickListener {
-            val intent = Intent(this, AcesSaham::class.java)
+            val intent = Intent(this, BrisSaham::class.java)
             startActivity(intent)
         }
 
         val textBrpt = findViewById<TextView>(R.id.text_brpt)
         textBrpt.setOnClickListener {
-            val intent = Intent(this, AcesSaham::class.java)
+            val intent = Intent(this, BrptSaham::class.java)
             startActivity(intent)
         }
 
         val textBuka = findViewById<TextView>(R.id.text_buka)
         textBuka.setOnClickListener {
-            val intent = Intent(this, AcesSaham::class.java)
+            val intent = Intent(this, BukaSaham::class.java)
             startActivity(intent)
         }
 
         val textCpin = findViewById<TextView>(R.id.text_cpin)
         textCpin.setOnClickListener {
-            val intent = Intent(this, AcesSaham::class.java)
+            val intent = Intent(this, CpinSaham::class.java)
             startActivity(intent)
         }
 

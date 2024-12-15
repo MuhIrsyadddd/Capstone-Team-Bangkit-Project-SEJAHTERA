@@ -11,7 +11,7 @@ import com.example.capstonesejahtera.JsonMember1DayPredictionDate
 import com.example.capstonesejahtera.JsonMember1MonthPredictionDate
 import com.example.capstonesejahtera.JsonMember1YearPredictionDate
 import com.example.capstonesejahtera.R
-import com.example.capstonesejahtera.SahamAcesResponse
+import com.example.capstonesejahtera.SahamResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -57,8 +57,8 @@ class AcesSaham : AppCompatActivity() {
         val apiService = retrofit.create(ApiService::class.java)
         val call = apiService.getAcesStockData()
 
-        call.enqueue(object : Callback<SahamAcesResponse> {
-            override fun onResponse(call: Call<SahamAcesResponse>, response: Response<SahamAcesResponse>) {
+        call.enqueue(object : Callback<SahamResponse> {
+            override fun onResponse(call: Call<SahamResponse>, response: Response<SahamResponse>) {
                 if (response.isSuccessful) {
                     val data = response.body()
                     if (data != null) {
@@ -92,7 +92,7 @@ class AcesSaham : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<SahamAcesResponse>, t: Throwable) {
+            override fun onFailure(call: Call<SahamResponse>, t: Throwable) {
                 predictionDateTextView.text = "Terjadi kesalahan: ${t.message}"
             }
         })

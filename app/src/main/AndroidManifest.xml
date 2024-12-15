@@ -70,7 +70,7 @@
             android:name=".namasaham.AkraSaham"
             android:exported="false" />
         <activity
-            android:name=".namasaham.AndroSaham"
+            android:name=".namasaham.AdroSaham"
             android:exported="false" />
         <activity
             android:name=".SahamActivity"
