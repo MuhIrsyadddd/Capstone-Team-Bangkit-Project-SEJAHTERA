@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Sejahtera</string>
+    <string name="default_web_client_id">401857591480-fndld1aeg7g09apo124be38lq4ji7fno.apps.googleusercontent.com</string>
+    <string name="title_home">Home</string>
+    <string name="title_keuangan">Keuangan</string>
+    <string name="title_investasi">Investasi</string>
+    <string name="title_profile">Profile</string>
+    <string name="news_image">GambarNews\n</string>
+</resources>

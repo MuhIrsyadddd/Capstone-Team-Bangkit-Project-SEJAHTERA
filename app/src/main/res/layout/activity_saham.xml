@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sahamhal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/container_android_compact">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_marginTop="45.5dp"
+            android:layout_marginBottom="-0.5dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="left|center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Investasi"
+            android:textColor="#FF000000"
+            android:textSize="20dp" />
+
+
+
+        <ImageView
+            android:layout_width="412dp"
+            android:layout_height="5dp"
+            android:layout_marginTop="7dp"
+            android:layout_gravity="top|left"
+            android:background="@drawable/drawable_shape_1"
+            android:scaleType="centerInside" />
+
+        <TextView
+            android:id="@+id/text_trending_saham"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Trending Saham"
+            android:textColor="#FF000000"
+            android:textSize="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp">
+
+            <!-- List of stocks -->
+
+            <TextView
+                android:id="@+id/text_aces"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="1. ACES"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_adro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="2. ADRO"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_akra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="3. AKRA"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <!-- Add additional stocks dynamically -->
+
+            <TextView
+                android:id="@+id/text_ammn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="4. AMMN"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_amrt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="5. AMRT"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_antm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="6. ANTM"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_arto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="7. ARTO"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_asii"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="8. ASII"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_bbca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="9. BBCA"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_bbni"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="10. BBNI"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_bbri"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="11. BBRI"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_bbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="12. BBTN"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_bmri"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="13. BMRI"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <!-- Add additional stocks dynamically -->
+
+            <TextView
+                android:id="@+id/text_bris"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="14. BRIS"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_brpt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="15. BRPT"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_buka"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="16. BUKA"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+
+            <TextView
+                android:id="@+id/text_cpin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="17. CPIN"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_emtk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="18. EMTK"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_essa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="19. ESSA"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_excl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="20. EXCL"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_ggrm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="21. GGRM"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_goto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="22. GOTO"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_hrum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="23. HRUM"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_icbp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="24. ICBP"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+
+            <TextView
+                android:id="@+id/text_inco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="25. INCO"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_indf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="26. INDF"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_indy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="27. INDY"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_inkp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="28. INKP"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_intp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="29. INTP"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/text_isat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:padding="8dp"
+                android:text="30. ISAT"
+                android:textColor="#FF00AB6B"
+                android:textSize="14dp" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

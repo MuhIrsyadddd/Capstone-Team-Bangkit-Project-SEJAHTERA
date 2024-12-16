@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/resikosatu"
+    android:layout_width="match_parent"
+    android:layout_height="917dp"
+    android:background="@drawable/container_android_compact">
+
+    <ImageView
+        android:id="@+id/container_rectangle"
+        android:layout_width="333dp"
+        android:layout_height="292dp"
+        android:layout_marginLeft="0.5dp"
+        android:layout_marginTop="289dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/container_rectanglee"
+        android:scaleType="centerInside" />
+
+    <ImageView
+        android:id="@+id/image_rectangle1"
+        android:layout_width="287dp"
+        android:layout_height="37dp"
+        android:layout_marginLeft="0.5dp"
+        android:layout_marginTop="432dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/image_rectangle6"
+        android:scaleType="centerInside" />
+    <ImageView
+        android:id="@+id/bulet12"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginRight="124dp"
+        android:layout_marginTop="442dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/image_rectangle7"
+        android:scaleType="centerInside" />
+
+
+    <ImageView
+        android:id="@+id/bulet11"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginRight="124dp"
+        android:layout_marginTop="395dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/image_rectangle7"
+        android:scaleType="centerInside" />
+
+
+    <ImageView
+        android:id="@+id/bulet13"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginRight="124dp"
+        android:layout_marginTop="489dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/image_rectangle7"
+        android:scaleType="centerInside" />
+
+    <ImageView
+        android:id="@+id/image_rectangle5"
+        android:layout_width="287dp"
+        android:layout_height="37dp"
+        android:layout_marginLeft="0.5dp"
+        android:layout_marginTop="385dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/image_rectangle6"
+        android:scaleType="centerInside" />
+
+
+
+    <ImageView
+        android:id="@+id/image_rectangle6"
+        android:layout_width="287dp"
+        android:layout_height="37dp"
+        android:layout_marginLeft="0.5dp"
+        android:layout_marginTop="479dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/image_rectangle6"
+        android:scaleType="centerInside" />
+
+
+
+    <ImageView
+        android:id="@+id/bulet14"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginRight="124dp"
+        android:layout_marginTop="536dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/image_rectangle7"
+        android:scaleType="centerInside" />
+
+    <ImageView
+        android:id="@+id/image_rectangle8"
+        android:layout_width="287dp"
+        android:layout_height="37dp"
+        android:layout_marginLeft="0.5dp"
+        android:layout_marginTop="526dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/image_rectangle8"
+        android:scaleType="centerInside" />
+
+
+
+    <TextView
+        android:id="@+id/text_age_question"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginLeft="117dp"
+        android:layout_marginTop="318.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="center_horizontal|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Berapa usia Anda?"
+        android:textColor="#FF01AB6C"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/text_age_below"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginLeft="98dp"
+        android:layout_marginTop="394.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="center_horizontal|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="&lt;25 tahun"
+        android:textColor="#FF000000"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/text_age_35"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginLeft="98dp"
+        android:layout_marginTop="441.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="center_horizontal|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="25-35 tahun"
+        android:textColor="#FF000000"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/text_age_50"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginLeft="98dp"
+        android:layout_marginTop="488.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="center_horizontal|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="36-50 tahun"
+        android:textColor="#FF000000"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/text_age_above"
+        android:layout_width="wrap_content"
+        android:layout_height="17dp"
+        android:layout_marginLeft="98dp"
+        android:layout_marginTop="535.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="top|left"
+        android:gravity="center_horizontal|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="&gt;50 tahun"
+        android:textColor="#FF000000"
+        android:textSize="13dp" />
+
+    <ImageView
+        android:id="@+id/image_group"
+        android:layout_width="333dp"
+        android:layout_height="11dp"
+        android:layout_marginLeft="0.5dp"
+        android:layout_marginTop="262dp"
+        android:layout_gravity="top|center_horizontal"
+        android:scaleType="centerInside"
+        android:src="@drawable/image_group" />
+
+    <ImageView
+        android:id="@+id/selanjutnyadua"
+        android:layout_width="49.98dp"
+        android:layout_height="31.57dp"
+        android:layout_marginRight="39dp"
+        android:layout_marginBottom="220.43dp"
+        android:layout_gravity="bottom|right"
+        android:scaleType="centerInside"
+        android:src="@drawable/image_group1" />
+</FrameLayout>

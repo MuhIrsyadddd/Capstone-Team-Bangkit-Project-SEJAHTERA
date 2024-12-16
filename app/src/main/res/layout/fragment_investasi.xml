@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_android_compact"
+    android:layout_width="match_parent"
+    android:layout_height="917dp"
+    android:background="@drawable/container_android_compact">
+
+
+
+    <TextView
+        android:id="@+id/text_investasi"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginLeft="10.5dp"
+        android:layout_marginTop="46.5dp"
+        android:layout_marginBottom="-0.5dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Investasi"
+        android:textColor="#FF000000"
+        android:textSize="20dp" />
+
+
+
+    <ImageView
+        android:layout_width="412dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="76dp"
+        android:layout_gravity="top|left"
+        android:background="@drawable/drawable_shape_1"
+        android:scaleType="centerInside" />
+
+    <ImageView
+        android:id="@+id/image_vector2"
+        android:layout_width="15dp"
+        android:layout_height="10dp"
+        android:layout_marginLeft="357dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="171dp"
+        android:layout_marginBottom="736dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/image_vector2i" />
+
+    <ImageView
+        android:id="@+id/image_rectangle1"
+        android:layout_width="352dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="103dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/image_rectangle1"
+        android:scaleType="centerInside" />
+
+    <ImageView
+        android:id="@+id/logo_emas"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="107dp"
+        android:src="@drawable/logoemas"
+        android:scaleType="centerInside" />
+
+    <TextView
+        android:id="@+id/text_emas_untukmu"
+        android:layout_width="188dp"
+        android:layout_height="21dp"
+        android:layout_marginLeft="129dp"
+        android:layout_marginTop="117dp"
+        android:layout_marginBottom="-1dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Emas Untukmu"
+        android:textColor="#FF000000"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/text_investasi_emas"
+        android:layout_width="185dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="129dp"
+        android:layout_marginTop="136dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|top"
+        android:includeFontPadding="false"
+        android:lineHeight="12.1dp"
+        android:text="Investasi emas untuk kamu, cara cerdas lindungi nilai dan wujudkan impian masa depan."
+        android:textColor="#FF6A9C89"
+        android:textSize="10dp" />
+
+    <ImageView
+        android:id="@+id/masukemas"
+        android:layout_width="10dp"
+        android:layout_height="15dp"
+        android:layout_marginLeft="347dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginTop="138dp"
+        android:layout_marginBottom="764dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/image_vector3i" />
+
+    <ImageView
+        android:id="@+id/image_rectangle2"
+        android:layout_width="352dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="195dp"
+        android:layout_gravity="top|center_horizontal"
+        android:background="@drawable/image_rectangle2"
+        android:scaleType="centerInside" />
+
+    <ImageView
+        android:id="@+id/image_logosaham"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="199dp"
+        android:src="@drawable/logosaham"
+        android:scaleType="centerInside" />
+
+
+    <TextView
+        android:id="@+id/text_saham_terbaik"
+        android:layout_width="188dp"
+        android:layout_height="21dp"
+        android:layout_marginLeft="129dp"
+        android:layout_marginTop="209dp"
+        android:layout_marginBottom="-1dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="Saham Terbaik"
+        android:textColor="#FF000000"
+        android:textSize="16dp" />
+
+    <TextView
+        android:id="@+id/text_investasi_saham"
+        android:layout_width="185dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="129dp"
+        android:layout_marginTop="228dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|top"
+        android:includeFontPadding="false"
+        android:lineHeight="12.1dp"
+        android:text="Investasi saham untuk kamu, peluang tumbuh bersama perusahaan dan capai tujuan finansial."
+        android:textColor="#FF6A9C89"
+        android:textSize="10dp" />
+
+    <ImageView
+        android:id="@+id/masuksaham"
+        android:layout_width="10dp"
+        android:layout_height="15dp"
+        android:layout_marginLeft="347dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginTop="230dp"
+        android:layout_marginBottom="672dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/image_vector4i" />
+</FrameLayout>

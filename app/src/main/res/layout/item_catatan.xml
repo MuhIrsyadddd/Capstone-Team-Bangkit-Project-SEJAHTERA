@@ -1,0 +1,33 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <ImageView
+    android:id="@+id/itemcatatan"
+    android:layout_width="52dp"
+    android:layout_height="52dp"
+    android:layout_gravity="top"
+    android:scaleType="centerCrop"
+    android:src="@drawable/drawable_image_6" />
+
+    <TextView
+        android:id="@+id/nama_catatan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:paddingStart="8dp"
+        android:text="Nama Catatan"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/nominal_pengeluaran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="Rp0"
+        android:textSize="16sp"/>
+</LinearLayout>
