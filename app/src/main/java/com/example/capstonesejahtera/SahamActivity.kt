@@ -96,14 +96,14 @@ class SahamActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val textTins = findViewById<TextView>(R.id.text_asii)
-        textTins.setOnClickListener {
+        val textAsii = findViewById<TextView>(R.id.text_asii)
+        textAsii.setOnClickListener {
             val intent = Intent(this, AsiiSaham::class.java)
             startActivity(intent)
         }
 
-        val textUntr = findViewById<TextView>(R.id.text_bbca)
-        textUntr.setOnClickListener {
+        val textBbca = findViewById<TextView>(R.id.text_bbca)
+        textBbca.setOnClickListener {
             val intent = Intent(this, BbcaSaham::class.java)
             startActivity(intent)
         }
@@ -114,8 +114,8 @@ class SahamActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val textTpia = findViewById<TextView>(R.id.text_bbri)
-        textTpia.setOnClickListener {
+        val textBbri = findViewById<TextView>(R.id.text_bbri)
+        textBbri.setOnClickListener {
             val intent = Intent(this, BbriSaham::class.java)
             startActivity(intent)
         }
@@ -204,8 +204,8 @@ class SahamActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val textTowr = findViewById<TextView>(R.id.text_indy)
-        textTowr.setOnClickListener {
+        val textIndy = findViewById<TextView>(R.id.text_indy)
+        textIndy.setOnClickListener {
             val intent = Intent(this, IndySaham::class.java)
             startActivity(intent)
         }
@@ -228,8 +228,8 @@ class SahamActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val textTbig = findViewById<TextView>(R.id.text_goto)
-        textTbig.setOnClickListener {
+        val textGoto = findViewById<TextView>(R.id.text_goto)
+        textGoto.setOnClickListener {
             val intent = Intent(this, GotoSaham::class.java)
             startActivity(intent)
         }

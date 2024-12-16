@@ -145,74 +145,24 @@
             android:name=".namasaham.IsatSaham"
             android:exported="true" />
         <activity
-            android:name=".namasaham.ItmgSaham"
+            android:name=".namasaham.AntmSaham"
             android:exported="true" />
         <activity
-            android:name=".namasaham.JpfaSaham"
+            android:name=".namasaham.AsiiSaham"
             android:exported="true" />
         <activity
-            android:name=".namasaham.JsmrSaham"
+            android:name=".namasaham.BbcaSaham"
             android:exported="true" />
         <activity
-            android:name=".namasaham.KlbfSaham"
+            android:name=".namasaham.BbriSaham"
             android:exported="true" />
         <activity
-            android:name=".namasaham.MapiSaham"
+            android:name=".namasaham.GotoSaham"
             android:exported="true" />
         <activity
-            android:name=".namasaham.MbmaSaham"
+            android:name=".namasaham.IndySaham"
             android:exported="true" />
-        <activity
-            android:name=".namasaham.MdkaSaham"
-            android:exported="true" />
-        <activity
-            android:name=".namasaham.MedcSaham"
-            android:exported="true" />
-        <activity
-            android:name=".namasaham.MtelSaham"
-            android:exported="true" />
-        <activity
-            android:name=".namasaham.PgasSaham"
-            android:exported="true" />
-        <activity
-            android:name=".namasaham.PgeoSaham"
-            android:exported="true" />
-        <activity
-            android:name=".namasaham.PtbaSaham"
-            android:exported="true" />
-        <activity
-            android:name=".namasaham.PtmpSaham"
-            android:exported="true" />
-        <activity
-            android:name=".namasaham.ScmaSaham"
-            android:exported="true" />
-        <activity
-            android:name=".namasaham.SidoSaham"
-            android:exported="true" />
-        <activity
-            android:name=".namasaham.SmgrSaham"
-            android:exported="true" />
-        <activity
-            android:name=".namasaham.SrtgSaham"
-            android:exported="true" />
-        <activity
-            android:name=".namasaham.TbigSaham"
-            android:exported="true" />
-        <activity
-            android:name=".namasaham.TinsSaham"
-            android:exported="true" />
-        <activity
-            android:name=".namasaham.TowrSaham"
-            android:exported="true" />
-        <activity
-            android:name=".namasaham.TpiaSaham"
-            android:exported="true" />
-        <activity
-            android:name=".namasaham.UntrSaham"
-            android:exported="true" />
-        <activity
-            android:name=".namasaham.UnvrSaham"
-            android:exported="true" />
+
 
 
         <activity
