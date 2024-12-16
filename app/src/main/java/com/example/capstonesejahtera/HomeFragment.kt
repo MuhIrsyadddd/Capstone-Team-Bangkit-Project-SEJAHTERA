@@ -37,6 +37,7 @@ class HomeFragment : Fragment() {
         greetingTextView = view.findViewById(R.id.greetingTextView)
         updateGreetingMessage()
 
+
         // Inisialisasi RecyclerView untuk berita
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
