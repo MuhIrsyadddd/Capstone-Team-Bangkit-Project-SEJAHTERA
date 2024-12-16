@@ -25,7 +25,7 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 
-class PgasSaham : AppCompatActivity() {
+class GotoSaham : AppCompatActivity() {
     private lateinit var predictionDateTextView: TextView
     private lateinit var predictedPriceTextView: TextView
     private lateinit var lineChart: LineChart
@@ -33,7 +33,7 @@ class PgasSaham : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_pgas_saham)
+        setContentView(R.layout.activity_goto_saham)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -45,17 +45,17 @@ class PgasSaham : AppCompatActivity() {
         predictedPriceTextView = findViewById(R.id.predicted_price)
         lineChart = findViewById(R.id.line_chart)
 
-        fetchPgasStockData()
+        fetchGotoStockData()
     }
 
-    private fun fetchPgasStockData() {
+    private fun fetchGotoStockData() {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://emasdansaham-810319962197.asia-southeast2.run.app/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val apiService = retrofit.create(ApiService::class.java)
-        val call = apiService.getPgasStockData()
+        val call = apiService.getGotoStockData()
 
         call.enqueue(object : Callback<SahamResponse> {
             override fun onResponse(call: Call<SahamResponse>, response: Response<SahamResponse>) {

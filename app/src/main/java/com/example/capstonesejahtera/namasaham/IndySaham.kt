@@ -25,7 +25,7 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 
-class MdkaSaham : AppCompatActivity() {
+class IndySaham : AppCompatActivity() {
     private lateinit var predictionDateTextView: TextView
     private lateinit var predictedPriceTextView: TextView
     private lateinit var lineChart: LineChart
@@ -33,7 +33,7 @@ class MdkaSaham : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_mdka_saham)
+        setContentView(R.layout.activity_indy_saham)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -45,17 +45,17 @@ class MdkaSaham : AppCompatActivity() {
         predictedPriceTextView = findViewById(R.id.predicted_price)
         lineChart = findViewById(R.id.line_chart)
 
-        fetchMdkaStockData()
+        fetchIndyStockData()
     }
 
-    private fun fetchMdkaStockData() {
+    private fun fetchIndyStockData() {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://emasdansaham-810319962197.asia-southeast2.run.app/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val apiService = retrofit.create(ApiService::class.java)
-        val call = apiService.getMdkaStockData()
+        val call = apiService.getIndyStockData()
 
         call.enqueue(object : Callback<SahamResponse> {
             override fun onResponse(call: Call<SahamResponse>, response: Response<SahamResponse>) {
