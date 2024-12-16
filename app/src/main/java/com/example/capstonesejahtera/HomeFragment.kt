@@ -1,5 +1,6 @@
 package com.example.capstonesejahtera
 
+import SummaryAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -59,7 +60,17 @@ class HomeFragment : Fragment() {
         // Inisialisasi RecyclerView untuk summary
         menuRecyclerView = view.findViewById(R.id.menuRecyclerView)
         menuRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        summaryAdapter = SummaryAdapter(summaryList)
+
+        // Buat SummaryAdapter dengan listener
+        summaryAdapter = SummaryAdapter(summaryList) { position ->
+            // Handle click berdasarkan posisi
+            when (position) {
+                0 -> startActivity(Intent(context, HalamanCatatanKhusus::class.java)) // Catatan
+                1 -> startActivity(Intent(context, HalamanTabunganKhusus::class.java)) // Tabungan
+                // Tambahkan lebih banyak case jika perlu
+            }
+        }
+
         menuRecyclerView.adapter = summaryAdapter
 
         // Inisialisasi RecyclerView untuk saham
@@ -87,10 +98,6 @@ class HomeFragment : Fragment() {
                 "7. ARTO" -> startActivity(Intent(context, ArtoSaham::class.java))
                 "8. ASII" -> startActivity(Intent(context, AsiiSaham::class.java))
                 "9. BBCA" -> startActivity(Intent(context, BbcaSaham::class.java))
-
-                else -> {
-                    // Default atau fallback
-                }
             }
         }
         stockRecyclerView.adapter = stockAdapter
@@ -101,6 +108,7 @@ class HomeFragment : Fragment() {
 
         return view
     }
+
 
     private fun updateGreetingMessage() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
