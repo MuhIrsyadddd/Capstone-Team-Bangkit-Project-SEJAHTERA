@@ -145,7 +145,7 @@
             android:name=".namasaham.IsatSaham"
             android:exported="true" />
         <activity
-            android:name=".namasaham.ItmgSaham"
+            android:name=".namasaham.AntmSaham"
             android:exported="true" />
         <activity
             android:name=".namasaham.JpfaSaham"
