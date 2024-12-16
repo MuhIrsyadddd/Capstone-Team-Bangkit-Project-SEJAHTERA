@@ -165,7 +165,6 @@
 
 
 
-
         <activity
             android:name=".EmasActivity"
             android:exported="true" />
