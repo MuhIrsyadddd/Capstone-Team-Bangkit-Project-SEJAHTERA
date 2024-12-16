@@ -163,10 +163,6 @@
             android:name=".namasaham.IndySaham"
             android:exported="true" />
 
-        <activity android:name=".HalamanCatatanKhusus"></activity>
-
-        <activity android:name=".HalamanTabunganKhusus"></activity>
-
 
 
 
