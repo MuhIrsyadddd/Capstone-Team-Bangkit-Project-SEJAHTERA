@@ -189,7 +189,7 @@
         android:id="@+id/text_email_naufal"
         android:layout_width="wrap_content"
         android:layout_height="14dp"
-        android:layout_marginLeft="150dp"
+        android:layout_marginLeft="200dp"
         android:layout_marginTop="183dp"
         android:layout_marginBottom="-1dp"
         android:layout_gravity="top|left"
@@ -207,7 +207,7 @@
         android:id="@+id/text_birthdate"
         android:layout_width="wrap_content"
         android:layout_height="14dp"
-        android:layout_marginLeft="220dp"
+        android:layout_marginLeft="290dp"
         android:layout_marginTop="230dp"
         android:layout_marginBottom="-1dp"
         android:layout_gravity="top|left"
@@ -223,7 +223,7 @@
         android:id="@+id/text_gender"
         android:layout_width="wrap_content"
         android:layout_height="14dp"
-        android:layout_marginLeft="230.99dp"
+        android:layout_marginLeft="310dp"
         android:layout_marginTop="290dp"
         android:layout_marginBottom="-1dp"
         android:layout_gravity="top|left"
@@ -296,14 +296,4 @@
         android:scaleType="centerInside"
         android:src="@drawable/img_vector2" />
 
-    <ImageView
-        android:id="@+id/img_vector3"
-        android:layout_width="15dp"
-        android:layout_height="17dp"
-        android:layout_marginLeft="367dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="116dp"
-        android:layout_marginBottom="784dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/img_vector3" />
 </FrameLayout>
