@@ -16,6 +16,8 @@ import com.example.capstonesejahtera.namasaham.AmmnSaham
 import com.example.capstonesejahtera.namasaham.AmrtSaham
 import com.example.capstonesejahtera.namasaham.AntmSaham
 import com.example.capstonesejahtera.namasaham.ArtoSaham
+import com.example.capstonesejahtera.namasaham.AsiiSaham
+import com.example.capstonesejahtera.namasaham.BbcaSaham
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import retrofit2.Call
@@ -70,7 +72,9 @@ class HomeFragment : Fragment() {
             StockItem("4. AMMN"),
             StockItem("5. AMRT"),
             StockItem("6. ANTM"),
-            StockItem("7. ARTO")
+            StockItem("7. ARTO"),
+            StockItem("8. ASII"),
+            StockItem("9. BBCA"),
         )
         stockAdapter = StockAdapter(stocks) { stockName ->
             when (stockName) {
@@ -81,6 +85,9 @@ class HomeFragment : Fragment() {
                 "5. AMRT" -> startActivity(Intent(context, AmrtSaham::class.java))
                 "6. ANTM" -> startActivity(Intent(context, AntmSaham::class.java))
                 "7. ARTO" -> startActivity(Intent(context, ArtoSaham::class.java))
+                "8. ASII" -> startActivity(Intent(context, AsiiSaham::class.java))
+                "9. BBCA" -> startActivity(Intent(context, BbcaSaham::class.java))
+
                 else -> {
                     // Default atau fallback
                 }

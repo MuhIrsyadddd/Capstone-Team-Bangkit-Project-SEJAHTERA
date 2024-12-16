@@ -73,14 +73,14 @@
             android:includeFontPadding="false"
             android:maxLines="1"
             android:singleLine="true"
-            android:text="Top Reksa Dana (Pasar Uang)"
+            android:text="Saham"
             android:textColor="#FF000000"
             android:textSize="16sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/stockRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="470dp"
+            android:layout_height="287dp"
             android:layout_marginTop="720dp"
             android:orientation="vertical" />
 
