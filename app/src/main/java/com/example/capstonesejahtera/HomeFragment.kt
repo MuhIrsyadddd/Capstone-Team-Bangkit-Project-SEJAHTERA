@@ -1,5 +1,6 @@
 package com.example.capstonesejahtera
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.capstonesejahtera.namasaham.AcesSaham
+import com.example.capstonesejahtera.namasaham.AdroSaham
+import com.example.capstonesejahtera.namasaham.AkraSaham
+import com.example.capstonesejahtera.namasaham.AmmnSaham
+import com.example.capstonesejahtera.namasaham.AmrtSaham
+import com.example.capstonesejahtera.namasaham.AntmSaham
+import com.example.capstonesejahtera.namasaham.ArtoSaham
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import retrofit2.Call
@@ -27,6 +35,9 @@ class HomeFragment : Fragment() {
     private lateinit var summaryAdapter: SummaryAdapter
     private var summaryList: MutableList<SummaryItem> = mutableListOf()
 
+    private lateinit var stockRecyclerView: RecyclerView
+    private lateinit var stockAdapter: StockAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,7 +47,6 @@ class HomeFragment : Fragment() {
         // Inisialisasi greetingTextView
         greetingTextView = view.findViewById(R.id.greetingTextView)
         updateGreetingMessage()
-
 
         // Inisialisasi RecyclerView untuk berita
         recyclerView = view.findViewById(R.id.recyclerView)
@@ -49,6 +59,34 @@ class HomeFragment : Fragment() {
         menuRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         summaryAdapter = SummaryAdapter(summaryList)
         menuRecyclerView.adapter = summaryAdapter
+
+        // Inisialisasi RecyclerView untuk saham
+        stockRecyclerView = view.findViewById(R.id.stockRecyclerView)
+        stockRecyclerView.layoutManager = LinearLayoutManager(context)
+        val stocks = listOf(
+            StockItem("1. ACES"),
+            StockItem("2. ADRO"),
+            StockItem("3. AKRA"),
+            StockItem("4. AMMN"),
+            StockItem("5. AMRT"),
+            StockItem("6. ANTM"),
+            StockItem("7. ARTO")
+        )
+        stockAdapter = StockAdapter(stocks) { stockName ->
+            when (stockName) {
+                "1. ACES" -> startActivity(Intent(context, AcesSaham::class.java))
+                "2. ADRO" -> startActivity(Intent(context, AdroSaham::class.java))
+                "3. AKRA" -> startActivity(Intent(context, AkraSaham::class.java))
+                "4. AMMN" -> startActivity(Intent(context, AmmnSaham::class.java))
+                "5. AMRT" -> startActivity(Intent(context, AmrtSaham::class.java))
+                "6. ANTM" -> startActivity(Intent(context, AntmSaham::class.java))
+                "7. ARTO" -> startActivity(Intent(context, ArtoSaham::class.java))
+                else -> {
+                    // Default atau fallback
+                }
+            }
+        }
+        stockRecyclerView.adapter = stockAdapter
 
         // Panggil fungsi untuk mendapatkan data
         fetchNews()
@@ -81,7 +119,6 @@ class HomeFragment : Fragment() {
                 greetingTextView.text = "Halo, Pengguna!"
             }
     }
-
 
     private fun fetchNews() {
         val retrofit = Retrofit.Builder()
