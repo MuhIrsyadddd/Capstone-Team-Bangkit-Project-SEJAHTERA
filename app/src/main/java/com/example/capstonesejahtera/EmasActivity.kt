@@ -8,6 +8,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -22,16 +27,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.concurrent.TimeUnit
 import java.text.NumberFormat
 import java.util.Locale
+import java.util.concurrent.TimeUnit
 
 class EmasActivity : AppCompatActivity() {
 
     private lateinit var firestore: FirebaseFirestore
     private lateinit var totalTextView: TextView
     private lateinit var totalCatatanTextView: TextView
-    private lateinit var predictedPricesTextView: TextView
+    private lateinit var lineChart: LineChart
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +47,7 @@ class EmasActivity : AppCompatActivity() {
         firestore = Firebase.firestore
         totalTextView = findViewById(R.id.tabungantotalemas)
         totalCatatanTextView = findViewById(R.id.totalcatetanemas)
-        predictedPricesTextView = findViewById(R.id.predictedPricesTextView)
+        lineChart = findViewById(R.id.lineChart)
 
         fetchTabunganData()
 
@@ -160,11 +165,46 @@ class EmasActivity : AppCompatActivity() {
     }
 
     private fun displayPredictedPrices(predictedPrices: List<Any?>?) {
-        predictedPricesTextView.text = predictedPrices?.joinToString(", ") ?: "Tidak ada data"
+        if (predictedPrices == null || predictedPrices.isEmpty()) {
+            lineChart.clear()
+            lineChart.invalidate()
+            return
+        }
+
+        // Urutkan nilai prediksi berdasarkan harga (opsional, jika diperlukan)
+        val sortedPrices = predictedPrices.mapNotNull { it as? Double }.sorted()
+
+        // Konversi nilai prediksi menjadi entri untuk grafik
+        val entries = sortedPrices.mapIndexed { index, price ->
+            Entry(index.toFloat(), price.toFloat()) // Indeks bertambah ke kanan
+        }
+
+        val lineDataSet = LineDataSet(entries, "Predicted Prices").apply {
+            color = android.graphics.Color.GREEN // Warna garis
+            valueTextSize = 12f // Ukuran teks nilai
+            lineWidth = 2f // Ketebalan garis
+            setDrawCircles(true) // Mengaktifkan titik pada garis
+            setDrawFilled(true) // Mengaktifkan area yang terisi di bawah garis
+            fillDrawable = resources.getDrawable(R.drawable.gradient_fill, null) // Drawable gradasi
+        }
+
+        val lineData = LineData(lineDataSet)
+        lineChart.data = lineData
+
+        lineChart.apply {
+            description.text = "Prediksi Harga Emas"
+            xAxis.position = XAxis.XAxisPosition.BOTTOM
+            xAxis.granularity = 1f // Jarak antar nilai X
+            xAxis.setDrawGridLines(false) // Hilangkan garis grid vertikal
+            axisRight.isEnabled = false
+            axisLeft.valueFormatter = CurrencyValueFormatter() // Set formatter untuk sumbu Y
+            animateX(1000)
+            invalidate()
+        }
     }
 
+
     private fun showErrorMessage(message: String) {
-        // Tampilkan pesan error di UI (misalnya Toast atau Snackbar)
         Log.e("EmasActivity", message)
     }
 }
