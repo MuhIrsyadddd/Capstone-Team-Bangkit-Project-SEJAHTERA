@@ -1,9 +1,14 @@
 package com.example.capstonesejahtera
 
+import android.animation.ObjectAnimator
+import android.animation.AnimatorSet
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -33,8 +38,10 @@ class MainActivity : AppCompatActivity() {
 
         val emailEditText: EditText = findViewById(R.id.edit_email)
         val passwordEditText: EditText = findViewById(R.id.edit_password)
-
         val signInTextView: TextView = findViewById(R.id.button_sign_in)
+        val signUpTextView: TextView = findViewById(R.id.text_sign_up_prompt)
+        val googleSignInButton: TextView = findViewById(R.id.text_google_login)
+
         signInTextView.setOnClickListener {
             val email = emailEditText.text.toString().trim()
             val password = passwordEditText.text.toString().trim()
@@ -44,7 +51,6 @@ class MainActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Proses login menggunakan Firebase Authentication
             mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
@@ -56,22 +62,86 @@ class MainActivity : AppCompatActivity() {
                 }
         }
 
-        val signUpTextView: TextView = findViewById(R.id.text_sign_up_prompt)
         signUpTextView.setOnClickListener {
             val intent = Intent(this, Registrasi::class.java)
             startActivity(intent)
         }
 
-        val googleSignInButton: TextView = findViewById(R.id.text_google_login)
         googleSignInButton.setOnClickListener {
             signInWithGoogle()
+        }
+
+        // Animasi
+        setupAnimations()
+    }
+
+    private fun setupAnimations() {
+        val logoImageView: ImageView = findViewById(R.id.logoImageView)
+        val textLoginAccount: TextView = findViewById(R.id.text_login_account)
+        val editEmail: EditText = findViewById(R.id.edit_email)
+        val editPassword: EditText = findViewById(R.id.edit_password)
+        val buttonSignIn: Button = findViewById(R.id.button_sign_in)
+        val textSignUpPrompt: TextView = findViewById(R.id.text_sign_up_prompt)
+        val textOrSignUp: TextView = findViewById(R.id.text_or_sign_up)
+        val textGoogleLogin: TextView = findViewById(R.id.text_google_login)
+
+        val logoAnimator = ObjectAnimator.ofFloat(logoImageView, "translationY", -200f, 0f).apply {
+            duration = 1000
+            interpolator = AccelerateDecelerateInterpolator()
+        }
+
+        val textAnimator = ObjectAnimator.ofFloat(textLoginAccount, "alpha", 0f, 1f).apply {
+            duration = 1000
+            startDelay = 300
+        }
+
+        val emailAnimator = ObjectAnimator.ofFloat(editEmail, "translationX", -500f, 0f).apply {
+            duration = 1000
+            startDelay = 400
+        }
+
+        val passwordAnimator = ObjectAnimator.ofFloat(editPassword, "translationX", -500f, 0f).apply {
+            duration = 1000
+            startDelay = 500
+        }
+
+        val buttonAnimator = ObjectAnimator.ofFloat(buttonSignIn, "scaleX", 0.5f, 1f).apply {
+            duration = 1000
+            startDelay = 600
+        }
+
+        val signUpPromptAnimator = ObjectAnimator.ofFloat(textSignUpPrompt, "alpha", 0f, 1f).apply {
+            duration = 1000
+            startDelay = 700
+        }
+
+        val orSignUpAnimator = ObjectAnimator.ofFloat(textOrSignUp, "alpha", 0f, 1f).apply {
+            duration = 1000
+            startDelay = 800
+        }
+
+        val googleLoginAnimator = ObjectAnimator.ofFloat(textGoogleLogin, "alpha", 0f, 1f).apply {
+            duration = 1000
+            startDelay = 900
+        }
+
+        AnimatorSet().apply {
+            playTogether(
+                logoAnimator,
+                textAnimator,
+                emailAnimator,
+                passwordAnimator,
+                buttonAnimator,
+                signUpPromptAnimator,
+                orSignUpAnimator,
+                googleLoginAnimator
+            )
+            start()
         }
     }
 
     private fun saveLoginStatus() {
-        sharedPreferences.edit()
-            .putBoolean("isLoggedIn", true)
-            .apply()
+        sharedPreferences.edit().putBoolean("isLoggedIn", true).apply()
     }
 
     private fun signInWithGoogle() {
@@ -100,8 +170,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun firebaseAuthWithGoogle(account: GoogleSignInAccount?) {
-        if (account != null) {
-            val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+        account?.let {
+            val credential = GoogleAuthProvider.getCredential(it.idToken, null)
             mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
@@ -116,27 +186,28 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkUserStatus() {
         val user = mAuth.currentUser
-        if (user != null) {
-            val userRef = db.collection("users").document(user.uid)
-            userRef.get().addOnSuccessListener { document ->
-                if (!document.exists()) {
-                    val intent = Intent(this, DataProfile::class.java)
-                    startActivity(intent)
-
-                    val userData = hashMapOf(
-                        "isFirstLogin" to false,
-                        "email" to user.email,
-                        "displayName" to user.displayName
-                    )
-                    userRef.set(userData)
-                } else {
-                    val intent = Intent(this, DashboardActivity::class.java)
-                    startActivity(intent)
+        user?.let {
+            val userRef = db.collection("users").document(it.uid)
+            userRef.get()
+                .addOnSuccessListener { document ->
+                    if (!document.exists()) {
+                        val intent = Intent(this, DataProfile::class.java)
+                        startActivity(intent)
+                        val userData = hashMapOf(
+                            "isFirstLogin" to false,
+                            "email" to it.email,
+                            "displayName" to it.displayName
+                        )
+                        userRef.set(userData)
+                    } else {
+                        val intent = Intent(this, DashboardActivity::class.java)
+                        startActivity(intent)
+                    }
+                    finish()
                 }
-                finish()
-            }.addOnFailureListener {
-                Toast.makeText(this, "Gagal memeriksa status pengguna.", Toast.LENGTH_SHORT).show()
-            }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Gagal memeriksa status pengguna.", Toast.LENGTH_SHORT).show()
+                }
         }
     }
 }

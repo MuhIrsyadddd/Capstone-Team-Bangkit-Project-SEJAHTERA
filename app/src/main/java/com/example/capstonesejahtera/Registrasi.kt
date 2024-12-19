@@ -1,5 +1,7 @@
 package com.example.capstonesejahtera
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.util.Patterns
 import android.view.View
@@ -19,6 +21,9 @@ class Registrasi : AppCompatActivity() {
 
         // Inisialisasi Firebase Authentication
         auth = FirebaseAuth.getInstance()
+
+        // Jalankan animasi
+        playAnimation()
 
         binding.buttonSignUp.setOnClickListener {
             val email = binding.editTextEmail.text.toString().trim()
@@ -74,5 +79,31 @@ class Registrasi : AppCompatActivity() {
                     }
                 }
         }
+    }
+
+    private fun playAnimation() {
+        // Animasi untuk masing-masing elemen
+        val logoAnimation = ObjectAnimator.ofFloat(binding.logoImageView, View.ALPHA, 0f, 1f).setDuration(1000)
+        val titleAnimation = ObjectAnimator.ofFloat(binding.textCreateAccount, View.ALPHA, 0f, 1f).setDuration(1000)
+
+        val emailAnimation = ObjectAnimator.ofFloat(binding.editTextEmail, View.TRANSLATION_X, -500f, 0f).setDuration(1000)
+        val passwordAnimation = ObjectAnimator.ofFloat(binding.editTextPassword, View.TRANSLATION_X, -500f, 0f).setDuration(1000)
+        val confirmPasswordAnimation = ObjectAnimator.ofFloat(binding.editTextConfirmPassword, View.TRANSLATION_X, -500f, 0f).setDuration(1000)
+
+        val buttonAnimation = ObjectAnimator.ofFloat(binding.buttonSignUp, View.SCALE_X, 0.8f, 1f).setDuration(800)
+        val textOrAnimation = ObjectAnimator.ofFloat(binding.textOrSignUpWith, View.ALPHA, 0f, 1f).setDuration(800)
+
+        // Kombinasikan animasi menggunakan AnimatorSet
+        val animatorSet = AnimatorSet()
+        animatorSet.playSequentially(
+            logoAnimation,
+            titleAnimation,
+            emailAnimation,
+            passwordAnimation,
+            confirmPasswordAnimation,
+            buttonAnimation,
+            textOrAnimation
+        )
+        animatorSet.start()
     }
 }
