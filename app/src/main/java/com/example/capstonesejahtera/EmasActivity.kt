@@ -183,7 +183,8 @@ class EmasActivity : AppCompatActivity() {
             color = android.graphics.Color.GREEN // Warna garis
             valueTextSize = 12f // Ukuran teks nilai
             lineWidth = 2f // Ketebalan garis
-            setDrawCircles(true) // Mengaktifkan titik pada garis
+            setCircleColor(android.graphics.Color.parseColor("#FFC100")) // Warna titik
+            setDrawCircles(true) // Aktifkan titik pada garis
             setDrawFilled(true) // Mengaktifkan area yang terisi di bawah garis
             fillDrawable = resources.getDrawable(R.drawable.gradient_fill, null) // Drawable gradasi
         }
@@ -197,6 +198,7 @@ class EmasActivity : AppCompatActivity() {
             xAxis.granularity = 1f // Jarak antar nilai X
             xAxis.setDrawGridLines(false) // Hilangkan garis grid vertikal
             axisRight.isEnabled = false
+            axisLeft.isEnabled = false
             axisLeft.valueFormatter = CurrencyValueFormatter() // Set formatter untuk sumbu Y
             animateX(1000)
             invalidate()
