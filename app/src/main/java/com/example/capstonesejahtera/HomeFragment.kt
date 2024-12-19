@@ -57,7 +57,17 @@ class HomeFragment : Fragment() {
         // Inisialisasi RecyclerView untuk summary
         menuRecyclerView = view.findViewById(R.id.menuRecyclerView)
         menuRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        summaryAdapter = SummaryAdapter(summaryList)
+        summaryAdapter = SummaryAdapter(summaryList) { summaryItem ->
+            when (summaryItem.title) {
+                "Total Catatan" -> startActivity(Intent(context, HalamanLiatCatatan::class.java))
+                "Total Tabungan" -> startActivity(Intent(context, HalamanLiatTabungan::class.java))
+                else -> {
+                    // Handle fallback jika diperlukan
+                }
+            }
+        }
+        menuRecyclerView.adapter = summaryAdapter
+
         menuRecyclerView.adapter = summaryAdapter
 
         // Inisialisasi RecyclerView untuk saham

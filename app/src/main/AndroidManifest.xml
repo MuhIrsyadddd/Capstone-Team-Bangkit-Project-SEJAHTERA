@@ -16,6 +16,12 @@
         android:theme="@style/Theme.CapstoneSejahtera"
         tools:targetApi="31">
         <activity
+            android:name=".HalamanLiatTabungan"
+            android:exported="false" />
+        <activity
+            android:name=".HalamanLiatCatatan"
+            android:exported="false" />
+        <activity
             android:name=".HalamanBukaBerita"
             android:exported="false" />
         <activity
@@ -162,9 +168,6 @@
         <activity
             android:name=".namasaham.IndySaham"
             android:exported="true" />
-
-
-
         <activity
             android:name=".EmasActivity"
             android:exported="true" />
