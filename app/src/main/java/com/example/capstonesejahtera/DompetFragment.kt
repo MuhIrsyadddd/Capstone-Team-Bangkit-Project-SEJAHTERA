@@ -1,3 +1,5 @@
+package com.example.capstonesejahtera
+
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
@@ -6,8 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.capstonesejahtera.PopUpCatatanTabungan
-import com.example.capstonesejahtera.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -84,8 +84,8 @@ class DompetFragment : Fragment() {
                 val textViewTabungan = view?.findViewById<TextView>(R.id.textViewTabungan)
 
                 if (documents.isEmpty) {
-                    // Jika tidak ada data, tampilkan Rp.0
-                    tabunganTextView.text = "Rp.0"
+                    // Sembunyikan textViewTabungan jika tidak ada data
+                    textViewTabungan?.visibility = View.GONE
                 } else {
                     // Tampilkan textViewTabungan jika ada data
                     textViewTabungan?.visibility = View.VISIBLE

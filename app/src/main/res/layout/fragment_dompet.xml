@@ -8,6 +8,8 @@
     android:layout_height="917dp"
     android:background="@drawable/drawable_shape">
 
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="25dp"
@@ -21,6 +23,8 @@
         android:text="Budgeting"
         android:textColor="#FF000000"
         android:textSize="20dp" />
+
+
 
     <ImageView
         android:layout_width="412dp"
@@ -36,7 +40,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="108dp"
         android:layout_gravity="top|left"
-        android:background="@color/utama"
+        android:background="@drawable/drawable_shape_2"
         android:scaleType="centerInside" />
 
     <ImageView
@@ -138,7 +142,7 @@
         android:maxLines="1"
         android:singleLine="true"
         android:text="Penghasilan"
-        android:textColor="@color/utama"
+        android:textColor="#FF00AB6B"
         android:textSize="10dp" />
 
     <TextView
@@ -153,7 +157,7 @@
         android:maxLines="1"
         android:singleLine="true"
         android:text="Penghasilan"
-        android:textColor="@color/utama"
+        android:textColor="#FF00AB6B"
         android:textSize="10dp" />
 
     <TextView
@@ -200,6 +204,26 @@
 
     </FrameLayout>
 
+    <ImageView
+        android:layout_width="58dp"
+        android:layout_height="58dp"
+        android:layout_marginLeft="340dp"
+        android:layout_marginTop="680dp"
+        android:layout_gravity="top|left"
+        android:background="@drawable/drawable_shape_3"
+        android:scaleType="centerInside" />
+
+    <ImageView
+        android:id="@+id/uploadcattab"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginLeft="355dp"
+        android:layout_marginRight="311dp"
+        android:layout_marginTop="695dp"
+        android:layout_marginBottom="988dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/drawable_image_10" />
+
     <TextView
         android:id="@+id/textViewTabungan"
         android:layout_width="296dp"
@@ -216,18 +240,6 @@
         android:textColor="#FF000000"
         android:textSize="16dp" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/uploadcattab"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="730dp"
-        android:layout_marginBottom="98dp"
-        android:layout_marginStart="325dp"
-        android:layout_marginEnd="10dp"
-        android:backgroundTint="@color/utama"
-        android:scaleType="centerInside"
-        android:src="@drawable/drawable_image_10" />
-
     <FrameLayout
         android:layout_width="352dp"
         android:layout_height="120dp"
@@ -235,9 +247,9 @@
         android:layout_gravity="bottom|center_horizontal">
 
         <LinearLayout
-        android:id="@+id/tabunganlayout11"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" />
+            android:id="@+id/tabunganlayout11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
     </FrameLayout>
 </FrameLayout>
