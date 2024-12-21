@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.capstonesejahtera.ApiService
+import com.example.capstonesejahtera.CurrencyValueFormatter
 import com.example.capstonesejahtera.JsonMember1DayPredictionDate
 import com.example.capstonesejahtera.JsonMember1MonthPredictionDate
 import com.example.capstonesejahtera.JsonMember1YearPredictionDate
@@ -20,6 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.LegendEntry
+import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
@@ -110,79 +112,51 @@ class AcesSaham : AppCompatActivity() {
     private fun displayGraph(dayData: JsonMember1DayPredictionDate?, monthData: JsonMember1MonthPredictionDate?, yearData: JsonMember1YearPredictionDate?) {
         val entries = mutableListOf<Entry>()
 
-        // Tambahkan data untuk 1 hari
         dayData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
-            entries.add(Entry(0f, price.toFloat())) // Mengonversi Double ke Float
+            entries.add(Entry(0f, price.toFloat()))
         }
 
-        // Tambahkan data untuk 1 bulan
         monthData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
-            entries.add(Entry(1f, price.toFloat())) // Mengonversi Double ke Float
+            entries.add(Entry(1f, price.toFloat()))
         }
 
-        // Tambahkan data untuk 1 tahun
         yearData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
-            entries.add(Entry(2f, price.toFloat())) // Mengonversi Double ke Float
+            entries.add(Entry(2f, price.toFloat()))
         }
 
-        // Buat dataset untuk grafik
-        val lineDataSet = LineDataSet(entries, "Harga Prediksi")
-        lineDataSet.setDrawValues(true)
-        lineDataSet.valueTextSize = 12f
+        val lineDataSet = LineDataSet(entries, "Predicted Prices").apply {
+            color = android.graphics.Color.GREEN // Warna garis
+            valueTextSize = 12f // Ukuran teks nilai
+            lineWidth = 2f // Ketebalan garis
+            setCircleColor(android.graphics.Color.parseColor("#FFC100")) // Warna titik
+            setDrawCircles(true) // Aktifkan titik pada garis
+            setDrawFilled(true) // Mengaktifkan area yang terisi di bawah garis
+            fillDrawable = resources.getDrawable(R.drawable.line_chart_gradientt, null) // Drawable gradasi
 
-        // Ubah nilai yang ditampilkan menjadi persen
-        lineDataSet.valueFormatter = object : ValueFormatter() {
-            override fun getPointLabel(entry: Entry): String {
-                return formatToPercentage(entry.y) // Menggunakan fungsi formatToPercentage
+            // Menambahkan ValueFormatter untuk menampilkan nilai sebagai persen
+            valueFormatter = object : ValueFormatter() {
+                override fun getPointLabel(entry: Entry): String {
+                    return formatToPercentage(entry.y)
+                }
             }
         }
 
-        // Tambahkan warna berbeda untuk setiap titik
-        lineDataSet.colors = listOf(
-            resources.getColor(R.color.red, theme),  // Warna untuk 1 hari
-            resources.getColor(R.color.blue, theme),    // Warna untuk 1 bulan
-            resources.getColor(R.color.utama, theme) // Warna untuk 1 tahun
-        )
-
-        // Tambahkan keterangan titik
-        lineDataSet.setDrawIcons(false)
-        lineDataSet.setDrawCircles(true)
-        lineDataSet.circleColors = lineDataSet.colors // Gunakan warna yang sama untuk lingkaran
-
-        // Buat LineData dan set ke chart
         val lineData = LineData(lineDataSet)
         lineChart.data = lineData
 
-        // Tambahkan legenda untuk menjelaskan 3 titik
-        val legend = lineChart.legend
-        legend.isEnabled = true
-        legend.textSize = 12f
-
-        // Menempatkan legenda di bawah grafik secara horizontal
-        legend.orientation = Legend.LegendOrientation.HORIZONTAL
-        legend.verticalAlignment = Legend.LegendVerticalAlignment.BOTTOM
-        legend.horizontalAlignment = Legend.LegendHorizontalAlignment.CENTER
-        legend.direction = Legend.LegendDirection.LEFT_TO_RIGHT
-
-        // Menambahkan jarak antar item legenda
-        legend.formToTextSpace = 12f   // Jarak antara bentuk simbol dan teks
-        legend.xEntrySpace = 40f       // Jarak horizontal antar item legenda
-
-        // Menambahkan warna dan label custom untuk legenda
-        legend.setCustom(
-            listOf(
-                LegendEntry("1 Hari", Legend.LegendForm.CIRCLE, 10f, 2f, null, resources.getColor(R.color.red, theme)),
-                LegendEntry("1 Bulan", Legend.LegendForm.CIRCLE, 10f, 2f, null, resources.getColor(R.color.blue, theme)),
-                LegendEntry("1 Tahun", Legend.LegendForm.CIRCLE, 10f, 2f, null, resources.getColor(R.color.utama, theme))
-            )
-        )
-
-        // Refresh grafik
-        lineChart.invalidate()
+        lineChart.apply {
+            description.text = "Prediksi Saham"
+            xAxis.position = XAxis.XAxisPosition.BOTTOM
+            xAxis.granularity = 1f // Jarak antar nilai X
+            xAxis.setDrawGridLines(false) // Hilangkan garis grid vertikal
+            axisRight.isEnabled = false
+            axisLeft.isEnabled = false
+            animateX(1000)
+            invalidate()
+        }
     }
-
 
 }
