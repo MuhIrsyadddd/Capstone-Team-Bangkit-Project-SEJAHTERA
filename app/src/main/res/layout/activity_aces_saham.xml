@@ -8,13 +8,35 @@
     tools:context=".namasaham.AcesSaham">
 
     <TextView
+        android:id="@+id/namasahama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="ACES"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/titikterakhirsaham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text=""
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/namasahama"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
         android:id="@+id/prediction_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Tanggal Prediksi"
         android:textSize="18sp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titikterakhirsaham"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -38,5 +60,53 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingClass" />
+
+    <!-- Container untuk tombol -->
+    <LinearLayout
+        android:id="@+id/button_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/line_chart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/btn_1_day"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="1 DAY"
+            android:textColor="@color/gray"
+            android:paddingBottom="8dp"
+            android:textStyle="bold"
+            android:background="@android:color/transparent" />
+
+        <TextView
+            android:id="@+id/btn_1_month"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="1 MONTH"
+            android:textColor="@color/gray"
+            android:paddingBottom="8dp"
+            android:textStyle="bold"
+            android:background="@android:color/transparent" />
+
+        <TextView
+            android:id="@+id/btn_1_year"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="1 YEAR"
+            android:textColor="@color/gray"
+            android:paddingBottom="8dp"
+            android:textStyle="bold"
+            android:background="@android:color/transparent" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

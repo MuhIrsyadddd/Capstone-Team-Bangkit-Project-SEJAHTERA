@@ -9,5 +9,6 @@
     <color name="red">#FF0000</color>
     <color name="blue">#0000FF</color>
     <color name="emas">#FFC100</color>
+    <color name="gray">#808080</color> <!-- Warna abu-abu -->
+    <color name="green">#008000</color> <!-- Warna hijau -->
 </resources>
-

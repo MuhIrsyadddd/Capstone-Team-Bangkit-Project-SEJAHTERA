@@ -19,13 +19,10 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.components.LegendEntry
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.formatter.ValueFormatter
 
 class AcesSaham : AppCompatActivity() {
     private lateinit var predictionDateTextView: TextView
@@ -68,22 +65,18 @@ class AcesSaham : AppCompatActivity() {
                         val monthData = data.jsonMember1MonthPredictionDate
                         val yearData = data.jsonMember1YearPredictionDate
 
-                        // Update tanggal prediksi
                         predictionDateTextView.text = dayData?.date ?: "Tanggal tidak tersedia"
 
-                        // Konversi harga prediksi ke format persen
                         val dayPrice = formatToPercentage(dayData?.predictedPrice)
                         val monthPrice = formatToPercentage(monthData?.predictedPrice)
                         val yearPrice = formatToPercentage(yearData?.predictedPrice)
 
-                        // Tampilkan harga prediksi
                         predictedPriceTextView.text = """
                             Prediksi Harian: $dayPrice
                             Prediksi Bulanan: $monthPrice
                             Prediksi Tahunan: $yearPrice
                         """.trimIndent()
 
-                        // Tampilkan grafik
                         displayGraph(dayData, monthData, yearData)
                     } else {
                         predictionDateTextView.text = "Data tidak tersedia"
@@ -109,54 +102,56 @@ class AcesSaham : AppCompatActivity() {
         }
     }
 
-    private fun displayGraph(dayData: JsonMember1DayPredictionDate?, monthData: JsonMember1MonthPredictionDate?, yearData: JsonMember1YearPredictionDate?) {
+    private fun displayGraph(
+        dayData: JsonMember1DayPredictionDate?,
+        monthData: JsonMember1MonthPredictionDate?,
+        yearData: JsonMember1YearPredictionDate?
+    ) {
         val entries = mutableListOf<Entry>()
+        val circleColors = mutableListOf<Int>()
 
         dayData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
             entries.add(Entry(0f, price.toFloat()))
+            circleColors.add(android.graphics.Color.GREEN) // Warna titik hijau (1-day)
         }
 
         monthData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
             entries.add(Entry(1f, price.toFloat()))
+            circleColors.add(android.graphics.Color.BLUE) // Warna titik biru (1-month)
         }
 
         yearData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
             entries.add(Entry(2f, price.toFloat()))
+            circleColors.add(android.graphics.Color.MAGENTA) // Warna titik ungu (1-year)
         }
 
-        val lineDataSet = LineDataSet(entries, "Predicted Prices").apply {
-            color = android.graphics.Color.GREEN // Warna garis
-            valueTextSize = 12f // Ukuran teks nilai
-            lineWidth = 2f // Ketebalan garis
-            setCircleColor(android.graphics.Color.parseColor("#FFC100")) // Warna titik
-            setDrawCircles(true) // Aktifkan titik pada garis
-            setDrawFilled(true) // Mengaktifkan area yang terisi di bawah garis
-            fillDrawable = resources.getDrawable(R.drawable.line_chart_gradientt, null) // Drawable gradasi
-
-            // Menambahkan ValueFormatter untuk menampilkan nilai sebagai persen
-            valueFormatter = object : ValueFormatter() {
-                override fun getPointLabel(entry: Entry): String {
-                    return formatToPercentage(entry.y)
-                }
-            }
+        val dataSet = LineDataSet(entries, "Prediksi Saham").apply {
+            color = android.graphics.Color.BLACK // Warna garis
+            valueTextSize = 12f
+            lineWidth = 2f
+            setDrawCircles(true)
+            setCircleColors(circleColors) // Warna titik disesuaikan
+            circleRadius = 5f
+            mode = LineDataSet.Mode.LINEAR
         }
 
-        val lineData = LineData(lineDataSet)
+        val lineData = LineData(dataSet)
+
         lineChart.data = lineData
-
         lineChart.apply {
             description.text = "Prediksi Saham"
             xAxis.position = XAxis.XAxisPosition.BOTTOM
-            xAxis.granularity = 1f // Jarak antar nilai X
-            xAxis.setDrawGridLines(false) // Hilangkan garis grid vertikal
+            xAxis.granularity = 1f
+            xAxis.setDrawGridLines(false)
             axisRight.isEnabled = false
             axisLeft.isEnabled = false
             animateX(1000)
             invalidate()
         }
     }
+
 
 }
