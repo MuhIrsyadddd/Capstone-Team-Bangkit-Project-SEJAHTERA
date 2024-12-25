@@ -157,6 +157,7 @@ class AcesSaham : AppCompatActivity() {
             circleRadius = 5f
             mode = LineDataSet.Mode.LINEAR
             setDrawFilled(true) // Mengaktifkan pengisian di bawah garis
+            fillDrawable = resources.getDrawable(R.drawable.line_chart_gradientt) // Mengatur gradien sebagai pengisian
         }
 
         val lineData = LineData(dataSet)
