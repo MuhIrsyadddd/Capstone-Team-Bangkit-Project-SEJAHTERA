@@ -15,6 +15,7 @@ class PopUpCatatanTabungan : DialogFragment() {
 
     private lateinit var editNamaCatatan: EditText
     private lateinit var editNominalPengeluaran: EditText
+    private lateinit var editMaksimalTabungan: EditText
     private lateinit var textTabungan: TextView
     private lateinit var textCatatan: TextView
     private lateinit var imageRectangle7: View
@@ -32,6 +33,7 @@ class PopUpCatatanTabungan : DialogFragment() {
         // Inisialisasi view
         editNamaCatatan = view.findViewById(R.id.edit_nama_catatan)
         editNominalPengeluaran = view.findViewById(R.id.edit_nominal_pengeluaran)
+        editMaksimalTabungan = view.findViewById(R.id.edit_maximal_tabungan) // Inisialisasi EditText maksimal tabungan
         textTabungan = view.findViewById(R.id.text_tabungan)
         textCatatan = view.findViewById(R.id.text_catatan)
         imageRectangle7 = view.findViewById(R.id.image_rectangle7)
@@ -40,6 +42,9 @@ class PopUpCatatanTabungan : DialogFragment() {
         // Inisialisasi Firebase
         firestore = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
+
+        // Menyembunyikan EditText maksimal tabungan pada awal
+        editMaksimalTabungan.visibility = View.GONE
 
         // Listener untuk Tabungan
         textTabungan.setOnClickListener {
@@ -52,6 +57,11 @@ class PopUpCatatanTabungan : DialogFragment() {
             // Ganti hint pada EditText
             editNamaCatatan.hint = "Nama Tabungan"
             editNominalPengeluaran.hint = "Nominal Tabungan"
+            editMaksimalTabungan.visibility = View.VISIBLE // Tampilkan EditText maksimal tabungan
+            editMaksimalTabungan.hint = "Maksimal Tabungan"
+
+            // Sembunyikan EditText maksimal tabungan ketika Catatan dipilih
+            editMaksimalTabungan.text.clear()
         }
 
         // Listener untuk Catatan
@@ -65,15 +75,18 @@ class PopUpCatatanTabungan : DialogFragment() {
             // Ganti hint pada EditText
             editNamaCatatan.hint = "Nama Catatan"
             editNominalPengeluaran.hint = "Nominal Pengeluaran"
+            editMaksimalTabungan.visibility = View.GONE // Sembunyikan EditText maksimal tabungan
         }
 
         view.findViewById<View>(R.id.image_rectangle5).setOnClickListener {
             val namaCatatan = editNamaCatatan.text.toString()
             val nominalPengeluaranString = editNominalPengeluaran.text.toString()
+            val maksimalTabunganString = editMaksimalTabungan.text.toString()
 
             if (namaCatatan.isNotEmpty() && nominalPengeluaranString.isNotEmpty()) {
                 // Konversi nominalPengeluaran menjadi Int
                 val nominalPengeluaran = nominalPengeluaranString.toIntOrNull()
+                val maksimalTabungan = maksimalTabunganString.toIntOrNull()
 
                 if (nominalPengeluaran != null) {
                     val userId = auth.currentUser?.uid
@@ -86,6 +99,11 @@ class PopUpCatatanTabungan : DialogFragment() {
                         // Tentukan koleksi berdasarkan hint
                         val selectedHint = editNamaCatatan.hint.toString()
                         val collectionName = if (selectedHint == "Nama Tabungan") "Tabungan" else "Catatan"
+
+                        // Tambahkan maksimal tabungan ke data jika Tabungan yang dipilih
+                        if (selectedHint == "Nama Tabungan" && maksimalTabungan != null) {
+                            data["maksimal"] = maksimalTabungan
+                        }
 
                         firestore.collection(collectionName).document(userId)
                             .collection("user_data").add(data)
@@ -106,8 +124,6 @@ class PopUpCatatanTabungan : DialogFragment() {
                 Toast.makeText(context, "Nama dan Nominal tidak boleh kosong", Toast.LENGTH_SHORT).show()
             }
         }
-
-
 
         return view
     }
