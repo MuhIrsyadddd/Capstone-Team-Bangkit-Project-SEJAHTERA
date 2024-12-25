@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.ViewCompat
@@ -45,14 +46,18 @@ class PopUpProgressTabungan : DialogFragment() {
             view.findViewById<TextView>(R.id.tv_amount_saved).text = "Rp$nominal"
             view.findViewById<TextView>(R.id.tv_target).text = "Maksimal: Rp$maksimal"
 
-            // Hitung persentase
             val persenTextView = view.findViewById<TextView>(R.id.persen)
+            val progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
+
             val percentage = if (maksimal > 0) {
                 (nominal?.toDouble()?.div(maksimal) ?: 0.0) * 100
             } else {
                 0.0
             }
             persenTextView.text = String.format("%.1f%%", percentage)
+
+            // Update ProgressBar dan gambar
+            updateProgressBarDrawable(progressBar, percentage.toInt())
         }
 
         val saveButton = view.findViewById<Button>(R.id.btn_save)
@@ -75,12 +80,28 @@ class PopUpProgressTabungan : DialogFragment() {
             }
         }
 
-        // Tambahkan listener klik untuk iv_icon
         view.findViewById<ImageView>(R.id.iv_icon).setOnClickListener {
             dismiss() // Menutup dialog
         }
 
         return view
+    }
+
+    private fun updateProgressBarDrawable(progressBar: ProgressBar, percentage: Int) {
+        val drawableResId = when {
+            percentage >= 100 -> R.drawable.loading10baru
+            percentage >= 90 -> R.drawable.loading9baru
+            percentage >= 80 -> R.drawable.loading8baru
+            percentage >= 70 -> R.drawable.loading7baru
+            percentage >= 60 -> R.drawable.loading6baru
+            percentage >= 50 -> R.drawable.loading5baru
+            percentage >= 40 -> R.drawable.loading4baru
+            percentage >= 30 -> R.drawable.loading3baru
+            percentage >= 20 -> R.drawable.loading2baru
+            percentage >= 10 -> R.drawable.baruloading
+            else -> R.drawable.loading0baru
+        }
+        progressBar.progressDrawable = requireContext().getDrawable(drawableResId)
     }
 
     private fun updateFirestoreData(userId: String, nama: String, newAmount: Long) {
