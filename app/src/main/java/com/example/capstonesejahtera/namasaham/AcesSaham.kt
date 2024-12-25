@@ -1,5 +1,6 @@
 package com.example.capstonesejahtera.namasaham
 
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -45,7 +46,24 @@ class AcesSaham : AppCompatActivity() {
         lineChart = findViewById(R.id.line_chart)
 
         fetchAcesStockData()
+
+        // Set click listeners for buttons
+        findViewById<TextView>(R.id.btn_1_day).setOnClickListener {
+            displayGraph(dayData, monthData, yearData, "day")
+        }
+
+        findViewById<TextView>(R.id.btn_1_month).setOnClickListener {
+            displayGraph(dayData, monthData, yearData, "month")
+        }
+
+        findViewById<TextView>(R.id.btn_1_year).setOnClickListener {
+            displayGraph(dayData, monthData, yearData, "year")
+        }
     }
+
+    private var dayData: JsonMember1DayPredictionDate? = null
+    private var monthData: JsonMember1MonthPredictionDate? = null
+    private var yearData: JsonMember1YearPredictionDate? = null
 
     private fun fetchAcesStockData() {
         val retrofit = Retrofit.Builder()
@@ -61,9 +79,9 @@ class AcesSaham : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val data = response.body()
                     if (data != null) {
-                        val dayData = data.jsonMember1DayPredictionDate
-                        val monthData = data.jsonMember1MonthPredictionDate
-                        val yearData = data.jsonMember1YearPredictionDate
+                        dayData = data.jsonMember1DayPredictionDate
+                        monthData = data.jsonMember1MonthPredictionDate
+                        yearData = data.jsonMember1YearPredictionDate
 
                         predictionDateTextView.text = dayData?.date ?: "Tanggal tidak tersedia"
 
@@ -77,7 +95,8 @@ class AcesSaham : AppCompatActivity() {
                             Prediksi Tahunan: $yearPrice
                         """.trimIndent()
 
-                        displayGraph(dayData, monthData, yearData)
+                        // Tampilkan grafik dengan data awal (1 hari)
+                        displayGraph(dayData, monthData, yearData, "day")
                     } else {
                         predictionDateTextView.text = "Data tidak tersedia"
                         predictedPriceTextView.text = ""
@@ -105,34 +124,32 @@ class AcesSaham : AppCompatActivity() {
     private fun displayGraph(
         dayData: JsonMember1DayPredictionDate?,
         monthData: JsonMember1MonthPredictionDate?,
-        yearData: JsonMember1YearPredictionDate?
+        yearData: JsonMember1YearPredictionDate?,
+        selectedPeriod: String
     ) {
         val entries = mutableListOf<Entry>()
         val circleColors = mutableListOf<Int>()
 
         dayData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
-            // Mengonversi ke persentase
-            entries.add(Entry(0f, price.toFloat() * 100)) // Mengalikan dengan 100 untuk mendapatkan persentase
-            circleColors.add(android.graphics.Color.GREEN) // Warna titik hijau (1-day)
+            entries.add(Entry(0f, price.toFloat() * 100)) // 1-day
+            circleColors.add(if (selectedPeriod == "day") Color.GREEN else Color.GRAY)
         }
 
         monthData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
-            // Mengonversi ke persentase
-            entries.add(Entry(1f, price.toFloat() * 100)) // Mengalikan dengan 100 untuk mendapatkan persentase
-            circleColors.add(android.graphics.Color.BLUE) // Warna titik biru (1-month)
+            entries.add(Entry(1f, price.toFloat() * 100)) // 1-month
+            circleColors.add(if (selectedPeriod == "month") Color.BLUE else Color.GRAY)
         }
 
         yearData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
-            // Mengonversi ke persentase
-            entries.add(Entry(2f, price.toFloat() * 100)) // Mengalikan dengan 100 untuk mendapatkan persentase
-            circleColors.add(android.graphics.Color.MAGENTA) // Warna titik ungu (1-year)
+            entries.add(Entry(2f, price.toFloat() * 100)) // 1-year
+            circleColors.add(if (selectedPeriod == "year") Color.MAGENTA else Color.GRAY)
         }
 
         val dataSet = LineDataSet(entries, "Prediksi Saham").apply {
-            color = android.graphics.Color.BLACK // Warna garis
+            color = Color.BLACK // Warna garis
             valueTextSize = 12f
             lineWidth = 2f
             setDrawCircles(true)
@@ -140,9 +157,6 @@ class AcesSaham : AppCompatActivity() {
             circleRadius = 5f
             mode = LineDataSet.Mode.LINEAR
             setDrawFilled(true) // Mengaktifkan pengisian di bawah garis
-
-            // Mengatur gradien untuk area di bawah garis dari file drawable
-            fillDrawable = this@AcesSaham.getDrawable(R.drawable.line_chart_gradientt) // Menggunakan drawable yang telah dibuat
         }
 
         val lineData = LineData(dataSet)
@@ -159,8 +173,4 @@ class AcesSaham : AppCompatActivity() {
             invalidate()
         }
     }
-
-
-
-
 }
