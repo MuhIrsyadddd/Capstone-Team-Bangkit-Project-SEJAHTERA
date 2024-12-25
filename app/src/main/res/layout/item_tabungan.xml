@@ -25,6 +25,15 @@
         android:id="@+id/nominal_tabungan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="39dp"
+        android:gravity="center_vertical"
         android:text="Rp0"
         android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/icon_hapuss"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/baseline_auto_delete_24" />
 </LinearLayout>
