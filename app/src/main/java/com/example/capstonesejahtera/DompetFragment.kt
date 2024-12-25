@@ -153,37 +153,30 @@ class DompetFragment : Fragment() {
         catatanRef.get()
             .addOnSuccessListener { documents ->
                 if (documents.isEmpty) {
-                    // Sembunyikan TextView jika tidak ada data
                     view?.findViewById<TextView>(R.id.textViewCatatan)?.visibility = View.GONE
                 } else {
-                    // Tampilkan TextView jika ada data
                     view?.findViewById<TextView>(R.id.textViewCatatan)?.visibility = View.VISIBLE
-
-                    // Kosongkan layout untuk mencegah duplikasi
                     catatanLayout.removeAllViews()
                     for (document in documents) {
                         val nama = document.getString("nama") ?: "Tidak ada nama"
                         val nominal = document.getLong("nominal") ?: 0L
+                        val catatanId = document.id
 
-                        // Inflasi layout item_catatan.xml
                         val itemView = LayoutInflater.from(requireContext())
                             .inflate(R.layout.item_catatan, catatanLayout, false)
 
-                        // Atur nilai pada view
                         val namaCatatanTextView = itemView.findViewById<TextView>(R.id.nama_catatan)
                         val nominalPengeluaranTextView = itemView.findViewById<TextView>(R.id.nominal_pengeluaran)
+                        val iconHapus = itemView.findViewById<View>(R.id.icon_hapus)
 
                         namaCatatanTextView.text = nama
                         nominalPengeluaranTextView.text = "Rp$nominal"
 
-                        // Tambahkan listener klik pada itemView
-                        itemView.setOnClickListener {
-                            // Mengambil ID dokumen catatan jika diperlukan
-                            val catatanId = document.id // Ganti dengan ID dokumen yang sesuai
-                            openPopRubahCatatan(catatanId)
+                        // Tambahkan listener untuk menghapus item
+                        iconHapus.setOnClickListener {
+                            deleteCatatan(userId, catatanId, itemView)
                         }
 
-                        // Tambahkan item ke layout
                         catatanLayout.addView(itemView)
                     }
                 }
@@ -192,6 +185,22 @@ class DompetFragment : Fragment() {
                 Log.e("DompetFragment", "Error mendapatkan data catatan", exception)
             }
     }
+
+    private fun deleteCatatan(userId: String, catatanId: String, itemView: View) {
+        val catatanRef = firestore.collection("Catatan").document(userId)
+            .collection("user_data").document(catatanId)
+
+        catatanRef.delete()
+            .addOnSuccessListener {
+                Log.d("DompetFragment", "Catatan berhasil dihapus")
+                // Hapus item dari layout
+                catatanLayout.removeView(itemView)
+            }
+            .addOnFailureListener { exception ->
+                Log.e("DompetFragment", "Error menghapus catatan", exception)
+            }
+    }
+
 
     private fun openPopRubahCatatan(catatanId: String) {
         val popRubahCatatanFragment = PopUpRubahCatatan()

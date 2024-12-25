@@ -6,12 +6,12 @@
     android:padding="8dp">
 
     <ImageView
-    android:id="@+id/itemcatatan"
-    android:layout_width="52dp"
-    android:layout_height="52dp"
-    android:layout_gravity="top"
-    android:scaleType="centerCrop"
-    android:src="@drawable/drawable_image_6" />
+        android:id="@+id/itemcatatan"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_gravity="top"
+        android:scaleType="centerCrop"
+        android:src="@drawable/drawable_image_6" />
 
     <TextView
         android:id="@+id/nama_catatan"
@@ -21,13 +21,21 @@
         android:gravity="center_vertical"
         android:paddingStart="8dp"
         android:text="Nama Catatan"
-        android:textSize="16sp"/>
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/nominal_pengeluaran"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="39dp"
         android:gravity="center_vertical"
         android:text="Rp0"
-        android:textSize="16sp"/>
+        android:textSize="16sp" />
+
+    <ImageView
+        android:id="@+id/icon_hapus"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/baseline_auto_delete_24" />
 </LinearLayout>
