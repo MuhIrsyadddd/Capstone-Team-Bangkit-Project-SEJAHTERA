@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-
 class PopUpProgressTabungan : DialogFragment() {
 
     override fun onCreateView(
@@ -23,6 +23,18 @@ class PopUpProgressTabungan : DialogFragment() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        // Ambil data dari arguments
+        arguments?.let {
+            val nama = it.getString("NAMA", "Tidak ada nama")
+            val nominal = it.getLong("NOMINAL", 0)
+            val maksimal = it.getLong("MAKSIMAL", 0)
+
+            // Tampilkan data di TextView
+            view.findViewById<TextView>(R.id.tv_title).text = nama
+            view.findViewById<TextView>(R.id.tv_amount_saved).text = "Rp$nominal"
+            view.findViewById<TextView>(R.id.tv_target).text = "Maksimal: Rp$maksimal"
         }
 
         return view
@@ -42,3 +54,4 @@ class PopUpProgressTabungan : DialogFragment() {
         setStyle(STYLE_NORMAL, android.R.style.Theme_Material_Light_NoActionBar)
     }
 }
+

@@ -97,6 +97,7 @@ class DompetFragment : Fragment() {
                     for (document in documents) {
                         val nama = document.getString("nama") ?: "Tidak ada nama"
                         val nominal = document.getLong("nominal") ?: 0L
+                        val maksimal = document.getLong("maksimal") // Ambil field maksimal
 
                         // Tambahkan ke total nominal tabungan
                         totalTabungan += nominal
@@ -114,7 +115,7 @@ class DompetFragment : Fragment() {
 
                         // Tambahkan listener klik pada itemView untuk membuka PopUpProgressTabungan
                         itemView.setOnClickListener {
-                            openPopProgressTabungan()
+                            openPopProgressTabungan(nama, nominal, maksimal)
                         }
 
                         // Tambahkan item ke dalam layout
@@ -130,11 +131,18 @@ class DompetFragment : Fragment() {
             }
     }
 
+
     // Fungsi untuk membuka PopUpProgressTabungan
-    private fun openPopProgressTabungan() {
+    private fun openPopProgressTabungan(nama: String, nominal: Long, maksimal: Long?) {
         val popProgressTabunganFragment = PopUpProgressTabungan()
+        val args = Bundle()
+        args.putString("NAMA", nama)
+        args.putLong("NOMINAL", nominal)
+        maksimal?.let { args.putLong("MAKSIMAL", it) }
+        popProgressTabunganFragment.arguments = args
         popProgressTabunganFragment.show(requireFragmentManager(), "PopProgressTabungan")
     }
+
 
 
 
