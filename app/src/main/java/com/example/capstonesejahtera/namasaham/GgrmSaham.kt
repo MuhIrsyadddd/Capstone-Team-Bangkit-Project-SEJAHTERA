@@ -1,5 +1,6 @@
 package com.example.capstonesejahtera.namasaham
 
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -7,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.capstonesejahtera.ApiService
+import com.example.capstonesejahtera.CurrencyValueFormatter
 import com.example.capstonesejahtera.JsonMember1DayPredictionDate
 import com.example.capstonesejahtera.JsonMember1MonthPredictionDate
 import com.example.capstonesejahtera.JsonMember1YearPredictionDate
@@ -18,12 +20,11 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.components.LegendEntry
+import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.formatter.ValueFormatter
+import android.view.View
 
 class GgrmSaham : AppCompatActivity() {
     private lateinit var predictionDateTextView: TextView
@@ -45,8 +46,33 @@ class GgrmSaham : AppCompatActivity() {
         predictedPriceTextView = findViewById(R.id.predicted_price)
         lineChart = findViewById(R.id.line_chart)
 
+        // Menyembunyikan TextView
+        predictionDateTextView.visibility = View.GONE
+        predictedPriceTextView.visibility = View.GONE
+
         fetchGgrmStockData()
+
+        // Set click listeners for buttons
+        findViewById<TextView>(R.id.btn_1_day).setOnClickListener {
+            val price = displayGraph(dayData, monthData, yearData, "day")
+            findViewById<TextView>(R.id.titikhargaterakhirsaham).text = price?.let { formatToPercentage(it) } ?: "Tidak tersedia"
+        }
+
+        findViewById<TextView>(R.id.btn_1_month).setOnClickListener {
+            val price = displayGraph(dayData, monthData, yearData, "month")
+            findViewById<TextView>(R.id.titikhargaterakhirsaham).text = price?.let { formatToPercentage(it) } ?: "Tidak tersedia"
+        }
+
+        findViewById<TextView>(R.id.btn_1_year).setOnClickListener {
+            val price = displayGraph(dayData, monthData, yearData, "year")
+            findViewById<TextView>(R.id.titikhargaterakhirsaham).text = price?.let { formatToPercentage(it) } ?: "Tidak tersedia"
+        }
+
     }
+
+    private var dayData: JsonMember1DayPredictionDate? = null
+    private var monthData: JsonMember1MonthPredictionDate? = null
+    private var yearData: JsonMember1YearPredictionDate? = null
 
     private fun fetchGgrmStockData() {
         val retrofit = Retrofit.Builder()
@@ -62,27 +88,24 @@ class GgrmSaham : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val data = response.body()
                     if (data != null) {
-                        val dayData = data.jsonMember1DayPredictionDate
-                        val monthData = data.jsonMember1MonthPredictionDate
-                        val yearData = data.jsonMember1YearPredictionDate
+                        dayData = data.jsonMember1DayPredictionDate
+                        monthData = data.jsonMember1MonthPredictionDate
+                        yearData = data.jsonMember1YearPredictionDate
 
-                        // Update tanggal prediksi
                         predictionDateTextView.text = dayData?.date ?: "Tanggal tidak tersedia"
 
-                        // Konversi harga prediksi ke format persen
                         val dayPrice = formatToPercentage(dayData?.predictedPrice)
                         val monthPrice = formatToPercentage(monthData?.predictedPrice)
                         val yearPrice = formatToPercentage(yearData?.predictedPrice)
 
-                        // Tampilkan harga prediksi
                         predictedPriceTextView.text = """
                             Prediksi Harian: $dayPrice
                             Prediksi Bulanan: $monthPrice
                             Prediksi Tahunan: $yearPrice
                         """.trimIndent()
 
-                        // Tampilkan grafik
-                        displayGraph(dayData, monthData, yearData)
+                        // Tampilkan grafik dengan data awal (1 hari)
+                        displayGraph(dayData, monthData, yearData, "day")
                     } else {
                         predictionDateTextView.text = "Data tidak tersedia"
                         predictedPriceTextView.text = ""
@@ -107,82 +130,64 @@ class GgrmSaham : AppCompatActivity() {
         }
     }
 
-    private fun displayGraph(dayData: JsonMember1DayPredictionDate?, monthData: JsonMember1MonthPredictionDate?, yearData: JsonMember1YearPredictionDate?) {
+    private fun displayGraph(
+        dayData: JsonMember1DayPredictionDate?,
+        monthData: JsonMember1MonthPredictionDate?,
+        yearData: JsonMember1YearPredictionDate?,
+        selectedPeriod: String
+    ): Double? { // Mengubah tipe kembalian menjadi Double?
         val entries = mutableListOf<Entry>()
+        val circleColors = mutableListOf<Int>()
+        var selectedPrice: Double? = null // Variabel untuk menyimpan harga yang dipilih
 
-        // Tambahkan data untuk 1 hari
         dayData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
-            entries.add(Entry(0f, price.toFloat())) // Mengonversi Double ke Float
+            entries.add(Entry(0f, price.toFloat() * 100)) // 1-day
+            circleColors.add(if (selectedPeriod == "day") Color.GREEN else Color.GRAY)
+            if (selectedPeriod == "day") selectedPrice = price // Simpan harga jika periode yang dipilih adalah hari
         }
 
-        // Tambahkan data untuk 1 bulan
         monthData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
-            entries.add(Entry(1f, price.toFloat())) // Mengonversi Double ke Float
+            entries.add(Entry(1f, price.toFloat() * 100)) // 1-month
+            circleColors.add(if (selectedPeriod == "month") Color.BLUE else Color.GRAY)
+            if (selectedPeriod == "month") selectedPrice = price // Simpan harga jika periode yang dipilih adalah bulan
         }
 
-        // Tambahkan data untuk 1 tahun
         yearData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
-            entries.add(Entry(2f, price.toFloat())) // Mengonversi Double ke Float
+            entries.add(Entry(2f, price.toFloat() * 100)) // 1-year
+            circleColors.add(if (selectedPeriod == "year") Color.MAGENTA else Color.GRAY)
+            if (selectedPeriod == "year") selectedPrice = price // Simpan harga jika periode yang dipilih adalah tahun
         }
 
-        // Buat dataset untuk grafik
-        val lineDataSet = LineDataSet(entries, "Harga Prediksi")
-        lineDataSet.setDrawValues(true)
-        lineDataSet.valueTextSize = 12f
-
-        // Ubah nilai yang ditampilkan menjadi persen
-        lineDataSet.valueFormatter = object : ValueFormatter() {
-            override fun getPointLabel(entry: Entry): String {
-                return formatToPercentage(entry.y) // Menggunakan fungsi formatToPercentage
-            }
+        val dataSet = LineDataSet(entries, "Prediksi Saham").apply {
+            color = Color.GREEN // Warna garis
+            valueTextSize = 12f
+            lineWidth = 2f
+            setDrawCircles(true)
+            setCircleColors(circleColors) // Warna titik disesuaikan
+            circleRadius = 5f
+            mode = LineDataSet.Mode.LINEAR
+            setDrawFilled(true) // Mengaktifkan pengisian di bawah garis
+            fillDrawable = resources.getDrawable(R.drawable.line_chart_gradientt) // Mengatur gradien sebagai pengisian
         }
 
-        // Tambahkan warna berbeda untuk setiap titik
-        lineDataSet.colors = listOf(
-            resources.getColor(R.color.red, theme),  // Warna untuk 1 hari
-            resources.getColor(R.color.blue, theme),    // Warna untuk 1 bulan
-            resources.getColor(R.color.utama, theme) // Warna untuk 1 tahun
-        )
+        val lineData = LineData(dataSet)
 
-        // Tambahkan keterangan titik
-        lineDataSet.setDrawIcons(false)
-        lineDataSet.setDrawCircles(true)
-        lineDataSet.circleColors = lineDataSet.colors // Gunakan warna yang sama untuk lingkaran
-
-        // Buat LineData dan set ke chart
-        val lineData = LineData(lineDataSet)
         lineChart.data = lineData
+        lineChart.apply {
+            description.text = "Prediksi Saham"
+            xAxis.position = XAxis.XAxisPosition.BOTTOM
+            xAxis.granularity = 1f
+            xAxis.setDrawGridLines(false)
+            axisRight.isEnabled = false
+            axisLeft.isEnabled = false
+            animateX(1000)
+            invalidate()
+        }
 
-        // Tambahkan legenda untuk menjelaskan 3 titik
-        val legend = lineChart.legend
-        legend.isEnabled = true
-        legend.textSize = 12f
-
-        // Menempatkan legenda di bawah grafik secara horizontal
-        legend.orientation = Legend.LegendOrientation.HORIZONTAL
-        legend.verticalAlignment = Legend.LegendVerticalAlignment.BOTTOM
-        legend.horizontalAlignment = Legend.LegendHorizontalAlignment.CENTER
-        legend.direction = Legend.LegendDirection.LEFT_TO_RIGHT
-
-        // Menambahkan jarak antar item legenda
-        legend.formToTextSpace = 12f   // Jarak antara bentuk simbol dan teks
-        legend.xEntrySpace = 40f       // Jarak horizontal antar item legenda
-
-        // Menambahkan warna dan label custom untuk legenda
-        legend.setCustom(
-            listOf(
-                LegendEntry("1 Hari", Legend.LegendForm.CIRCLE, 10f, 2f, null, resources.getColor(R.color.red, theme)),
-                LegendEntry("1 Bulan", Legend.LegendForm.CIRCLE, 10f, 2f, null, resources.getColor(R.color.blue, theme)),
-                LegendEntry("1 Tahun", Legend.LegendForm.CIRCLE, 10f, 2f, null, resources.getColor(R.color.utama, theme))
-            )
-        )
-
-        // Refresh grafik
-        lineChart.invalidate()
+        return selectedPrice // Kembalikan harga yang dipilih
     }
-
 
 }

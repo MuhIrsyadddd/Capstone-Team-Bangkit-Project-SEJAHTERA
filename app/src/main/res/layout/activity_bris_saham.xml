@@ -8,13 +8,59 @@
     tools:context=".namasaham.BrisSaham">
 
     <TextView
+        android:id="@+id/namasahama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:text="BRIS"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/aspirasi_hidup_indonesia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="16dp"
+        android:text="Bank Syariah Indonesia Tbk"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/namasahama"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/titikhargaterakhirsaham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:text=""
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/aspirasi_hidup_indonesia"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/titikterakhirsaham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text=""
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/namasahama"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
         android:id="@+id/prediction_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Tanggal Prediksi"
         android:textSize="18sp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titikterakhirsaham"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -38,5 +84,83 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingClass" />
+
+    <!-- Container untuk tombol -->
+    <LinearLayout
+        android:id="@+id/button_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/line_chart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/btn_1_day"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="1 DAY"
+            android:textColor="@color/gray"
+            android:paddingBottom="8dp"
+            android:textStyle="bold"
+            android:background="@android:color/transparent" />
+
+        <TextView
+            android:id="@+id/btn_1_month"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="1 MONTH"
+            android:textColor="@color/gray"
+            android:paddingBottom="8dp"
+            android:textStyle="bold"
+            android:background="@android:color/transparent" />
+
+        <TextView
+            android:id="@+id/btn_1_year"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="1 YEAR"
+            android:textColor="@color/gray"
+            android:paddingBottom="8dp"
+            android:textStyle="bold"
+            android:background="@android:color/transparent" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tentangSaham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="16dp"
+        android:text="Tentang BRIS"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/button_container"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/deskripsi_perusahaan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/box_background"
+        android:padding="16dp"
+        android:text="BRIS adalah kode saham PT Bank Syariah Indonesia Tbk, bank syariah terbesar di Indonesia yang terbentuk melalui penggabungan tiga bank syariah milik BUMN, yaitu Bank BNI Syariah, Bank Mandiri Syariah, dan Bank BRI Syariah. BRIS fokus pada penyediaan produk dan layanan perbankan yang sesuai dengan prinsip syariah, seperti pembiayaan rumah, kendaraan, dan modal usaha, serta layanan perbankan digital melalui aplikasi mobile banking."
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/tentangSaham"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

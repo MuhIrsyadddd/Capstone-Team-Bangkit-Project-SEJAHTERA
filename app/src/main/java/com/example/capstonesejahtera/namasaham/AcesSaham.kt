@@ -162,7 +162,7 @@ class AcesSaham : AppCompatActivity() {
         }
 
         val dataSet = LineDataSet(entries, "Prediksi Saham").apply {
-            color = Color.BLACK // Warna garis
+            color = Color.GREEN // Warna garis
             valueTextSize = 12f
             lineWidth = 2f
             setDrawCircles(true)
