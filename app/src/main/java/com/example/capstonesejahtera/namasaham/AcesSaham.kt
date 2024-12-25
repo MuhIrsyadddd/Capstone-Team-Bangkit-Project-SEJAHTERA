@@ -112,19 +112,22 @@ class AcesSaham : AppCompatActivity() {
 
         dayData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
-            entries.add(Entry(0f, price.toFloat()))
+            // Mengonversi ke persentase
+            entries.add(Entry(0f, price.toFloat() * 100)) // Mengalikan dengan 100 untuk mendapatkan persentase
             circleColors.add(android.graphics.Color.GREEN) // Warna titik hijau (1-day)
         }
 
         monthData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
-            entries.add(Entry(1f, price.toFloat()))
+            // Mengonversi ke persentase
+            entries.add(Entry(1f, price.toFloat() * 100)) // Mengalikan dengan 100 untuk mendapatkan persentase
             circleColors.add(android.graphics.Color.BLUE) // Warna titik biru (1-month)
         }
 
         yearData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
-            entries.add(Entry(2f, price.toFloat()))
+            // Mengonversi ke persentase
+            entries.add(Entry(2f, price.toFloat() * 100)) // Mengalikan dengan 100 untuk mendapatkan persentase
             circleColors.add(android.graphics.Color.MAGENTA) // Warna titik ungu (1-year)
         }
 
@@ -136,6 +139,10 @@ class AcesSaham : AppCompatActivity() {
             setCircleColors(circleColors) // Warna titik disesuaikan
             circleRadius = 5f
             mode = LineDataSet.Mode.LINEAR
+            setDrawFilled(true) // Mengaktifkan pengisian di bawah garis
+
+            // Mengatur gradien untuk area di bawah garis dari file drawable
+            fillDrawable = this@AcesSaham.getDrawable(R.drawable.line_chart_gradientt) // Menggunakan drawable yang telah dibuat
         }
 
         val lineData = LineData(dataSet)
@@ -152,6 +159,8 @@ class AcesSaham : AppCompatActivity() {
             invalidate()
         }
     }
+
+
 
 
 }
