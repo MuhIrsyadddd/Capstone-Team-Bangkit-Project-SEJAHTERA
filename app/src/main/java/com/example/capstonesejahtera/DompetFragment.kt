@@ -90,13 +90,14 @@ class DompetFragment : Fragment() {
                     // Tampilkan textViewTabungan jika ada data
                     textViewTabungan?.visibility = View.VISIBLE
 
-                    var totalTabungan = 0L // Variable untuk menghitung total nominal tabungan
+                    var totalTabungan = 0L // Variabel untuk menghitung total nominal tabungan
                     val tabunganLayout = view?.findViewById<ViewGroup>(R.id.tabunganlayout11)
                     tabunganLayout?.removeAllViews()
 
                     for (document in documents) {
                         val nama = document.getString("nama") ?: "Tidak ada nama"
                         val nominal = document.getLong("nominal") ?: 0L
+                        val maksimal = document.getLong("maksimal") // Ambil field maksimal
 
                         // Tambahkan ke total nominal tabungan
                         totalTabungan += nominal
@@ -112,6 +113,11 @@ class DompetFragment : Fragment() {
                         namaTextView.text = nama
                         nominalTextView.text = "Rp$nominal"
 
+                        // Tambahkan listener klik pada itemView untuk membuka PopUpProgressTabungan
+                        itemView.setOnClickListener {
+                            openPopProgressTabungan(nama, nominal, maksimal)
+                        }
+
                         // Tambahkan item ke dalam layout
                         tabunganLayout?.addView(itemView)
                     }
@@ -124,6 +130,20 @@ class DompetFragment : Fragment() {
                 Log.e("DompetFragment", "Error mendapatkan data tabungan", exception)
             }
     }
+
+
+    // Fungsi untuk membuka PopUpProgressTabungan
+    private fun openPopProgressTabungan(nama: String, nominal: Long, maksimal: Long?) {
+        val popProgressTabunganFragment = PopUpProgressTabungan()
+        val args = Bundle()
+        args.putString("NAMA", nama)
+        args.putLong("NOMINAL", nominal)
+        maksimal?.let { args.putLong("MAKSIMAL", it) }
+        popProgressTabunganFragment.arguments = args
+        popProgressTabunganFragment.show(requireFragmentManager(), "PopProgressTabungan")
+    }
+
+
 
 
     private fun fetchCatatan(userId: String) {
