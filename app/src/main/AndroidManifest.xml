@@ -16,6 +16,9 @@
         android:theme="@style/Theme.CapstoneSejahtera"
         tools:targetApi="31">
         <activity
+            android:name=".PopUpRubahCatatan"
+            android:exported="false" />
+        <activity
             android:name=".HalamanLiatTabungan"
             android:exported="false" />
         <activity

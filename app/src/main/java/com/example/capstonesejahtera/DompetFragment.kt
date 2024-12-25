@@ -156,6 +156,13 @@ class DompetFragment : Fragment() {
                         namaCatatanTextView.text = nama
                         nominalPengeluaranTextView.text = "Rp$nominal"
 
+                        // Tambahkan listener klik pada itemView
+                        itemView.setOnClickListener {
+                            // Mengambil ID dokumen catatan jika diperlukan
+                            val catatanId = document.id // Ganti dengan ID dokumen yang sesuai
+                            openPopRubahCatatan(catatanId)
+                        }
+
                         // Tambahkan item ke layout
                         catatanLayout.addView(itemView)
                     }
@@ -165,6 +172,36 @@ class DompetFragment : Fragment() {
                 Log.e("DompetFragment", "Error mendapatkan data catatan", exception)
             }
     }
+
+    private fun openPopRubahCatatan(catatanId: String) {
+        val popRubahCatatanFragment = PopUpRubahCatatan()
+        val args = Bundle()
+
+        // Fetch data nama dan nominal
+        val catatanRef = firestore.collection("Catatan").document(auth.currentUser!!.uid)
+            .collection("user_data").document(catatanId)
+
+        catatanRef.get()
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    val nama = document.getString("nama") ?: "Tidak ada nama"
+                    val nominal = document.getLong("nominal") ?: 0L
+
+                    // Kirim data nama, nominal, dan ID ke PopUpRubahCatatan
+                    args.putString("NAMA_CATATAN", nama)
+                    args.putLong("NOMINAL_CATATAN", nominal)
+                    args.putString("CATATAN_ID", catatanId)
+                    popRubahCatatanFragment.arguments = args
+                    popRubahCatatanFragment.show(requireFragmentManager(), "PopRubahCatatan")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.e("DompetFragment", "Error fetching catatan data", exception)
+            }
+    }
+
+
+
 
 
     private fun calculateTotalPenghasilanPengeluaran(userId: String) {

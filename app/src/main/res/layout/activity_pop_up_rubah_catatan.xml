@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/popuprubah"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/container_android_compact">
+
+    <!-- Tambahkan TextView untuk tulisan Catatan Bulanan -->
+    <TextView
+        android:id="@+id/text_catatan_bulanan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|left"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="30dp"
+        android:text="Catatan Bulanan"
+        android:textColor="#FF000000"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <!-- TextView namapengeluaran dipindahkan ke bawah text_catatan_bulanan -->
+    <TextView
+        android:id="@+id/namapengeluaran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="55dp"
+        android:gravity="left"
+        android:text=""
+        android:textColor="#FF000000"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/datanominal"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="top|left"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/image_rectangle33b"
+        android:gravity="left|center_vertical"
+        android:hint="nominal"
+        android:inputType="text"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textColor="#FF000000"
+        android:textSize="13sp"
+        android:visibility="visible" />
+
+    <EditText
+        android:id="@+id/edit_nominal_pengeluaran"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="150dp"
+        android:layout_gravity="top|left"
+        android:gravity="left|center_vertical"
+        android:hint="Tambahkan Nominal Pengeluaran"
+        android:inputType="number"
+        android:background="@drawable/image_rectangle33b"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:textColor="#FF000000"
+        android:textSize="13sp" />
+
+
+
+    <ImageView
+        android:id="@+id/image_vector5"
+        android:layout_width="23.62dp"
+        android:layout_height="23.62dp"
+        android:layout_marginLeft="230dp"
+        android:layout_marginRight="53.38dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="687.38dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/image_vector5" />
+
+    <Button
+        android:id="@+id/buttonubah"
+        android:layout_width="100dp"
+        android:layout_height="52dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="200dp"
+        android:layout_gravity="top|center_horizontal"
+        android:backgroundTint="#6A9C89"
+        android:text="ubah"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp" />
+
+</FrameLayout>
