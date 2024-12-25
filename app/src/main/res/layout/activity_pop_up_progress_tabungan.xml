@@ -92,15 +92,6 @@
                     android:text="Rp1,000,000."
                     android:textStyle="bold"
                     android:textColor="@android:color/white"/>
-
-                <TextView
-                    android:id="@+id/tv_days_left"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="20 hari tersisa"
-                    android:gravity="end"
-                    android:textColor="@android:color/white"/>
             </LinearLayout>
 
             <TextView
