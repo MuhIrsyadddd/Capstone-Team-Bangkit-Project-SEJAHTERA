@@ -109,6 +109,7 @@ class DompetFragment : Fragment() {
                         // Atur nilai pada view
                         val namaTextView = itemView.findViewById<TextView>(R.id.nama_tabungan)
                         val nominalTextView = itemView.findViewById<TextView>(R.id.nominal_tabungan)
+                        val iconHapus = itemView.findViewById<View>(R.id.icon_hapuss)
 
                         namaTextView.text = nama
                         nominalTextView.text = "Rp$nominal"
@@ -116,6 +117,11 @@ class DompetFragment : Fragment() {
                         // Tambahkan listener klik pada itemView untuk membuka PopUpProgressTabungan
                         itemView.setOnClickListener {
                             openPopProgressTabungan(nama, nominal, maksimal)
+                        }
+
+                        // Tambahkan listener klik pada icon_hapus untuk menghapus tabungan
+                        iconHapus.setOnClickListener {
+                            hapusTabungan(userId, document.id)
                         }
 
                         // Tambahkan item ke dalam layout
@@ -128,6 +134,21 @@ class DompetFragment : Fragment() {
             }
             .addOnFailureListener { exception ->
                 Log.e("DompetFragment", "Error mendapatkan data tabungan", exception)
+            }
+    }
+
+    // Fungsi untuk menghapus tabungan berdasarkan ID
+    private fun hapusTabungan(userId: String, tabunganId: String) {
+        val tabunganRef = firestore.collection("Tabungan").document(userId)
+            .collection("user_data").document(tabunganId)
+
+        tabunganRef.delete()
+            .addOnSuccessListener {
+                Log.d("DompetFragment", "Tabungan berhasil dihapus")
+                fetchTabungan(userId) // Refresh data setelah dihapus
+            }
+            .addOnFailureListener { exception ->
+                Log.e("DompetFragment", "Error menghapus tabungan", exception)
             }
     }
 
