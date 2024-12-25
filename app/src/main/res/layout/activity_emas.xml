@@ -7,6 +7,30 @@
     android:layout_height="match_parent"
     tools:context=".EmasActivity">
 
+
+
+    <TextView
+        android:id="@+id/grafikhargaemas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Grafik Harga Emas"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/titihargaterakhir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="titik harga terakhir"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/grafikhargaemas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <TextView
         android:id="@+id/tabungantotalemas"
         android:layout_width="wrap_content"
@@ -14,7 +38,7 @@
         android:layout_marginTop="16dp"
         android:text="Tanggal Prediksi"
         android:textSize="18sp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titihargaterakhir"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -25,7 +49,7 @@
         android:layout_marginTop="100dp"
         android:text="total catetan"
         android:textSize="18sp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tabungantotalemas"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

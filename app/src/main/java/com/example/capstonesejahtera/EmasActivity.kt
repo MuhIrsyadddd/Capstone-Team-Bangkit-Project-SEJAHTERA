@@ -168,6 +168,7 @@ class EmasActivity : AppCompatActivity() {
         if (predictedPrices == null || predictedPrices.isEmpty()) {
             lineChart.clear()
             lineChart.invalidate()
+            findViewById<TextView>(R.id.titihargaterakhir).text = "Data tidak tersedia"
             return
         }
 
@@ -203,7 +204,15 @@ class EmasActivity : AppCompatActivity() {
             animateX(1000)
             invalidate()
         }
+
+        // Ambil titik harga terakhir
+        val lastPrice = sortedPrices.lastOrNull()
+        if (lastPrice != null) {
+            findViewById<TextView>(R.id.titihargaterakhir).text =
+                "Titik Harga Terakhir: ${formatRupiah(lastPrice)}"
+        }
     }
+
 
 
     private fun showErrorMessage(message: String) {
