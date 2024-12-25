@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.core.view.ViewCompat
@@ -37,6 +38,11 @@ class PopUpProgressTabungan : DialogFragment() {
             view.findViewById<TextView>(R.id.tv_target).text = "Maksimal: Rp$maksimal"
         }
 
+        // Tambahkan listener klik untuk iv_icon
+        view.findViewById<ImageView>(R.id.iv_icon).setOnClickListener {
+            dismiss() // Menutup dialog
+        }
+
         return view
     }
 
@@ -54,4 +60,3 @@ class PopUpProgressTabungan : DialogFragment() {
         setStyle(STYLE_NORMAL, android.R.style.Theme_Material_Light_NoActionBar)
     }
 }
-

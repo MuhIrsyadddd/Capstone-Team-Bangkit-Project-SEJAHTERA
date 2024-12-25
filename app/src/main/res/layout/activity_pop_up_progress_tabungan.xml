@@ -11,6 +11,15 @@
     android:orientation="vertical"
     tools:context=".PopUpProgressTabungan">
 
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/image_vector5"
+        android:layout_marginLeft="170dp"
+        android:contentDescription="Icon"
+        />
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -110,7 +119,7 @@
         android:layout_height="58dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_edittext"
-        android:hint="Tambah Nominal Tabungan"
+        android:hint="Berapa Sekarang Tabungan Anda ?"
         android:padding="12dp"
         android:textSize="14sp" />
 
