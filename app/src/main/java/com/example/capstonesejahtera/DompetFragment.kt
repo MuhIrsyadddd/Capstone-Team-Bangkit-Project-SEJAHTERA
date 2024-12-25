@@ -90,7 +90,7 @@ class DompetFragment : Fragment() {
                     // Tampilkan textViewTabungan jika ada data
                     textViewTabungan?.visibility = View.VISIBLE
 
-                    var totalTabungan = 0L // Variable untuk menghitung total nominal tabungan
+                    var totalTabungan = 0L // Variabel untuk menghitung total nominal tabungan
                     val tabunganLayout = view?.findViewById<ViewGroup>(R.id.tabunganlayout11)
                     tabunganLayout?.removeAllViews()
 
@@ -112,6 +112,11 @@ class DompetFragment : Fragment() {
                         namaTextView.text = nama
                         nominalTextView.text = "Rp$nominal"
 
+                        // Tambahkan listener klik pada itemView untuk membuka PopUpProgressTabungan
+                        itemView.setOnClickListener {
+                            openPopProgressTabungan()
+                        }
+
                         // Tambahkan item ke dalam layout
                         tabunganLayout?.addView(itemView)
                     }
@@ -124,6 +129,13 @@ class DompetFragment : Fragment() {
                 Log.e("DompetFragment", "Error mendapatkan data tabungan", exception)
             }
     }
+
+    // Fungsi untuk membuka PopUpProgressTabungan
+    private fun openPopProgressTabungan() {
+        val popProgressTabunganFragment = PopUpProgressTabungan()
+        popProgressTabunganFragment.show(requireFragmentManager(), "PopProgressTabungan")
+    }
+
 
 
     private fun fetchCatatan(userId: String) {
