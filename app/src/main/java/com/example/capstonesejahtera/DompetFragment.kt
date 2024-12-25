@@ -86,6 +86,8 @@ class DompetFragment : Fragment() {
                 if (documents.isEmpty) {
                     // Sembunyikan textViewTabungan jika tidak ada data
                     textViewTabungan?.visibility = View.GONE
+                    // Tampilkan Rp.0 jika tidak ada data
+                    tabunganTextView.text = "Rp.0"
                 } else {
                     // Tampilkan textViewTabungan jika ada data
                     textViewTabungan?.visibility = View.VISIBLE
@@ -136,6 +138,7 @@ class DompetFragment : Fragment() {
                 Log.e("DompetFragment", "Error mendapatkan data tabungan", exception)
             }
     }
+
 
     // Fungsi untuk menghapus tabungan berdasarkan ID
     private fun hapusTabungan(userId: String, tabunganId: String) {
