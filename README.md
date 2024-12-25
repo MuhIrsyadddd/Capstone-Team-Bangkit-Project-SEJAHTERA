@@ -9,7 +9,7 @@ This app was developed by Team C242-PS307 Bangkit Capstone Project
 (Description Appliaction)
 
 ## Our Team
-aaa
+
 
 1. (ML) M297B4KX1982 – Insyuzuu Cahyani Aisyah – Universitas Pembangunan Nasional Veteran Yogyakarta
 2. (ML) M297B4KY2960 – Muhammad Naufal Fauzi Ali – Universitas Pembangunan Nasional Veteran Yogyakarta
