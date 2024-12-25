@@ -12,11 +12,35 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
         android:text="ACES"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/aspirasi_hidup_indonesia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="16dp"
+        android:text="Aspirasi Hidup Indonesia"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/namasahama"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/titikhargaterakhirsaham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:text=""
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/aspirasi_hidup_indonesia"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/titikterakhirsaham"
@@ -108,5 +132,35 @@
             android:textStyle="bold"
             android:background="@android:color/transparent" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tentangSaham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginStart="16dp"
+        android:text="Tentang ACES"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/button_container"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/deskripsi_perusahaan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/box_background"
+        android:padding="16dp"
+        android:text="PT Aspirasi Hidup Indonesia Tbk, sebelumnya dikenal sebagai PT Ace Hardware Indonesia Tbk dengan kode saham ACES, adalah perusahaan ritel terkemuka di Indonesia yang berfokus pada produk perlengkapan rumah tangga dan gaya hidup. Perusahaan ini merupakan bagian dari Kawan Lama Group dan telah beroperasi selama 29 tahun."
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/tentangSaham"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
