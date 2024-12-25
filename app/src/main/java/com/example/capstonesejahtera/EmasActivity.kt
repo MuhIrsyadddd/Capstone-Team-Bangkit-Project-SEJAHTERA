@@ -30,6 +30,8 @@ import retrofit2.Response
 import java.text.NumberFormat
 import java.util.Locale
 import java.util.concurrent.TimeUnit
+import android.view.View
+
 
 class EmasActivity : AppCompatActivity() {
 
@@ -48,6 +50,10 @@ class EmasActivity : AppCompatActivity() {
         totalTextView = findViewById(R.id.tabungantotalemas)
         totalCatatanTextView = findViewById(R.id.totalcatetanemas)
         lineChart = findViewById(R.id.lineChart)
+
+        // Sembunyikan elemen yang tidak perlu ditampilkan
+        totalTextView.visibility = View.GONE
+        totalCatatanTextView.visibility = View.GONE
 
         fetchTabunganData()
 
@@ -209,7 +215,7 @@ class EmasActivity : AppCompatActivity() {
         val lastPrice = sortedPrices.lastOrNull()
         if (lastPrice != null) {
             findViewById<TextView>(R.id.titihargaterakhir).text =
-                "Titik Harga Terakhir: ${formatRupiah(lastPrice)}"
+                "${formatRupiah(lastPrice)}"
         }
     }
 
