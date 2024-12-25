@@ -24,6 +24,7 @@ import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import android.view.View
 
 class AcesSaham : AppCompatActivity() {
     private lateinit var predictionDateTextView: TextView
@@ -45,20 +46,28 @@ class AcesSaham : AppCompatActivity() {
         predictedPriceTextView = findViewById(R.id.predicted_price)
         lineChart = findViewById(R.id.line_chart)
 
+        // Menyembunyikan TextView
+        predictionDateTextView.visibility = View.GONE
+        predictedPriceTextView.visibility = View.GONE
+
         fetchAcesStockData()
 
         // Set click listeners for buttons
         findViewById<TextView>(R.id.btn_1_day).setOnClickListener {
-            displayGraph(dayData, monthData, yearData, "day")
+            val price = displayGraph(dayData, monthData, yearData, "day")
+            findViewById<TextView>(R.id.titikhargaterakhirsaham).text = price?.let { formatToPercentage(it) } ?: "Tidak tersedia"
         }
 
         findViewById<TextView>(R.id.btn_1_month).setOnClickListener {
-            displayGraph(dayData, monthData, yearData, "month")
+            val price = displayGraph(dayData, monthData, yearData, "month")
+            findViewById<TextView>(R.id.titikhargaterakhirsaham).text = price?.let { formatToPercentage(it) } ?: "Tidak tersedia"
         }
 
         findViewById<TextView>(R.id.btn_1_year).setOnClickListener {
-            displayGraph(dayData, monthData, yearData, "year")
+            val price = displayGraph(dayData, monthData, yearData, "year")
+            findViewById<TextView>(R.id.titikhargaterakhirsaham).text = price?.let { formatToPercentage(it) } ?: "Tidak tersedia"
         }
+
     }
 
     private var dayData: JsonMember1DayPredictionDate? = null
@@ -126,26 +135,30 @@ class AcesSaham : AppCompatActivity() {
         monthData: JsonMember1MonthPredictionDate?,
         yearData: JsonMember1YearPredictionDate?,
         selectedPeriod: String
-    ) {
+    ): Double? { // Mengubah tipe kembalian menjadi Double?
         val entries = mutableListOf<Entry>()
         val circleColors = mutableListOf<Int>()
+        var selectedPrice: Double? = null // Variabel untuk menyimpan harga yang dipilih
 
         dayData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
             entries.add(Entry(0f, price.toFloat() * 100)) // 1-day
             circleColors.add(if (selectedPeriod == "day") Color.GREEN else Color.GRAY)
+            if (selectedPeriod == "day") selectedPrice = price // Simpan harga jika periode yang dipilih adalah hari
         }
 
         monthData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
             entries.add(Entry(1f, price.toFloat() * 100)) // 1-month
             circleColors.add(if (selectedPeriod == "month") Color.BLUE else Color.GRAY)
+            if (selectedPeriod == "month") selectedPrice = price // Simpan harga jika periode yang dipilih adalah bulan
         }
 
         yearData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
             entries.add(Entry(2f, price.toFloat() * 100)) // 1-year
             circleColors.add(if (selectedPeriod == "year") Color.MAGENTA else Color.GRAY)
+            if (selectedPeriod == "year") selectedPrice = price // Simpan harga jika periode yang dipilih adalah tahun
         }
 
         val dataSet = LineDataSet(entries, "Prediksi Saham").apply {
@@ -173,5 +186,8 @@ class AcesSaham : AppCompatActivity() {
             animateX(1000)
             invalidate()
         }
+
+        return selectedPrice // Kembalikan harga yang dipilih
     }
+
 }
