@@ -308,7 +308,19 @@ class DompetFragment : Fragment() {
 
 
     private fun openPopCatatanTabungan() {
-        val popTabunganFragment = PopUpCatatanTabungan()
-        popTabunganFragment.show(requireFragmentManager(), "PopCatatanTabungan")
+        val popUpCatatanTabungan = PopUpCatatanTabungan()
+        popUpCatatanTabungan.dataSavedListener = object : OnDataSavedListener {
+            override fun onDataSaved() {
+                // Refresh data di sini
+                auth.currentUser?.uid?.let { uid ->
+                    fetchNominal(uid)
+                    fetchTabungan(uid)
+                    fetchCatatan(uid)
+                    calculateTotalPenghasilanPengeluaran(uid)
+                }
+            }
+        }
+        popUpCatatanTabungan.show(requireFragmentManager(), "PopUpCatatanTabungan")
     }
+
 }
