@@ -39,6 +39,7 @@ class EmasActivity : AppCompatActivity() {
     private lateinit var totalTextView: TextView
     private lateinit var totalCatatanTextView: TextView
     private lateinit var lineChart: LineChart
+    private lateinit var recommendationTextView: TextView  // Add this line
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +51,7 @@ class EmasActivity : AppCompatActivity() {
         totalTextView = findViewById(R.id.tabungantotalemas)
         totalCatatanTextView = findViewById(R.id.totalcatetanemas)
         lineChart = findViewById(R.id.lineChart)
+        recommendationTextView = findViewById(R.id.recommendation) // Initialize the recommendation TextView
 
         // Sembunyikan elemen yang tidak perlu ditampilkan
         totalTextView.visibility = View.GONE
@@ -143,6 +145,8 @@ class EmasActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val predictedPrices = response.body()?.predictedPrices
                     displayPredictedPrices(predictedPrices)
+                    val recommendation = response.body()?.recommendation  // Get recommendation from the response
+                    displayRecommendation(recommendation)  // Display the recommendation
                 } else {
                     Log.e("EmasActivity", "Error response from API: ${response.errorBody()}")
                     showErrorMessage("Gagal mendapatkan prediksi harga emas.")
@@ -219,7 +223,9 @@ class EmasActivity : AppCompatActivity() {
         }
     }
 
-
+    private fun displayRecommendation(recommendation: String?) {
+        recommendationTextView.text = recommendation ?: "Rekomendasi tidak tersedia"
+    }
 
     private fun showErrorMessage(message: String) {
         Log.e("EmasActivity", message)
