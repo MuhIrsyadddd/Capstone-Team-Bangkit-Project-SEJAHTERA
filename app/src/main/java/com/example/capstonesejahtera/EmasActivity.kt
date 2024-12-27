@@ -228,7 +228,41 @@ class EmasActivity : AppCompatActivity() {
     }
 
     private fun displayRecommendation(recommendation: String?) {
-        recommendationTextView.text = recommendation ?: "Rekomendasi tidak tersedia"
+        if (recommendation == "WAIT") {
+            val spannableText = SpannableString("""
+            Ambil Langkah
+            Tahan dulu untuk membeli emas, karena harganya sedang naik bulan ini. Namun, kamu tampaknya cocok untuk mencoba investasi saham. Yuk, cek peluang di pasar saham!
+        """.trimIndent())
+
+            // Membuat "Ambil Langkah" huruf tebal
+            val boldText = "Ambil Langkah"
+            val boldStart = spannableText.indexOf(boldText)
+            val boldEnd = boldStart + boldText.length
+            spannableText.setSpan(
+                android.text.style.StyleSpan(android.graphics.Typeface.BOLD),
+                boldStart,
+                boldEnd,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+
+            // Membuat "Tahan dulu untuk membeli emas" huruf berwarna merah
+            val redText = "Tahan dulu untuk membeli emas"
+            val redStart = spannableText.indexOf(redText)
+            val redEnd = redStart + redText.length
+            spannableText.setSpan(
+                android.text.style.ForegroundColorSpan(android.graphics.Color.RED),
+                redStart,
+                redEnd,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+
+            // Menampilkan teks yang telah diformat
+            recommendationTextView.text = spannableText
+        } else {
+            recommendationTextView.text = recommendation ?: "Rekomendasi tidak tersedia"
+        }
+        // Tampilkan TextView setelah data tersedia
+        recommendationTextView.visibility = View.VISIBLE
     }
 
 
