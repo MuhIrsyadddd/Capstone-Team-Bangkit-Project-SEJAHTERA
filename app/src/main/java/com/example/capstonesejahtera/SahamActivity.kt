@@ -45,7 +45,6 @@ class SahamActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_saham)
-
         // Menyesuaikan padding dengan insets
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.sahamhal)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

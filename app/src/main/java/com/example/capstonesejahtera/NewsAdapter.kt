@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class NewsAdapter(private val newsList: List<NewsItem>) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
+class NewsAdapter(private var newsList: List<NewsItem>) : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
     class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val title: TextView = view.findViewById(R.id.news_title)
@@ -46,8 +46,13 @@ class NewsAdapter(private val newsList: List<NewsItem>) : RecyclerView.Adapter<N
         }
     }
 
-
     override fun getItemCount(): Int {
         return newsList.size
+    }
+
+    // Fungsi untuk memperbarui daftar berita
+    fun updateNews(newNewsList: List<NewsItem>) {
+        this.newsList = newNewsList
+        notifyDataSetChanged()
     }
 }

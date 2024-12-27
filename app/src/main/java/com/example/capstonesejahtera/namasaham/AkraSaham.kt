@@ -81,7 +81,7 @@ class AkraSaham : AppCompatActivity() {
             .build()
 
         val apiService = retrofit.create(ApiService::class.java)
-        val call = apiService.getAdroStockData()
+        val call = apiService.getAkraStockData()
 
         call.enqueue(object : Callback<SahamResponse> {
             override fun onResponse(call: Call<SahamResponse>, response: Response<SahamResponse>) {

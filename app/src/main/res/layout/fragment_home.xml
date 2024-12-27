@@ -124,7 +124,7 @@
                 android:id="@+id/topReksaLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Top Reksa Dana (Pasar Uang)"
+                android:text="TOP SAHAM"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="16sp"
