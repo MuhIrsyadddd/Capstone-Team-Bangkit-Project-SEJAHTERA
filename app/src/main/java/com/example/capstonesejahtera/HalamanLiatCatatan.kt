@@ -53,55 +53,45 @@ class HalamanLiatCatatan : AppCompatActivity() {
                     // Konversi nominal menjadi format angka dengan pemisah ribuan
                     val formattedNominal = nominal?.let { formatToPlainNumber(it) }
 
-                    // Buat LinearLayout untuk setiap item
-                    val itemLayout = LinearLayout(this).apply {
-                        orientation = LinearLayout.HORIZONTAL
-                        layoutParams = LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.MATCH_PARENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT
-                        )
-                        setPadding(0, 8, 0, 8) // Tambahkan padding jika perlu
+                    // Inflate layout item_catatan
+                    val itemView = layoutInflater.inflate(R.layout.item_catatan, dataLinearLayout, false)
+
+                    // Temukan dan atur nilai di dalam itemView
+                    val namaTextView = itemView.findViewById<TextView>(R.id.nama_catatan)
+                    val nominalTextView = itemView.findViewById<TextView>(R.id.nominal_pengeluaran)
+                    val deleteImageView = itemView.findViewById<ImageView>(R.id.icon_hapus)
+
+                    namaTextView.text = nama ?: "Nama tidak tersedia"
+                    nominalTextView.text = formattedNominal?.let { "Rp$it" } ?: "Rp0"
+
+                    // Set listener untuk menghapus item saat diklik
+                    deleteImageView.setOnClickListener {
+                        deleteUserData(userId, documentId)
+                        dataLinearLayout.removeView(itemView) // Hapus item dari tampilan
                     }
 
-                    // Buat ImageView untuk menghapus
-                    val imageView = ImageView(this).apply {
-                        setImageResource(R.drawable.baseline_auto_delete_24) // Set drawable
-                        layoutParams = LinearLayout.LayoutParams(
-                            48, // Width
-                            48  // Height
-                        ).apply {
-                            setMargins(0, 0, 8, 0) // Margin antara image dan text
+                    // Tambahkan listener untuk menampilkan PopUpRubahCatatan saat item diklik
+                    itemView.setOnClickListener {
+                        val popUpRubahCatatan = PopUpRubahCatatan().apply {
+                            arguments = Bundle().apply {
+                                putString("NAMA_CATATAN", nama)
+                                putLong("NOMINAL_CATATAN", nominal?.toLong() ?: 0L)
+                                putString("CATATAN_ID", documentId)
+                            }
                         }
-
-                        // Set listener untuk menghapus item saat diklik
-                        setOnClickListener {
-                            deleteUserData(userId, documentId)
-                            dataLinearLayout.removeView(itemLayout) // Hapus item dari tampilan
-                        }
+                        popUpRubahCatatan.show(supportFragmentManager, "PopUpRubahCatatan")
                     }
 
-                    // Buat TextView untuk data
-                    val textView = TextView(this).apply {
-                        text = "Nama: $nama\nNominal: $formattedNominal"
-                        textSize = 16f
-                        layoutParams = LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.WRAP_CONTENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT
-                        )
-                    }
-
-                    // Tambahkan ImageView dan TextView ke itemLayout
-                    itemLayout.addView(imageView)
-                    itemLayout.addView(textView)
-
-                    // Tambahkan itemLayout ke LinearLayout utama
-                    dataLinearLayout.addView(itemLayout)
+                    // Tambahkan itemView ke LinearLayout utama
+                    dataLinearLayout.addView(itemView)
                 }
             }
             .addOnFailureListener { e ->
                 Log.e("HalamanLiatCatatan", "Error fetching data", e)
             }
     }
+
+
 
     private fun deleteUserData(userId: String, documentId: String) {
         firestore.collection("Catatan")
