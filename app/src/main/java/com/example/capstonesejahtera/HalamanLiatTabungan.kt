@@ -50,59 +50,49 @@ class HalamanLiatTabungan : AppCompatActivity() {
                     val documentId = document.id // Ambil ID dokumen untuk referensi penghapusan
                     val nama = document.getString("nama")
                     val nominal = document.getDouble("nominal")
+                    val maksimal = document.getDouble("maksimal") // Pastikan Anda juga mendapatkan data maksimal jika diperlukan
 
                     // Konversi nominal menjadi format angka dengan titik
                     val formattedNominal = nominal?.let { formatToPlainNumber(it) }
 
-                    // Buat LinearLayout untuk setiap item
-                    val itemLayout = LinearLayout(this).apply {
-                        orientation = LinearLayout.HORIZONTAL
-                        layoutParams = LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.MATCH_PARENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT
-                        )
-                        setPadding(0, 8, 0, 8) // Tambahkan padding jika perlu
-                    }
+                    // Inflate layout item_tabungan.xml
+                    val itemView = layoutInflater.inflate(R.layout.item_tabungan, dataLinearLayout, false)
 
-                    // Buat ImageView untuk menghapus
-                    val deleteImageView = ImageView(this).apply {
-                        setImageResource(R.drawable.baseline_auto_delete_24) // Set drawable
-                        layoutParams = LinearLayout.LayoutParams(
-                            48, // Width
-                            48  // Height
-                        ).apply {
-                            setMargins(0, 0, 8, 0) // Margin antara image dan text
+                    // Mengatur nama dan nominal di TextView
+                    val namaTextView: TextView = itemView.findViewById(R.id.nama_tabungan)
+                    val nominalTextView: TextView = itemView.findViewById(R.id.nominal_tabungan)
+                    namaTextView.text = nama ?: "Nama tidak tersedia"
+                    nominalTextView.text = formattedNominal ?: "Rp0"
+
+                    // Menambahkan listener untuk item agar dapat membuka PopUpProgressTabungan
+                    itemView.setOnClickListener {
+                        val popUp = PopUpProgressTabungan()
+                        val bundle = Bundle().apply {
+                            putString("NAMA", nama)
+                            putLong("NOMINAL", nominal?.toLong() ?: 0)
+                            putLong("MAKSIMAL", maksimal?.toLong() ?: 0) // Pastikan untuk mengirim data maksimal
                         }
-
-                        // Set listener untuk menghapus item saat diklik
-                        setOnClickListener {
-                            deleteTabunganData(userId, documentId)
-                            dataLinearLayout.removeView(itemLayout) // Hapus item dari tampilan
-                        }
+                        popUp.arguments = bundle
+                        popUp.show(supportFragmentManager, "PopUpProgressTabungan")
                     }
 
-                    // Buat TextView untuk data
-                    val textView = TextView(this).apply {
-                        text = "Nama: $nama\nNominal: $formattedNominal"
-                        textSize = 16f
-                        layoutParams = LinearLayout.LayoutParams(
-                            LinearLayout.LayoutParams.WRAP_CONTENT,
-                            LinearLayout.LayoutParams.WRAP_CONTENT
-                        )
+                    // Mengatur listener untuk menghapus item saat diklik
+                    val deleteImageView: ImageView = itemView.findViewById(R.id.icon_hapuss)
+                    deleteImageView.setOnClickListener {
+                        deleteTabunganData(userId, documentId)
+                        dataLinearLayout.removeView(itemView) // Hapus item dari tampilan
                     }
 
-                    // Tambahkan ImageView dan TextView ke itemLayout
-                    itemLayout.addView(deleteImageView)
-                    itemLayout.addView(textView)
-
-                    // Tambahkan itemLayout ke LinearLayout utama
-                    dataLinearLayout.addView(itemLayout)
+                    // Tambahkan itemView ke LinearLayout utama
+                    dataLinearLayout.addView(itemView)
                 }
             }
             .addOnFailureListener { e ->
                 Log.e("HalamanLiatTabungan", "Error fetching data", e)
             }
     }
+
+
 
     private fun deleteTabunganData(userId: String, documentId: String) {
         firestore.collection("Tabungan")
