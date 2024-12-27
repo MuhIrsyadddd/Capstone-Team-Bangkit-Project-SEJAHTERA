@@ -86,6 +86,8 @@ class DompetFragment : Fragment() {
                 if (documents.isEmpty) {
                     // Sembunyikan textViewTabungan jika tidak ada data
                     textViewTabungan?.visibility = View.GONE
+                    // Tampilkan Rp.0 jika tidak ada data
+                    tabunganTextView.text = "Rp.0"
                 } else {
                     // Tampilkan textViewTabungan jika ada data
                     textViewTabungan?.visibility = View.VISIBLE
@@ -109,6 +111,7 @@ class DompetFragment : Fragment() {
                         // Atur nilai pada view
                         val namaTextView = itemView.findViewById<TextView>(R.id.nama_tabungan)
                         val nominalTextView = itemView.findViewById<TextView>(R.id.nominal_tabungan)
+                        val iconHapus = itemView.findViewById<View>(R.id.icon_hapuss)
 
                         namaTextView.text = nama
                         nominalTextView.text = "Rp$nominal"
@@ -116,6 +119,11 @@ class DompetFragment : Fragment() {
                         // Tambahkan listener klik pada itemView untuk membuka PopUpProgressTabungan
                         itemView.setOnClickListener {
                             openPopProgressTabungan(nama, nominal, maksimal)
+                        }
+
+                        // Tambahkan listener klik pada icon_hapus untuk menghapus tabungan
+                        iconHapus.setOnClickListener {
+                            hapusTabungan(userId, document.id)
                         }
 
                         // Tambahkan item ke dalam layout
@@ -128,6 +136,22 @@ class DompetFragment : Fragment() {
             }
             .addOnFailureListener { exception ->
                 Log.e("DompetFragment", "Error mendapatkan data tabungan", exception)
+            }
+    }
+
+
+    // Fungsi untuk menghapus tabungan berdasarkan ID
+    private fun hapusTabungan(userId: String, tabunganId: String) {
+        val tabunganRef = firestore.collection("Tabungan").document(userId)
+            .collection("user_data").document(tabunganId)
+
+        tabunganRef.delete()
+            .addOnSuccessListener {
+                Log.d("DompetFragment", "Tabungan berhasil dihapus")
+                fetchTabungan(userId) // Refresh data setelah dihapus
+            }
+            .addOnFailureListener { exception ->
+                Log.e("DompetFragment", "Error menghapus tabungan", exception)
             }
     }
 
@@ -153,37 +177,35 @@ class DompetFragment : Fragment() {
         catatanRef.get()
             .addOnSuccessListener { documents ->
                 if (documents.isEmpty) {
-                    // Sembunyikan TextView jika tidak ada data
                     view?.findViewById<TextView>(R.id.textViewCatatan)?.visibility = View.GONE
                 } else {
-                    // Tampilkan TextView jika ada data
                     view?.findViewById<TextView>(R.id.textViewCatatan)?.visibility = View.VISIBLE
-
-                    // Kosongkan layout untuk mencegah duplikasi
                     catatanLayout.removeAllViews()
+
                     for (document in documents) {
                         val nama = document.getString("nama") ?: "Tidak ada nama"
                         val nominal = document.getLong("nominal") ?: 0L
+                        val catatanId = document.id
 
-                        // Inflasi layout item_catatan.xml
                         val itemView = LayoutInflater.from(requireContext())
                             .inflate(R.layout.item_catatan, catatanLayout, false)
 
-                        // Atur nilai pada view
                         val namaCatatanTextView = itemView.findViewById<TextView>(R.id.nama_catatan)
                         val nominalPengeluaranTextView = itemView.findViewById<TextView>(R.id.nominal_pengeluaran)
+                        val iconHapus = itemView.findViewById<View>(R.id.icon_hapus)
 
                         namaCatatanTextView.text = nama
                         nominalPengeluaranTextView.text = "Rp$nominal"
 
-                        // Tambahkan listener klik pada itemView
+                        // Listener untuk icon_hapus
+                        iconHapus.setOnClickListener {
+                            hapusCatatan(userId, catatanId)
+                        }
+
                         itemView.setOnClickListener {
-                            // Mengambil ID dokumen catatan jika diperlukan
-                            val catatanId = document.id // Ganti dengan ID dokumen yang sesuai
                             openPopRubahCatatan(catatanId)
                         }
 
-                        // Tambahkan item ke layout
                         catatanLayout.addView(itemView)
                     }
                 }
@@ -192,6 +214,22 @@ class DompetFragment : Fragment() {
                 Log.e("DompetFragment", "Error mendapatkan data catatan", exception)
             }
     }
+
+    // Fungsi untuk menghapus catatan berdasarkan ID
+    private fun hapusCatatan(userId: String, catatanId: String) {
+        val catatanRef = firestore.collection("Catatan").document(userId)
+            .collection("user_data").document(catatanId)
+
+        catatanRef.delete()
+            .addOnSuccessListener {
+                Log.d("DompetFragment", "Catatan berhasil dihapus")
+                fetchCatatan(userId) // Refresh data setelah dihapus
+            }
+            .addOnFailureListener { exception ->
+                Log.e("DompetFragment", "Error menghapus catatan", exception)
+            }
+    }
+
 
     private fun openPopRubahCatatan(catatanId: String) {
         val popRubahCatatanFragment = PopUpRubahCatatan()
@@ -270,7 +308,19 @@ class DompetFragment : Fragment() {
 
 
     private fun openPopCatatanTabungan() {
-        val popTabunganFragment = PopUpCatatanTabungan()
-        popTabunganFragment.show(requireFragmentManager(), "PopCatatanTabungan")
+        val popUpCatatanTabungan = PopUpCatatanTabungan()
+        popUpCatatanTabungan.dataSavedListener = object : OnDataSavedListener {
+            override fun onDataSaved() {
+                // Refresh data di sini
+                auth.currentUser?.uid?.let { uid ->
+                    fetchNominal(uid)
+                    fetchTabungan(uid)
+                    fetchCatatan(uid)
+                    calculateTotalPenghasilanPengeluaran(uid)
+                }
+            }
+        }
+        popUpCatatanTabungan.show(requireFragmentManager(), "PopUpCatatanTabungan")
     }
+
 }

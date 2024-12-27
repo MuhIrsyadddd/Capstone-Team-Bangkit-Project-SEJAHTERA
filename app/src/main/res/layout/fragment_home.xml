@@ -1,83 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/drawable_shape">
+    android:background="@drawable/drawable_shape"
+    tools:context=".MainActivity">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <!-- Greeting TextView (Tetap di luar ScrollView) -->
+    <TextView
+        android:id="@+id/greetingTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:text="Hello, User!"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <FrameLayout
-            android:layout_width="352dp"
-            android:layout_height="252dp"
-            android:layout_gravity="top|center_horizontal"
-            android:layout_marginTop="173dp">
+    <!-- SearchBar (EditText Full Width) -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/searchBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintTop_toBottomOf="@id/greetingTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="400dp"
-                android:layout_height="221dp"
-                android:layout_marginTop="26dp"
-                android:layout_marginBottom="12dp"
-                android:orientation="horizontal" />
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Cari artikel..."
+            android:padding="8dp"
+            android:background="@drawable/edittext_background"
+            android:drawableStart="@drawable/baseline_search_24"
+            android:textSize="14sp"
+            android:imeOptions="actionSearch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:layout_width="296dp"
-                android:layout_height="21dp"
-                android:layout_gravity="top|left"
-                android:layout_marginTop="-1dp"
-                android:layout_marginBottom="-1dp"
-                android:gravity="left|center_vertical"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:singleLine="true"
-                android:text="Artikel"
-                android:textColor="#FF000000"
-                android:textSize="16sp" />
-        </FrameLayout>
+    <!-- ScrollView untuk konten di bawah searchBar -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/searchBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/menuRecyclerView"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="450dp"
-            android:layout_gravity="top|left" />
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="296dp"
-            android:layout_height="21dp"
-            android:layout_gravity="top|left"
-            android:layout_marginLeft="29dp"
-            android:layout_marginTop="680dp"
-            android:layout_marginBottom="-1dp"
-            android:gravity="left|center_vertical"
-            android:includeFontPadding="false"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="Top Reksa Dana (Pasar Uang)"
-            android:textColor="#FF000000"
-            android:textSize="16sp" />
+            <!-- Artikel Section -->
+            <TextView
+                android:id="@+id/artikelLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Artikel"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/stockRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="470dp"
-            android:layout_marginTop="720dp"
-            android:orientation="vertical" />
+            <!-- RecyclerView Artikel -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="221dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
 
+            <!-- Menu Section -->
+            <TextView
+                android:id="@+id/menuLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Menu"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp" />
 
-        <TextView
-            android:id="@+id/greetingTextView"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="60dp"
-            android:gravity="left"
-            android:textColor="#FF000000"
-            android:textSize="18sp" />
-    </FrameLayout>
+            <!-- RecyclerView Menu -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="0dp"
+                app:cardBackgroundColor="@color/abu_muda"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp">
 
-</ScrollView>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/menuRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp" />
+            </androidx.cardview.widget.CardView>
+
+            <!-- Top Reksa Dana Section -->
+            <TextView
+                android:id="@+id/topReksaLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Top Reksa Dana (Pasar Uang)"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="16dp" />
+
+            <!-- RecyclerView Reksa Dana -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/stockRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp" />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

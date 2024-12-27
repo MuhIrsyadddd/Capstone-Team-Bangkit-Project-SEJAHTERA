@@ -7,13 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".HalamanLiatCatatan">
 
-    <TextView
-        android:id="@+id/dataTextView"
+    <LinearLayout
+        android:id="@+id/dataLinearLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="Fetching data..."
-        android:textSize="16sp"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

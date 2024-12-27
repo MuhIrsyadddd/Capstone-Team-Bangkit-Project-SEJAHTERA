@@ -5,8 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="917dp"
-    android:background="@drawable/drawable_shape">
+    android:layout_height="917dp">
 
 
 
@@ -40,7 +39,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="108dp"
         android:layout_gravity="top|left"
-        android:background="@drawable/drawable_shape_2"
+        android:background="@color/utama"
         android:scaleType="centerInside" />
 
     <ImageView
@@ -194,8 +193,9 @@
     <ScrollView
         android:layout_width="352dp"
         android:layout_height="235dp"
-        android:layout_marginTop="271dp"
-        android:layout_gravity="top|center_horizontal">
+        android:layout_gravity="top|center_horizontal"
+        android:layout_marginTop="271dp">
+
         <LinearLayout
             android:id="@+id/catatanLayout"
             android:layout_width="match_parent"
@@ -207,7 +207,7 @@
     <ImageView
         android:layout_width="58dp"
         android:layout_height="58dp"
-        android:layout_marginLeft="310dp"
+        android:layout_marginLeft="300dp"
         android:layout_marginTop="675dp"
         android:layout_gravity="top|left"
         android:background="@drawable/drawable_shape_3"
@@ -217,7 +217,7 @@
         android:id="@+id/uploadcattab"
         android:layout_width="26dp"
         android:layout_height="26dp"
-        android:layout_marginLeft="325dp"
+        android:layout_marginLeft="315dp"
         android:layout_marginRight="311dp"
         android:layout_marginTop="690dp"
         android:layout_marginBottom="988dp"

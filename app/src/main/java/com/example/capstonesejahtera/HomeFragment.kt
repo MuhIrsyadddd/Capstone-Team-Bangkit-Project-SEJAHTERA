@@ -1,7 +1,11 @@
 package com.example.capstonesejahtera
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.StyleSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -120,7 +124,11 @@ class HomeFragment : Fragment() {
                         hourOfDay in 12..17 -> "Selamat Siang. \n$name"
                         else -> "Selamat Malam. \n$name"
                     }
-                    greetingTextView.text = greeting
+                    val spannableGreeting = SpannableString(greeting)
+                    val startIndex = greeting.indexOf(name)
+                    val endIndex = startIndex + name.length
+                    spannableGreeting.setSpan(StyleSpan(Typeface.BOLD), startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    greetingTextView.text = spannableGreeting
                 } else {
                     greetingTextView.text = "Halo, Pengguna!"
                 }

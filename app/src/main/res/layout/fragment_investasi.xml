@@ -37,16 +37,7 @@
         android:background="@drawable/drawable_shape_1"
         android:scaleType="centerInside" />
 
-    <ImageView
-        android:id="@+id/image_vector2"
-        android:layout_width="15dp"
-        android:layout_height="10dp"
-        android:layout_marginLeft="357dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="171dp"
-        android:layout_marginBottom="736dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/image_vector2i" />
+
 
     <ImageView
         android:id="@+id/image_rectangle1"
