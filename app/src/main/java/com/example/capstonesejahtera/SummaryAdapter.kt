@@ -1,12 +1,13 @@
 package com.example.capstonesejahtera
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import java.text.NumberFormat
+import java.util.Locale
 
 class SummaryAdapter(
     private val summaryList: List<SummaryItem>,
@@ -28,7 +29,10 @@ class SummaryAdapter(
     override fun onBindViewHolder(holder: SummaryViewHolder, position: Int) {
         val item = summaryList[position]
         holder.titleTextView.text = item.title
-        holder.nominalTextView.text = "Rp ${item.totalNominal}"
+
+        // Format nominal dengan pemisah ribuan
+        val formattedNominal = NumberFormat.getInstance(Locale("id", "ID")).format(item.totalNominal)
+        holder.nominalTextView.text = "Rp $formattedNominal"
 
         // Tambahkan logika klik
         holder.detailButton.setOnClickListener {
@@ -38,3 +42,4 @@ class SummaryAdapter(
 
     override fun getItemCount(): Int = summaryList.size
 }
+

@@ -195,7 +195,7 @@ class EmasActivity : AppCompatActivity() {
         }
 
         val lineDataSet = LineDataSet(entries, "Predicted Prices").apply {
-            color = android.graphics.Color.GREEN // Warna garis
+            color = android.graphics.Color.YELLOW // Warna garis
             valueTextSize = 12f // Ukuran teks nilai
             lineWidth = 2f // Ketebalan garis
             setCircleColor(android.graphics.Color.parseColor("#FFC100")) // Warna titik

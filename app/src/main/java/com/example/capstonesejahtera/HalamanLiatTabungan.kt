@@ -11,6 +11,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.NumberFormat
+import java.util.Locale
 
 class HalamanLiatTabungan : AppCompatActivity() {
 
@@ -49,7 +51,7 @@ class HalamanLiatTabungan : AppCompatActivity() {
                     val nama = document.getString("nama")
                     val nominal = document.getDouble("nominal")
 
-                    // Konversi nominal menjadi format angka tanpa pemisah
+                    // Konversi nominal menjadi format angka dengan titik
                     val formattedNominal = nominal?.let { formatToPlainNumber(it) }
 
                     // Buat LinearLayout untuk setiap item
@@ -117,6 +119,7 @@ class HalamanLiatTabungan : AppCompatActivity() {
     }
 
     private fun formatToPlainNumber(amount: Double): String {
-        return amount.toLong().toString() // Mengubah double ke long dan mengonversi ke string
+        val numberFormat = NumberFormat.getInstance(Locale("id", "ID")) // Format angka sesuai locale Indonesia
+        return numberFormat.format(amount.toLong()) // Mengubah double ke long dan mengonversi ke string
     }
 }

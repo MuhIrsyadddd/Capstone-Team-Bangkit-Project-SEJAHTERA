@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.DecimalFormat
 
 class HalamanLiatCatatan : AppCompatActivity() {
 
@@ -49,7 +50,7 @@ class HalamanLiatCatatan : AppCompatActivity() {
                     val nama = document.getString("nama")
                     val nominal = document.getDouble("nominal")
 
-                    // Konversi nominal menjadi format angka tanpa pemisah
+                    // Konversi nominal menjadi format angka dengan pemisah ribuan
                     val formattedNominal = nominal?.let { formatToPlainNumber(it) }
 
                     // Buat LinearLayout untuk setiap item
@@ -116,8 +117,8 @@ class HalamanLiatCatatan : AppCompatActivity() {
             }
     }
 
-
     private fun formatToPlainNumber(amount: Double): String {
-        return amount.toLong().toString() // Mengubah double ke long dan mengonversi ke string
+        val formatter = DecimalFormat("#,###")
+        return formatter.format(amount.toLong()) // Mengubah double ke long dan memformat dengan pemisah ribuan
     }
 }

@@ -10,6 +10,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.NumberFormat
+import java.util.Locale
+
 
 class DompetFragment : Fragment() {
 
@@ -68,12 +71,16 @@ class DompetFragment : Fragment() {
                     val nominal = document.getLong("nominal") ?: 0
                     totalPengeluaran += nominal
                 }
-                pengeluaranTextView.text = "Rp$totalPengeluaran"
+
+                // Format angka dengan titik
+                val formattedPengeluaran = NumberFormat.getNumberInstance(Locale("id", "ID")).format(totalPengeluaran)
+                pengeluaranTextView.text = "Rp$formattedPengeluaran"
             }
             .addOnFailureListener { exception ->
                 Log.e("DompetFragment", "Error mendapatkan data nominal", exception)
             }
     }
+
 
     private fun fetchTabungan(userId: String) {
         val tabunganRef = firestore.collection("Tabungan").document(userId)
@@ -114,7 +121,10 @@ class DompetFragment : Fragment() {
                         val iconHapus = itemView.findViewById<View>(R.id.icon_hapuss)
 
                         namaTextView.text = nama
-                        nominalTextView.text = "Rp$nominal"
+
+                        // Format nominal menjadi format angka dengan titik
+                        val formattedNominal = NumberFormat.getNumberInstance(Locale("id", "ID")).format(nominal)
+                        nominalTextView.text = "Rp$formattedNominal"
 
                         // Tambahkan listener klik pada itemView untuk membuka PopUpProgressTabungan
                         itemView.setOnClickListener {
@@ -130,8 +140,30 @@ class DompetFragment : Fragment() {
                         tabunganLayout?.addView(itemView)
                     }
 
+
                     // Tampilkan total nominal tabungan di tabunganTextView
                     tabunganTextView.text = "Rp$totalTabungan"
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.e("DompetFragment", "Error mendapatkan data tabungan", exception)
+            }
+
+        // Tambahan kode untuk format angka dengan titik
+        tabunganRef.get()
+            .addOnSuccessListener { documents ->
+                if (documents.isEmpty) {
+                    tabunganTextView.text = "Rp0"
+                } else {
+                    var totalTabungan = 0L
+                    for (document in documents) {
+                        val nominal = document.getLong("nominal") ?: 0L
+                        totalTabungan += nominal
+                    }
+
+                    // Format angka dengan titik
+                    val formattedTabungan = NumberFormat.getNumberInstance(Locale("id", "ID")).format(totalTabungan)
+                    tabunganTextView.text = "Rp$formattedTabungan"
                 }
             }
             .addOnFailureListener { exception ->
@@ -194,8 +226,11 @@ class DompetFragment : Fragment() {
                         val nominalPengeluaranTextView = itemView.findViewById<TextView>(R.id.nominal_pengeluaran)
                         val iconHapus = itemView.findViewById<View>(R.id.icon_hapus)
 
+                        // Format angka nominal dengan titik
+                        val formattedNominal = NumberFormat.getNumberInstance(Locale("id", "ID")).format(nominal)
+
                         namaCatatanTextView.text = nama
-                        nominalPengeluaranTextView.text = "Rp$nominal"
+                        nominalPengeluaranTextView.text = "Rp$formattedNominal"
 
                         // Listener untuk icon_hapus
                         iconHapus.setOnClickListener {
@@ -214,6 +249,7 @@ class DompetFragment : Fragment() {
                 Log.e("DompetFragment", "Error mendapatkan data catatan", exception)
             }
     }
+
 
     // Fungsi untuk menghapus catatan berdasarkan ID
     private fun hapusCatatan(userId: String, catatanId: String) {
@@ -290,21 +326,22 @@ class DompetFragment : Fragment() {
                         // Hitung total penghasilan dan pengeluaran
                         val totalPenghasilanPengeluaran = totalTabungan - totalPengeluaran
 
-                        // Tampilkan hasil dengan tanda minus jika negatif
-                        totalPenghasilanPengeluaranTextView.text = if (totalPenghasilanPengeluaran < 0) {
-                            "Rp-${Math.abs(totalPenghasilanPengeluaran)}"
-                        } else {
-                            "Rp$totalPenghasilanPengeluaran"
-                        }
+                        // Format angka dengan titik
+                        val formattedTotal = NumberFormat.getNumberInstance(Locale("in", "ID"))
+                            .format(totalPenghasilanPengeluaran)
+
+                        // Tampilkan hasil format pada TextView
+                        totalPenghasilanPengeluaranTextView.text = "Rp$formattedTotal"
                     }
                     .addOnFailureListener { exception ->
-                        Log.e("DompetFragment", "Error mendapatkan data catatan", exception)
+                        Log.e("DompetFragment", "Error mendapatkan data pengeluaran", exception)
                     }
             }
             .addOnFailureListener { exception ->
                 Log.e("DompetFragment", "Error mendapatkan data tabungan", exception)
             }
     }
+
 
 
     private fun openPopCatatanTabungan() {
