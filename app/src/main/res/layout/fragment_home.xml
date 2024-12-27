@@ -128,7 +128,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="0dp"
                 android:layout_marginStart="16dp" />
 
             <!-- RecyclerView Reksa Dana -->
@@ -136,7 +136,7 @@
                 android:id="@+id/stockRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="1dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp" />
         </LinearLayout>
