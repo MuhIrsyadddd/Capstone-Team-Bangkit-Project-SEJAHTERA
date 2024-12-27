@@ -41,7 +41,7 @@
             android:id="@+id/searchEditText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Cari artikel..."
+            android:hint="Cari artikel Dan Saham Pilihanmu..."
             android:padding="8dp"
             android:background="@drawable/edittext_background"
             android:drawableStart="@drawable/baseline_search_24"
