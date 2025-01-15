@@ -55,17 +55,17 @@ class IcbpSaham : AppCompatActivity() {
         // Set click listeners for buttons
         findViewById<TextView>(R.id.btn_1_day).setOnClickListener {
             val price = displayGraph(dayData, monthData, yearData, "day")
-            findViewById<TextView>(R.id.titikhargaterakhirsaham).text = price?.let { formatToPercentage(it) } ?: "Tidak tersedia"
+            findViewById<TextView>(R.id.titikhargaterakhirsaham).text = price?.let { formatToRupiah(it) } ?: "Tidak tersedia"
         }
 
         findViewById<TextView>(R.id.btn_1_month).setOnClickListener {
             val price = displayGraph(dayData, monthData, yearData, "month")
-            findViewById<TextView>(R.id.titikhargaterakhirsaham).text = price?.let { formatToPercentage(it) } ?: "Tidak tersedia"
+            findViewById<TextView>(R.id.titikhargaterakhirsaham).text = price?.let { formatToRupiah(it) } ?: "Tidak tersedia"
         }
 
         findViewById<TextView>(R.id.btn_1_year).setOnClickListener {
             val price = displayGraph(dayData, monthData, yearData, "year")
-            findViewById<TextView>(R.id.titikhargaterakhirsaham).text = price?.let { formatToPercentage(it) } ?: "Tidak tersedia"
+            findViewById<TextView>(R.id.titikhargaterakhirsaham).text = price?.let { formatToRupiah(it) } ?: "Tidak tersedia"
         }
 
     }
@@ -94,9 +94,9 @@ class IcbpSaham : AppCompatActivity() {
 
                         predictionDateTextView.text = dayData?.date ?: "Tanggal tidak tersedia"
 
-                        val dayPrice = formatToPercentage(dayData?.predictedPrice)
-                        val monthPrice = formatToPercentage(monthData?.predictedPrice)
-                        val yearPrice = formatToPercentage(yearData?.predictedPrice)
+                        val dayPrice = formatToRupiah(dayData?.predictedPrice)
+                        val monthPrice = formatToRupiah(monthData?.predictedPrice)
+                        val yearPrice = formatToRupiah(yearData?.predictedPrice)
 
                         predictedPriceTextView.text = """
                             Prediksi Harian: $dayPrice
@@ -121,14 +121,17 @@ class IcbpSaham : AppCompatActivity() {
         })
     }
 
-    private fun formatToPercentage(value: Any?): String {
+    private fun formatToRupiah(value: Any?): String {
         return try {
             val number = value.toString().toDouble()
-            String.format("%.2f%%", number * 100)
+            val rupiah = number * 15_000
+            // Format dengan dua desimal dan pemisah ribuan
+            String.format("Rp%,.2f", rupiah).replace(".", ",")
         } catch (e: Exception) {
             "Tidak tersedia"
         }
     }
+
 
     private fun displayGraph(
         dayData: JsonMember1DayPredictionDate?,
@@ -142,23 +145,23 @@ class IcbpSaham : AppCompatActivity() {
 
         dayData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
-            entries.add(Entry(0f, price.toFloat() * 100)) // 1-day
+            entries.add(Entry(0f, price.toFloat() * 15_000)) // Kalikan dengan 15.000
             circleColors.add(if (selectedPeriod == "day") Color.GREEN else Color.GRAY)
-            if (selectedPeriod == "day") selectedPrice = price // Simpan harga jika periode yang dipilih adalah hari
+            if (selectedPeriod == "day") selectedPrice = price
         }
 
         monthData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
-            entries.add(Entry(1f, price.toFloat() * 100)) // 1-month
+            entries.add(Entry(1f, price.toFloat() * 15_000)) // Kalikan dengan 15.000
             circleColors.add(if (selectedPeriod == "month") Color.BLUE else Color.GRAY)
-            if (selectedPeriod == "month") selectedPrice = price // Simpan harga jika periode yang dipilih adalah bulan
+            if (selectedPeriod == "month") selectedPrice = price
         }
 
         yearData?.let {
             val price = it.predictedPrice.toString().toDoubleOrNull() ?: 0.0
-            entries.add(Entry(2f, price.toFloat() * 100)) // 1-year
+            entries.add(Entry(2f, price.toFloat() * 15_000)) // Kalikan dengan 15.000
             circleColors.add(if (selectedPeriod == "year") Color.MAGENTA else Color.GRAY)
-            if (selectedPeriod == "year") selectedPrice = price // Simpan harga jika periode yang dipilih adalah tahun
+            if (selectedPeriod == "year") selectedPrice = price
         }
 
         val dataSet = LineDataSet(entries, "Prediksi Saham").apply {
@@ -171,6 +174,7 @@ class IcbpSaham : AppCompatActivity() {
             mode = LineDataSet.Mode.LINEAR
             setDrawFilled(true) // Mengaktifkan pengisian di bawah garis
             fillDrawable = resources.getDrawable(R.drawable.line_chart_gradientt) // Mengatur gradien sebagai pengisian
+            valueFormatter = CurrencyValueFormatter() // Gunakan formatter
         }
 
         val lineData = LineData(dataSet)

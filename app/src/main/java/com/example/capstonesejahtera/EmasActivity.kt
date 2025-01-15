@@ -149,8 +149,12 @@ class EmasActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     val predictedPrices = response.body()?.predictedPrices
                     displayPredictedPrices(predictedPrices)
-                    val recommendation = response.body()?.recommendation  // Get recommendation from the response
-                    displayRecommendation(recommendation)  // Display the recommendation
+                    val recommendation = response.body()?.recommendation
+                    val message = response.body()?.message
+
+                    displayRecommendation(recommendation, message) // Pass both parameters
+
+
                 } else {
                     Log.e("EmasActivity", "Error response from API: ${response.errorBody()}")
                     showErrorMessage("Gagal mendapatkan prediksi harga emas.")
@@ -182,7 +186,7 @@ class EmasActivity : AppCompatActivity() {
         if (predictedPrices == null || predictedPrices.isEmpty()) {
             lineChart.clear()
             lineChart.invalidate()
-            findViewById<TextView>(R.id.titihargaterakhir).text = "Data tidak tersedia"
+            findViewById<TextView>(R.id.titihargaterakhir).text = ""
             return
         }
 
@@ -227,12 +231,16 @@ class EmasActivity : AppCompatActivity() {
         }
     }
 
-    private fun displayRecommendation(recommendation: String?) {
-        if (recommendation == "WAIT") {
-            val spannableText = SpannableString("""
+    private fun displayRecommendation(recommendation: String?, message: String?) {
+        if (message == "No available funds for investment.") {
+            recommendationTextView.text = "Data Tidak Tersedia Karna Total Keuangan Anda Minus Ataupun Belum Mengisi..."
+        } else if (recommendation == "WAIT") {
+            val spannableText = SpannableString(
+                """
             Ambil Langkah
             Tahan dulu untuk membeli emas, karena harganya sedang naik bulan ini. Namun, kamu tampaknya cocok untuk mencoba investasi saham. Yuk, cek peluang di pasar saham!
-        """.trimIndent())
+            """.trimIndent()
+            )
 
             // Membuat "Ambil Langkah" huruf tebal
             val boldText = "Ambil Langkah"
@@ -264,6 +272,7 @@ class EmasActivity : AppCompatActivity() {
         // Tampilkan TextView setelah data tersedia
         recommendationTextView.visibility = View.VISIBLE
     }
+
 
 
 

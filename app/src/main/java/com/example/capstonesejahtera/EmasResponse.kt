@@ -8,5 +8,8 @@ data class EmasResponse(
 	val predictedPrices: List<Any?>? = null,
 
 	@field:SerializedName("recommendation")
-	val recommendation: String? = null
+	val recommendation: String? = null,
+
+	@field:SerializedName("message")
+	val message: String? = null
 )
